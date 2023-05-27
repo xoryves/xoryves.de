@@ -1,0 +1,7 @@
+.DS_Store
+.vscode
+*.log
+_content
+node_modules
+output
+tmp
