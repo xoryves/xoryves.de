@@ -1,0 +1,191 @@
+@font-face
+{
+font-family: 'Mplus1';
+font-weight: 100;
+src: url('/assets/fonts/mplus/Mplus1-Thin.woff2') format('woff2'),
+     url('/assets/fonts/mplus/Mplus1-Thin.woff') format('woff');
+}
+
+@font-face
+{
+font-family: 'Mplus1';
+font-weight: 300;
+src: url('/assets/fonts/mplus/Mplus1-Light.woff2') format('woff2'),
+     url('/assets/fonts/mplus/Mplus1-Light.woff') format('woff');
+}
+
+@font-face
+{
+font-family: 'Mplus1';
+font-weight: 400;
+src: url('/assets/fonts/mplus/Mplus1-Regular.woff2') format('woff2'),
+     url('/assets/fonts/mplus/Mplus1-Regular.woff') format('woff');
+}
+
+@font-face
+{
+font-family: 'Mplus1';
+font-weight: 500;
+src: url('/assets/fonts/mplus/Mplus1-Medium.woff2') format('woff2'),
+     url('/assets/fonts/mplus/Mplus1-Medium.woff') format('woff');
+}
+
+@font-face
+{
+font-family: 'Mplus1';
+font-weight: 700;
+src: url('/assets/fonts/mplus/Mplus1-Bold.woff2') format('woff2'),
+     url('/assets/fonts/mplus/Mplus1-Bold.woff') format('woff');
+}
+
+@font-face
+{
+font-family: 'Mplus1';
+font-weight: 800;
+src: url('/assets/fonts/mplus/Mplus1-ExtraBold.woff2') format('woff2'),
+     url('/assets/fonts/mplus/Mplus1-ExtraBold.woff') format('woff');
+}
+
+@font-face
+{
+font-family: 'Mplus1';
+font-weight: 900;
+src: url('/assets/fonts/mplus/Mplus1-Black.woff2') format('woff2'),
+     url('/assets/fonts/mplus/Mplus1-Black.woff') format('woff');
+}
+
+@font-face
+{
+font-family: 'Mplus2';
+font-weight: 100;
+src: url('/assets/fonts/mplus/Mplus2-Thin.woff2') format('woff2'),
+     url('/assets/fonts/mplus/Mplus2-Thin.woff') format('woff');
+}
+
+@font-face
+{
+font-family: 'Mplus2';
+font-weight: 300;
+src: url('/assets/fonts/mplus/Mplus2-Light.woff2') format('woff2'),
+     url('/assets/fonts/mplus/Mplus2-Light.woff') format('woff');
+}
+
+@font-face
+{
+font-family: 'Mplus2';
+font-weight: 400;
+src: url('/assets/fonts/mplus/Mplus2-Regular.woff2') format('woff2'),
+     url('/assets/fonts/mplus/Mplus2-Regular.woff') format('woff');
+}
+
+@font-face
+{
+font-family: 'Mplus2';
+font-weight: 500;
+src: url('/assets/fonts/mplus/Mplus2-Medium.woff2') format('woff2'),
+     url('/assets/fonts/mplus/Mplus2-Medium.woff') format('woff');
+}
+
+@font-face
+{
+font-family: 'Mplus2';
+font-weight: 700;
+src: url('/assets/fonts/mplus/Mplus2-Bold.woff2') format('woff2'),
+     url('/assets/fonts/mplus/Mplus2-Bold.woff') format('woff');
+}
+
+@font-face
+{
+font-family: 'Mplus2';
+font-weight: 800;
+src: url('/assets/fonts/mplus/Mplus2-ExtraBold.woff2') format('woff2'),
+     url('/assets/fonts/mplus/Mplus2-ExtraBold.woff') format('woff');
+}
+
+@font-face
+{
+font-family: 'Mplus2';
+font-weight: 900;
+src: url('/assets/fonts/mplus/Mplus2-Black.woff2') format('woff2'),
+     url('/assets/fonts/mplus/Mplus2-Black.woff') format('woff');
+}
+
+@font-face
+{
+font-family: 'Mpluscode-50';
+font-weight: 100;
+src: url('/assets/fonts/mplus/Mpluscode-Thin-50.woff2') format('woff2'),
+     url('/assets/fonts/mplus/Mpluscode-Thin-50.woff') format('woff');
+}
+
+@font-face
+{
+font-family: 'Mpluscode-50';
+font-weight: 300;
+src: url('/assets/fonts/mplus/Mpluscode-Light-50.woff2') format('woff2'),
+     url('/assets/fonts/mplus/Mpluscode-Light-50.woff') format('woff');
+}
+
+@font-face
+{
+font-family: 'Mpluscode-50';
+font-weight: 400;
+src: url('/assets/fonts/mplus/Mpluscode-Regular-50.woff2') format('woff2'),
+     url('/assets/fonts/mplus/Mpluscode-Regular-50.woff') format('woff');
+}
+
+@font-face
+{
+font-family: 'Mpluscode-50';
+font-weight: 500;
+src: url('/assets/fonts/mplus/Mpluscode-Medium-50.woff2') format('woff2'),
+     url('/assets/fonts/mplus/Mpluscode-Medium-50.woff') format('woff');
+}
+
+@font-face
+{
+font-family: 'Mpluscode-50';
+font-weight: 700;
+src: url('/assets/fonts/mplus/Mpluscode-Bold-50.woff2') format('woff2'),
+     url('/assets/fonts/mplus/Mpluscode-Bold-50.woff') format('woff');
+}
+
+@font-face
+{
+font-family: 'Mpluscode-60';
+font-weight: 100;
+src: url('/assets/fonts/mplus/Mpluscode-Thin-60.woff2') format('woff2'),
+     url('/assets/fonts/mplus/Mpluscode-Thin-60.woff') format('woff');
+}
+
+@font-face
+{
+font-family: 'Mpluscode-60';
+font-weight: 300;
+src: url('/assets/fonts/mplus/Mpluscode-Light-60.woff2') format('woff2'),
+     url('/assets/fonts/mplus/Mpluscode-Light-60.woff') format('woff');
+}
+
+@font-face
+{
+font-family: 'Mpluscode-60';
+font-weight: 400;
+src: url('/assets/fonts/mplus/Mpluscode-Regular-60.woff2') format('woff2'),
+     url('/assets/fonts/mplus/Mpluscode-Regular-60.woff') format('woff');
+}
+
+@font-face
+{
+font-family: 'Mpluscode-60';
+font-weight: 500;
+src: url('/assets/fonts/mplus/Mpluscode-Medium-60.woff2') format('woff2'),
+     url('/assets/fonts/mplus/Mpluscode-Medium-60.woff') format('woff');
+}
+
+@font-face
+{
+font-family: 'Mpluscode-60';
+font-weight: 700;
+src: url('/assets/fonts/mplus/Mpluscode-Bold-60.woff2') format('woff2'),
+     url('/assets/fonts/mplus/Mpluscode-Bold-60.woff') format('woff');
+}

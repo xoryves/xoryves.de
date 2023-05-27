@@ -1,0 +1,72 @@
+#!/usr/bin/env ruby
+
+preprocess do
+  tags = @items.map { |i| i[:tags] }.flatten.uniq.compact.sort_by(&:downcase)
+  tags.each do |tag|
+    content = ''
+    attributes = { title: tag, generated: true }
+    identifier = "/tags/#{tag}"
+
+    @items.create(content, attributes, identifier)
+  end
+
+  content = <<~EOF
+  ul
+  - @item[:tags_].each do |tag|
+    li == (link_for_tag tag, '/tags/')
+  EOF
+  @items.create(content, { title: 'tags', tags_: tags, generated: true }, '/tags.html.slim')
+end
+
+# postprocess do
+#   items.flat_map(&:modified_reps).each do |rep|
+#     puts rep[:title]
+#     puts rep.path
+#     puts rep.compiled_content(snapshot: :pre)
+#   end
+# end
+
+compile '/sitemap.xml.*' do
+  filter :erb
+  write '/sitemap.xml'
+end
+
+compile '/tags/*' do
+  filter :slim
+  layout '/tags.*'
+  layout '/default.*'
+  filter :html_tidy
+  write item.identifier.without_exts + '/index.html'
+end
+
+compile '/**/*.adoc' do
+  src_dir = "src#{item.identifier.without_exts}"
+  filter :asciidoctor, safe: :safe, backend: 'html5s', attributes: {'imagesdir' => '/assets/images/', 'src' => src_dir, 'toc-title' => 'Inhalt', 'experimental' => true, 'sectlinks' => true}
+  filter :colorize_syntax, default_colorizer: :rouge
+  layout '/default.*'
+  filter :html_tidy
+
+  if item.identifier =~ '**/index.*'
+    write ext: 'html'
+  else
+    write item.identifier.without_ext + '/index.html'
+  end
+end
+
+ignore '/assets/style/style.css'
+passthrough '/assets/**/*'
+
+compile '/**/*' do
+  filter :erb if item.identifier.ext == 'erb'
+  filter :slim if item.identifier.ext == 'slim'
+  layout '/default.*'
+  filter :html_tidy
+
+  if item.identifier =~ '/index.*'
+    write '/index.html'
+  else
+    write item.identifier.without_exts + '/index.html'
+  end
+end
+
+layout '/**/*', :slim

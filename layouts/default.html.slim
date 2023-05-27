@@ -1,0 +1,47 @@
+doctype html
+html lang="de" class="text-gray-100 h-full font-normal"
+  head
+    meta charset="UTF-8"/
+    meta name="generator" content="Nanoc #{Nanoc::VERSION}"/
+    meta name="viewport" content="width=device-width, initial-scale=1.0"/
+    link rel="stylesheet" href="/assets/style/mplus.css"/
+    link rel="stylesheet" href="/assets/style/style.css"/
+    link rel="stylesheet" href="/assets/style/syntax.css"/
+    title = @item[:title]
+  body class="bg-gray-800 min-h-full lg:flex"
+    header class="group bg-gray-700 p-2 lg:min-h-full"
+      a class="" href="#"
+        ==> icon(:menu)
+      nav class="hidden group-hover:flex flex-col space-y-2 lg:flex lg:w-56"
+        a href="#" class="pt-2 lg:hidden"
+        == nav_link(:home, 'Index', '/')
+        == nav_link(:list, 'Infos', '/infos/')
+        == nav_link(:book, 'Gelesen', '/gelesen/')
+        == nav_link(:tv, 'Multimedia konsumiert', '/multimedia/')
+        == nav_link(:'pen-tool', 'Zitate', '/zitate/')
+        == nav_link(:meh, 'Über mich', '/about_me/')
+        == nav_link(:cpu, 'Über diese Seite', '/about_site/')
+        == nav_link(:tag, 'Tags', '/tags/')
+    main class="m-4 lg:mx-32 lg:mt-32 max-w-2xl lg:min-w-2xl"
+      article
+        header
+          h1 class="text-6xl text-primary mb-12" = @item[:title]
+        == yield
+        footer class="border-t border-secondary mt-14 text-secondary"
+          - if @item[:created_at]
+            p class="text-sm mb-2"
+              ==> icon(:calendar, %w[stroke-current stroke-2 inline w-4 h-4])
+              span title="Erstellungsdatum"
+                == @item[:created_at]
+              - if @item[:updated_at]
+                | —
+                span title="Datum der letzten Veränderung"
+                  == @item[:updated_at]
+          - if @item[:tags]
+            p class="text-sm mb-2"
+              ==> icon(:tag, %w[stroke-current stroke-2 inline w-4 h-4])
+              == tags_for(@item, base_url: '/tags/')
+          - unless @item[:generated]
+            p class="text-sm mb-2"
+              ==> icon(:git_commit, %w[stroke-current stroke-2 inline w-4 h-4])
+              a href="https://github.com/xoryves/xoryves.de/commits/master/content#{@item.identifier}" commits
