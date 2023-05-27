@@ -1,0 +1,14 @@
+{
+  "dependencies": {
+    "postcss": "^8.2.9",
+    "postcss-cli": "^8.3.1",
+    "autoprefixer": "^10.2.5",
+    "purgecss": "^4.0.3",
+    "tailwindcss": "^2.1.2",
+    "postcss-nested": "^5.0.5"
+  },
+  "scripts": {
+    "dev": "NODE_ENV=production postcss content/assets/style/style.css -o output/assets/style/style.css -w",
+    "build": "NODE_ENV=production postcss content/assets/style/style.css -o output/assets/style/style.css"
+  }
+}
