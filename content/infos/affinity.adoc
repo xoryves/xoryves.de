@@ -1,0 +1,19 @@
+---
+title: Affinity
+created_at: 2021-08-21
+updated_at: 2021-09-20
+---
+
+* https://affinity.serif.com/de
+* https://forum.affinity.serif.com/
+* https://forum.affinity.serif.com/index.php?/topic/37927-converting-pixel-drawing-to-vector/&do=findComment&comment=702008[Converting Pixel drawing to Vector? - forum]
+
+== Brushes
+
+* https://wren.gumroad.com/l/boxset?recommended_by=search[Jef Brown - The Box Set (gumroad.com)]
+* https://www.truegrittexturesupply.com/products/copy-of-the-rusty-nib-for-affinity[The Rusty Nib for Affinity (True Grit Texture Supply)]
+* https://blog.spoongraphics.co.uk/articles/the-biggest-brush-sets-made-specifically-for-affinity-designer
+
+== Anleitungen
+
+* https://affinityspotlight.com/article/creating-your-own-brush-nozzles-from-real-life-media/[Creating your own brush nozzles from real-life media (Kate Musgrove - affinityspotlight.com)]

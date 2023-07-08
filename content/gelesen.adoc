@@ -1,0 +1,151 @@
+---
+title: Gelesen
+created_at: 2021-04-06
+updated_at: 2023-05-26
+tags:
+- Artbooks
+- Blogposts
+- Bücher
+- Mangas
+- Zeitschriften
+- lesenswert
+---
+
+Ich habe mich mal gefragt, was ich überhaupt schon alles irgendwann mal gelesen habe.
+Da ich extrem langsam im Lesen bin, kann es nicht all zu viel sein.
+Somit habe ich angefangen hier die Sachen zu notieren.
+
+Allerdings habe ich schnell festgestellt, dass vieles besser ungelesen geblieben wäre.
+Es gibt erschreckend viel unnütz verschwendetes Papier (auch digitales).
+Hier werde ich nur die, meiner Meinung nach, lesenswerten Dinge auflisten.
+
+Es ist eine umgekehrt chronologische Reihenfolge.
+
+Mir ist durchaus bewusst, dass man etwas nicht unbedingt verstanden hat, blos weil man es gelesen hat.
+
+== Artbooks
+
+Gelesen stimmt zwar nicht wirklich, aber ich wollte nicht eine Extra Seite dafür.
+
+* The Art of Munashichi, ISBN 4756252197
+* The Art of Posuka Demizu, ISBN 4756248763
+* The Art of Neon Genesis Evangelion Der Mond, Yoshiyuki Sadamoto, ISBN 1421507675
+
+== Blogposts
+
+Ursprünglich hatte ich vor alle Blogposts, die ich komplett gelesen habe, hier zu notieren.
+Das ist aber viel zu viel.
+Nach den ersten hand voll Blogposts habe ich mich dazu entschieden hier nur die mir wirklich wichtigen aufzuzählen.
+Die restlichen Blogposts sind verteilt auf den verschiedenen link:/infos[Infos] Seiten verlinkt.
+
+* https://www.leitmedium.de/2015/04/02/es-kann-nur-ein-leitmedium-geben-wie-ich-mein-twitter-handle-als-kuenstlernamen-in-den-ausweis-eintragen-liess/[Es kann nur ein leitmedium geben: Wie ich mein Twitter-Handle als Künstlernamen in den Ausweis eintragen ließ (Leitmedium)] (https://web.archive.org/web/20230221212146/https://www.leitmedium.de/2015/04/02/es-kann-nur-ein-leitmedium-geben-wie-ich-mein-twitter-handle-als-kuenstlernamen-in-den-ausweis-eintragen-liess/[archive.org])
+* https://morr.cc/pseudonym/[I'm (officially) blinry! (blinry)] (https://web.archive.org/web/20230221212558/https://blinry.org/pseudonym/[archive.org])
+* https://www.linkedin.com/pulse/responsibility-without-authority-how-drive-employees-crazy-fialka[Responsibility Without Authority: How to Drive Employees Crazy! (Alex Fialka)]
+* https://www.doholis-lambert.com/blog/responsibility-without-authority-dysfunctional-delegation[Responsibility Without Authority: Dysfunctional Delegation (Doholis-Lambert)]
+* https://www.doholis-lambert.com/blog/why-teams-dont-work[Why Teams Don’t Work (Doholis-Lambert)]
+* https://taylor.town/-10x[How to be a -10x Engineer (taylor.town)]
+
+== Bücher
+
+* Making Work Visible - Exposing Time Theft to Optimize Work & Flow, Dominica DeGrandis, ISBN 9781950508501, digital
+* Team Topologies, Matthew Skelton / Manuel Pais, ISBN 9781942788829, digital
+* Lean Enterprise, Jez Humble / Joanne Molesky / Barry O'Reilly, ISBN 9781492092216, digital
+* Mindset - Changing The Way You think To Fulfil Your Potential, Dr. Carol S. Dweck, ISBN 9781472139962, gedruckt + digital
+* Psychologie der Massen, Gustave Le Bon, ISBN 978-3-86820-026-3, gedruckt
+* Introvert: The friendly takeover, Linus Jonkman, ISBN 9198327615, digital
+* It Doesn't Have to Be Crazy at Work, Jason Fried & David Heinemeier Hansson, ISBN 0008323445, gedruckt
+* ReWork: Change the Way You Work Forever, Jason Fried & David Heinemeier Hansson, ISBN 0091929784, gedruckt
+* Remote: Office Not Required, Jason Fried & David Heinemeier Hansson, ISBN 9780091954673, gedruckt
+* JavaScript: The Good Parts, Douglas Crockford, ISBN 0596517748, gedruckt
+* Genug Gegendert!, Tomas Kubelik, ISBN 3945971024, gedruckt
+* Nein aus Liebe, Jesper Juul, ISBN 3407229403, gedruckt
+* Unconditional Parenting, Alfie Kohn, ISBN 0743487481, gedruckt
+* Die Kunst, Recht zu behalten, Arthur Schopenhauer, ISBN 3868200274, gedruckt
+* Ohne Glück kein Erfolg: Der Zufall und der Mythos der Leistungsgesellschaft, Robert H. Frank, ISBN 3423281472, gedruckt
+* Still und Stark: Die Kraft introvertierter Kinder und Jugendlicher, Susan Cain, ISBN 3442159284, gedruckt
+* Still: Die Kraft der Introvertierten, Susan Cain, ISBN 3442157648, gedruckt
+* Steal Like An Artist: 10 Things Nobody Told Me About the Creative Life, Austin Kleon, ISBN 9780761169253, gedruckt
+* The Pocket Universal Principles of Design, William Lidwell & Kritina Holden & Jill Butler, ISBN 1631590405, gedruckt
+* The Art of Readable Code, Dustin Boswell & Trevor Foucher, ISBN 0596802295, gedruckt
+* A Billion Wicked Thoughts: What the Internet Tells Us About Sexual Relationships, Ogi Ogas & Sai Gaddam, ISBN 0452297877, gedruckt
+* Japanese Bookbinding by Kōjirō Ikegami, Barbara B. Stephan, ISBN 0834801967, gedruckt
+* Raumpilot Grundlagen, Thomas Jocher & Sigrid Loch, ISBN 3782815253, gedruckt
+* Computational Geometry, Mark de Berg / Otfried Cheong / Marc von Kreveld / Mark Overmars, ISBN 9783642096815, gedruckt
+* Introduction to the Theory of Computation, Michael Sipser, ISBN 9780619217648, gedruckt
+* The LaTeX Graphics Companion, Michel Goossens / Frank Mittelbach / Sebastian Rahtz / Denis Roegel / Herbert Voß, ISBN 9780321508928, gedruckt
+* C++ Objektorientiertes Programmieren von Anfang an, Helmut Erlenkötter, ISBN 97834499600777, gedruckt
+* C Programmieren von Anfang an, Helmut Erlenkötter, ISBN 9783499600746, gedruckt
+* Presentation Zen: Simple Ideas on Presentation Design and Delivery, Garr Reynolds, ISBN 0321525655, gedruckt
+* Rechnerarchitektur, Paul Herrmann, ISBN 9783528255985, gedruckt
+* Digitaltechnik, Klaus Beuth, ISBN 9783834330840, gedruckt
+* Algorithmen und Datenstrukturen, Gunter Saake / Kai-Uwe Sattler, ISBN 9783898643856, gedruckt
+* Linux/Unix Kurzreferenz, Helmut Herold, ISBN 9783827324948, gedruckt
+* Linux/Unix Grundlagen, Helmut Herold, ISBN 9783827321121, gedruckt
+* UNIX Das umfassende Handbuch, Arnold Willemer, ISBN 9783836210713, gedruckt
+* Handbuch für Fachinformatiker, Sascha Kersken, ISBN 9783898426688, gedruckt
+* Wöhe: Einführung in die Allgemeine Betriebswirtschaftslehre, gedruckt
+* Das Buch der fünf Ringe, Miyamoto Musashi/ Gitta Peyn, ISBN 978-3-940185-02-0, gedruckt
+* Die Kunst des Krieges, Sun Tzu / Gitta Peyn, ISBN 978-3-940185-01-3, gedruckt
+* HTML/XHTML Das Programmier-Handbuch, Günter Born, ISBN 3-8272-6088-4, gedruckt
+
+=== ungelesen
+
+Passt nicht ganz auf diese Seite.
+Hilft mir Bücher nicht mehrfach zu kaufen.
+
+* Creating Software with Modern Diagramming Techniques - Build Better Software with Mermaid, Ashley Peacock, ISBN 9781680509830, digital
+* Programming Ruby 3.2, Noel Rappin / Dave Thomas, ISBN 9781680509823, digital
+* Cruising Along with Java, Venkat Subramaniam, ISBN 9781680509816, digital
+* A Common-Sense Guide to Data Structures and Algorithms, Jay Wengrow, ISBN 9781680507225, digital
+* Building Table Views with Phoenix LiveView, Peter Ullrich, ISBN 9781680509731, digital
+* Complex Network Analysis in Python, Dmitry Zinoviev, ISBN 9781680502695, digital
+* Data Science Essentials in Python, Dmitry Zinoviev, ISBN 9781680501841, digital
+* Genetic Algorithms and Machine Learning for Programmers, Frances Buontempo, ISBN 9781680506204, digital
+* Good Math, Mark C. Chu-Carroll, ISBN 9781937785338, digital
+* Pandas Brain Teasers, Miki Tebeka, ISBN 9781680509014, digital
+* Practical Microservices, Ethan Garofolo, ISBN 9781680506457, digital
+* Programmer Passport: Prolog, Bruce Tate, ISBN 9781680509359, digital
+* Programming Machine Learning, Paolo Perrotta, ISBN 9781680506600, digital
+* Pythonic Programming, Dmitry Zinoviev, ISBN 9781680508611, digital
+* Seven Concurrency Models in Seven Weeks, Paul Butcher, ISBN 9781937785659, digital
+* Seven Databases in Seven Weeks, Second Edition, Luc Perkins / Jim Wilson / Eric Redmond, ISBN 9781680502534, digital
+* SQL Antipatterns Volume 1, Bill Karwin, ISBN 9781680508987, digital
+* Text Processing with Ruby, Rob Miller, ISBN 9781680500707, digital
+* Hands-on Rust, Herbert Wolverson, ISBN 9781680508161, digital
+* Mazes for Programmers, Jamis Buck, ISBN 9781680500554, digital
+* Build a Weather Station with Elixir and Nerves, Alexander Koutmos / Bruce A. Tate / Frank Hunleth, ISBN 9781680509021, digital
+* Build a Binary Clock with Elixir and Nerves, Frank Hunleth / Bruce A. Tate, ISBN 9781680509236, digital
+* Programming WebAssembly with Rust, Kevin Hoffman, ISBN 9781680506365, digital
+* From Objects to Functions, Uberto Barbini, ISBN 9781680508451, digital
+* Programming Erlang (2nd edition), Joe Armstrong, ISBN 9781937785536, digital
+* Programming Elixir 1.6, Dave Thomas, ISBN 9781680502992, digital
+* Concurrent Data Processing in Elixir, Svilen Gospodinov, ISBN 9781680508192, digital
+* Designing Elixir Systems with OTP, James Edward Gray II / Bruce A. Tate, ISBN 9781680506617, digital
+* Genetic Algorithms in Elixir, Sean Moriarity, ISBN 9781680507942, digital
+* Effective Haskell, Rebecca Skinner, ISBN 9781680509342, digital
+* Testing Elixir, Andrea Leopardi / Jeffrey Matthias, ISBN 9781680507829, digital
+* Programming Ecto, Darin Wilson / Eric Meadows-Jönsson, ISBN 9781680502824, digital
+* Rust Brain Teasers, Herbert Wolverson, ISBN 9781680509175, digital
+* Engineering in Plain Sight, Grady Hillhouse, ISBN 978-1-7185-0232-1, gedruckt
+* Open Circuits, Eric Schlaepfer / Windell H. Oskay, ISBN 978-1-7185-0234-5, gedruckt
+* The Pragmatic Programmer, David Thomas / Andrew Hunt, ISBN 978-0-13-595705-9, gedruckt
+* Refactoring, Martin Fowler / Kent Beck, ISBN 978-0-13-475759-9, gedruckt
+* Practical Object-Oriented Design, Sandi Metz, ISBN 978-0-13-445647-8, gedruckt
+* Drive, Daniel H. Pink, ISBN 978-1-59448-480-3, gedruckt
+* Punished by Rewards, Alfie Kohn, ISBN 978-1-328-45052-4, gedruckt
+* Anders Sehen, Beau Lotto, ISBN 978-3-442-15938-3, gedruckt
+
+== Mangas (und ähnliches)
+
+* Hörnchen & Bär. Haufenweise echt waldige Abenteuer
+* solo leveling
+* Neon Genesis Evangelion
+* Hellsing
+* Golden Boy
+
+== Zeitschriften
+
+* SPEKTRUM PSYCHOLOGIE - Das neue Psychologie-Magazin
+* Gehirn&Geist - Zeitschrift für Psychologie und Hirnforschung
+* PSYCHOLOGIE HEUTE - Das Magazin für Psychologie
+* AnimaniA

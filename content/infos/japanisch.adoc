@@ -1,0 +1,28 @@
+---
+title: Japanisch
+created_at: 2021-08-02
+tags:
+- japanisch
+- sprache
+---
+
+Rōmaji::
+Japanisch mit dem lateinischen Alphabet.
+Man sollte Rōmaji nur so lange verwenden, bis man Hiragana/Katakana gelernt hat.
+* https://www.tofugu.com/japanese/romaji/
+* https://jref.com/threads/avoiding-romaji.61641/
+
+== Bücher
+
+* Genki
+** https://omgjapan.com/pages/genki
+** http://genki.japantimes.co.jp/index_en
+
+== Software
+
+* https://www.rosettastone.de/[Rosetta Stone] €199-349 Lebenslang
+** App oder Webbrowser
+** Aussprache stark im Fokus
+* https://www.lingodeer.com/[LingoDeer] €119,99-299,99 Lebenslang
+** primär App oder Webbrowser
+** Asiatische Sprachen im Fokus

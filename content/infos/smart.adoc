@@ -1,0 +1,33 @@
+---
+title: S.M.A.R.T.
+created_at: 2021-07-18
+---
+
+"The most important SMART Attributives which are setup for automatic notification are #5, 187, 188, 197, 198, and 199."
+-- https://forums.unraid.net/topic/69736-brand-new-hard-drives-with-tons-of-errors-normal/?do=findComment&comment=637763[Frank1940 / forums.unraid.net]
+
+== Seagate
+
+Die genauen Werte können nur mit den https://www.seagate.com/de/de/support/downloads/seatools/[SeaTools] von Seagate ausgewertet werden.
+
+"Raw_Read_Error_Rate=Hardware_ECC_Recovered und Seek_Error_Rate sind 48-bit Werte.
+Die obersten 16 bit enthalten die Anzahl der Fehler bisher und die unteren 32 bit zählen jeden Vorgang (disk seek oder ECC Überprüfung).
+Sobald die 32bit erreicht sind, wird wieder bei 0 angefangen zu zählen."
+-- https://www.hardwareluxx.de/community/threads/smart-werte-einer-seagate.792949/post-16439231[Octoploid / hardwareluxx.de]
+
+[horizontal]
+device:: `-d sat,12`
+Raw_Read_Error_Rate:: `-v 1,raw48:54`
+Seek_Error_Rate:: `-v 7,raw48:54`
+
+.OmniOS Beispiel
+[source, shell, role=terminal]
+----
+pfexec /opt/ooce/sbin/smartctl -a -d sat,12 -v 1,raw48:54 -v 7,raw48:54 /dev/rdsk/c5t3d0s0
+----
+
+* http://www.users.on.net/~fzabkar/HDD/Seagate_SER_RRER_HEC.html[Seagate's Seek Error Rate, Raw Read Error Rate, and Hardware ECC Recovered SMART attributes]
+
+== Software
+
+* https://crystalmark.info/en/software/crystaldiskinfo/[CrystalDiskInfo]

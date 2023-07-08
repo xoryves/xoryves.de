@@ -1,0 +1,77 @@
+---
+title: Figuren
+created_at: 2022-11-04
+---
+
+== Kosten Vergleich
+
+=== Shoshuu (Original Character)
+
+[horizontal]
+Hersteller:: WINGS inc.
+en:: Japanese Style TechGear Shoshuu 1/7 Complete Figure
+jp:: 和装TechGear 初秋 1/7 完成品フィギュア
+
+[grid=rows]
+|===
+|Shop |Preis |Versand |Infos
+
+|https://www.amiami.com/eng/detail/?scode=FIGURE-133562[AmiAmi] |¥ 15,600 (€108,29) |¥ 5,614 (€38,97) DHL |Duty Tax Receiver Service (L1) €14,88 / EUSt. (TX) €27,54
+|https://anime-figuren.de/Charas/Shoshu-Original-Character-PVC-Statue-1-7-25cm-Wings-Inc.html[anime-figuren] |€ 248,90 |inc |
+|https://www.yorokonde.de/deu/18247-original-character-shoshu-1/7-scale-pvc-statue-sw17361.html?number=SW17361[yorokonde] |€ 219,90 |€ 4,90 |
+|https://figuya.com/de/produkte/shoshu-swav-wings-inc-35500-de[Figuya] |€ 244,90 |inc |
+|https://www.1999.co.jp/eng/10832320[1999.co.jp] |¥ 15,000 +VAT |¥ 10,000? DHL |
+|https://www.nin-nin-game.com/en/japanese-import-wing-hobbies-and-figures/55068-original-character-shoshuu-japanese-style-techgear-ver-17-wings-inc-.html[nin-nin-game] |¥ 33,687 | inc DHL |
+|https://www.hlj.com/1-7-scale-shoshuu-figure-wns50020[HLJ] |¥ 15,000 |? | +VAT
+|https://solarisjapan.com/products/original-character-shoshuu-1-7-wings-inc[Solaris Japan] |¥ 15,510 (early bird) / ¥ 19,107 | ¥ 5,000 | +VAT
+
+|===
+
+=== NieR: Automata 2B (Joruha No. B Type) DX Edition
+
+Siehe auch link:/infos/amazon_co_jp#_nier_automata_2b_joruha_no_b_type_standard_by_flare[Amazon Japan].
+
+[grid=rows]
+|===
+|Shop |Preis |Versand |Infos
+
+|https://www.amazon.co.jp/-/en/gp/product/B08THWQX4N[Amazon Japan] |￥15,759 |￥4,230| € 159,16
+|https://store.eu.square-enix-games.com/de_DE/product/629282/nierautomata-2b-yorha-no-2-type-b-by-flare[SquareEnix Store]| € 143,99| € 12,99 (?) |
+|https://anime-figuren.de/Charas/2B-YoRHa-No-2-Type-B-NieR-Automata-PVC-Statue-28cm-Flare.html[anime-figuren.de] |€ 182,90 | inc |
+
+|===
+
+=== STEINS GATE Kurisu Makise (Reading Steiner) 1/7
+
+[horizontal]
+Hersteller:: Good Smile Company
+en:: Steins;Gate Kurisu Makise -Reading Steiner- 1/7 Complete Figure
+jp:: STEINS；GATE 牧瀬紅莉栖～運命探知の魔眼(リーディング・シュタイナー)～ 1/7 完成品フィギュア
+
+[grid=rows]
+|===
+|Shop |Preis |Versand |Infos
+
+|https://www.amazon.co.jp/-/en/Reading-Steiner-Plastic-Painted-Complete/dp/B0BGSCTYSN[Amazon Japan] |¥ 26,298 |¥ 2,884 |¥ 7,177 VAT (€ 252,38 2022-11-04)
+|https://anime-figuren.de/Charas/Kurisu-Makise-Reading-Steiner-Steins-Gate-PVC-Statue-1-7-23cm-Good-Smile-Company.html[anime-figuren] |€ 338,90 |inc |
+|https://www.yorokonde.de/deu/19065-steins-gate-kurisu-makise-reading-steiner-1/7-scale-pvc-statue-sw18179.html[yorokonde] |€ 319,90 |€ 4,90 |
+|https://www.1999.co.jp/eng/10924383[1999.co.jp] |¥ 30,917 |? |+VAT
+|https://www.play-asia.com/steinsgate-17--scale-pre-painted-figure-kurisu-makise-reading-st/13/70froj[play-asia] |¥ 37,407 |¥ 9,878 |+VAT
+|https://www.cdjapan.co.jp/product/NEOGDS-587204[cd japan] |¥ 28,314 |¥ 11,099 |+VAT
+|https://www.amiami.com/eng/detail/?gcode=FIGURE-145914[AmiAmi] |¥ 29,700 |? |+VAT
+|https://www.hlj.com/1-7-scale-steins-gate-kurisu-makise-reading-steiner-gsc94628[HLJ] |¥ 32,545 |? |+VAT
+
+|===
+
+=== Demon Slayer: Kimetsu no Yaiba Kanao Tsuyuri Figure
+
+[grid=rows]
+|===
+|Shop |Preis |Versand |Infos
+
+|https://www.1999.co.jp/eng/10746486[1999.co.jp] |¥ 15,010 |¥ 9,522|¥ 4,661 VAT
+|https://www.hlj.com/1-7-scale-demon-slayer-kimetsu-no-yaiba-kanao-tsuyuri-figure-pht58874[HLJ] |¥ 15,010 |¥ 7,370| +VAT
+|Amazon Japan | |¥ 3,457 |
+|https://anime-figuren.de/Charas/Kanao-Tsuyuri-Demon-Slayer-Kimetsu-no-Yaiba-PVC-Statue-1-7-23cm-Phat-Company.html[anime-figuren] |€ 166,90 |inc |
+
+|===

@@ -1,0 +1,209 @@
+---
+title: macOS
+created_at: 2021-06-12
+updated_at: 2023-06-17
+tags:
+- unix
+- Betriebssystem
+---
+
+== Tastaturkürzel
+
+* https://www.key-shortcut.com/mac-osx/sonderzeichen-mac[Sonderzeichen (key-shortcut.com)]
+
+[grid=rows]
+|===
+|Kürzel |Bedeutung
+
+|kbd:[⌘ Command + ␣] |Spotlight Suche
+|kbd:[⌘ Command + ´] |nächstes Fenster fokussieren
+|kbd:[⌘ Command + M] |Fenster in Dock minimieren
+|kbd:[⌥ Option + ⌘ Command + D] |Dock anzeigen/verstecken
+|kbd:[⌃ + ⇧ + ⌘ Command + T] |Auswahl in Finder in Dock legen
+|kbd:[⌃ + F3] | Dock fokussieren
+2+|im Dock
+|kbd:[↑] |App Menü öffnen
+|kbd:[⌥ Option] |alternative Befehle umschalten
+|kbd:[⌥ Option + ↑] |im App Menü an oberste Stelle springen
+|kbd:[⌘ Command + ↵ Eingabe] |im Finder öffnen
+|kbd:[⌥ Option + ←/→] |links/rechts verschieben
+2+|Bildschirmfoto
+|kbd:[⌘ Command + ⇧ + 3] |ganzer Bildschirm
+|kbd:[⌘ Command + ⇧ + 4] |Auswahl
+|kbd:[⌘ Command + ⇧ + 5] |Bereich
+2+|Browser
+|kbd:[⌘ Command + W] |Tab schließen
+|kbd:[⌥ Option + ⌘ Command + ←/→] |vorheriger/nächster Tab
+2+|VSCode
+|kbd:[⌘ Command + W] |Editor schließen
+|kbd:[⌥ Option + ⌘ Command + ←/→] |vorheriger/nächster Editor
+2+|iTerm2
+|kbd:[⌥ Option + ⌘ Command + ←/→/↑/↓] |Pane links/rechts/oben/unten
+|kbd:[⌘ Command + ←/→] |vorheriger/nächster Tab
+|===
+
+== iTerm2
+
+.Einstellungen in Verzeichnis speichern/laden
+[%collapsible, role=listing-block term]
+====
+[source, sh]
+----
+# https://shyr.io/blog/sync-iterm2-configs
+defaults write com.googlecode.iterm2 PrefsCustomFolder -string "~/Projekte/github/xoryves/dotfiles/macos/iTerm2"
+defaults write com.googlecode.iterm2 LoadPrefsFromCustomFolder -bool true
+----
+====
+
+== Administration
+
+.Software aktualisieren
+[source, shell, role=terminal]
+----
+softwareupdate --all --install --force
+----
+
+.userid ändern
+[source, shell, role=terminal]
+----
+# Einstellungen -> Benutzer und Gruppen -> Erweiterte Optionen
+diskutil resetUserPermissions / 1001
+----
+
+.hostname ändern
+[source, shell, role=terminal]
+----
+sudo scutil --set ComputerName "newname"
+sudo scutil --set LocalHostName "newname"
+sudo scutil --set HostName "newname"
+dscacheutil -flushcache
+# System Preferences -> Sharing -> Computer Name: 
+----
+
+.zusätzliche IP
+[source, shell, role=terminal]
+----
+# System Preferences -> Network -> + -> Ethernet
+# hinzufügen
+sudo ifconfig en0 alias 192.168.1.123/24 up
+# entfernen
+sudo ifconfig en0 -alias 192.168.1.123
+----
+
+.NAT aktivieren
+[source, shell, role=terminal]
+----
+# https://gist.github.com/retspen/4e6ec73271594399c050f6f8027a9880
+sudo sysctl -w net.inet.ip.forwarding=1
+----
+
+=== pfctl
+
+.Befehle
+[source, shell, role=terminal]
+----
+# alle anchor ausgeben
+pfctl -vsA
+# rules ausgeben
+pfctl -sr
+# status ausgeben
+pfctl -si
+# überprüfen
+pfctl -vnf pf.conf
+# anchor laden
+pfctl -a 'com.apple/ves' -f pf.conf
+# anchor entfernen
+pfctl -a 'com.apple/ves' -F all
+----
+
+.port forwarding (temp)
+[source, shell, role=terminal]
+----
+echo "rdr pass inet proto tcp from any to any port 443 -> 192.168.1.201 port 8443" | sudo pfctl -a 'com.apple/tmp' -ef -
+----
+
+Um pfctl automatisch zu starten und einen `anchor` zu laden, muss launchd verwendet werden.
+Dafür `/System/Library/LaunchDaemons/com.apple.pfctl.plist` nach `/Library/LaunchDaemons/ves.pfctl.plist` kopieren.
+Dort die `ProgramArguments` entsprechend dem obigen Beispiel "anchor laden" ersetzen.
+System neustarten oder mit `sudo launchctl load /Library/LaunchDaemons/ves.pfctl.plist` pf starten.
+
+* https://salferrarello.com/mac-pfctl-port-forwarding/[Mac pfctl Port Forwarding (Sal Ferrarello)]
+* https://robert-chalmers.uk/2018/10/03/protect-your-mac-with-pf-the-all-powerful-firewall/[Protect Your Mac with PF, the All Powerful Firewall (Robert Chalmers)]
+* https://blog.scottlowe.org/2013/05/15/using-pf-on-os-x-mountain-lion/[Using pf on OS X Mountain Lion (Scott's Weblog)]
+
+== Entwicklungsumgebung
+
+.Xcode
+[source, shell, role=terminal]
+----
+sudo xcodebuild -license
+----
+
+.Rust
+[source, shell, role=terminal]
+----
+brew install rustup-init
+rustup-init
+rustup toolchain install nightly
+rustup default nightly
+echo 'set -gx PATH "$HOME/.cargo/bin" $PATH;' >> ~/.config/fish/config.fish
+----
+
+.openssl libs dev
+[source, shell, role=terminal]
+----
+brew install openssl
+#/opt/homebrew/etc/openssl@1.1/certs
+#/opt/homebrew/opt/openssl@1.1/bin/c_rehash
+#echo 'fish_add_path /opt/homebrew/opt/openssl@1.1/bin' >> ~/.config/fish/config.fish
+echo 'set -gx LDFLAGS "-L/opt/homebrew/opt/openssl@1.1/lib"' >> ~/.config/fish/config.fish
+echo 'set -gx CPPFLAGS "-I/opt/homebrew/opt/openssl@1.1/include"' >> ~/.config/fish/config.fish
+----
+
+.Haskell
+[source, shell, role=terminal]
+----
+brew install haskell-stack
+# MacOSX 12 mit M1 ARM64
+stack build --extra-include-dirs="/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/ffi"
+----
+
+== launchd
+
+.Ordner und Verwendung
+/System/Library/LaunchDaemons:: Von Apple bereitgestellte System-Daemons
+/System/Library/LaunchAgents:: Von Apple bereitgestellte Agents, die für alle Benutzer auf Benutzerbasis gelten
+/Library/LaunchDaemons:: System-Daemons anderer Anbieter
+/Library/LaunchAgents:: Agents anderer Anbieter, die für alle Benutzer auf Benutzerbasis gelten
+~/Library/LaunchAgents:: Agents anderer Anbieter, die nur für den angemeldeten Benutzer gelten
+
+* https://www.launchd.info/
+* https://medium.com/swlh/how-to-use-launchd-to-run-services-in-macos-b972ed1e352[How to Use launchd to Run Services in macOS (Kosala Sananthana)]
+* https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/BPSystemStartup/Chapters/Introduction.html[Daemons and Services Programming Guide]
+
+=== LaunchAgents
+
+User LaunchAgents können bei M1 11.4 nicht von `~/Library/LaunchAgents` geladen werden.
+Von `/Library/LaunchAgents` funktioniert es.
+
+[source, sh, role=terminal]
+----
+launchctl load /Library/LaunchAgents/vaultwarden.plist
+launchctl list | grep vaultwarden
+----
+
+== Sandbox
+
+Bei alten Anwendungen ist oft keine Sandbox vorhanden.
+Bei open Source Anwendungen fehlt oft die kostenpflichtige Signatur.
+
+.11.4 Big Sur
+[source, shell, role=terminal]
+----
+xattr -d com.apple.quarantine /path/to/file
+# oder
+Systemeinstellungen -> Sicherheit & Datenschutz
+----
+
+* https://www.appcoda.com/mac-app-sandbox/[Beyond App Sandbox: Going outside of the macOS app container (Andrew Jaffee - APPCODA)]
+* https://www.karltarvas.com/2020/10/25/macos-app-sandboxing-via-sandbox-exec.html[macOS: App sandboxing via sandbox-exec (Karl Tarvas)]

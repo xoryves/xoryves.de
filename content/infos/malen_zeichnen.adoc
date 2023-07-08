@@ -1,0 +1,12 @@
+---
+title: Malen / Zeichnen
+created_at: 2021-08-22
+updated_at: 2023-02-21
+---
+
+* Kuretake
+* link:/infos/copic_color[Copic Color]
+
+== Blogposts
+
+* https://www.vanillaarts.com/blog/tools-wheels[Tools On My Desk: Color Wheels and Useful Color Tools (Copic Marker, Colored Pencil) (Vanilla Arts Co)]

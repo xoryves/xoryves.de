@@ -1,0 +1,36 @@
+---
+title: International bestellen
+created_at: 2021-12-14
+updated_at: 2021-12-18
+tags:
+- Versandhandel
+- international
+---
+
+* https://www.hanseaticbank.de/kreditkarte/genialcard
+* https://www.visa.co.uk/support/consumer/travel-support/exchange-rate-calculator.html
+
+== Fremdwährungsgebühren
+
+Bei den meisten Banken fällt eine Fremdwährungsgebür von bis zu 2% an.
+
+PayPal berechnet ebenfalls eine Gebühr und der Umrechnungskurs ist schlechter als bei z.B. Visa direkt.
+Bei einer hinterlegten Kreditkarte kann die Umrechnung in Euro deaktiviert werden.
+
+Die HanseaticBank GenialCard und Barclays Visa haben keine Fremdwährungsgebühr.
+Beide haben keine Jahresgebühr.
+Es ist jederzeit möglich die Kreditkarte zu 100% auszugleichen um Sollzinsen zu sparen.
+
+== Zoll
+
+Seit Juli 2021 gelten andere Regeln.
+Bis 150€ Warenwert Netto fallen 19% MwSt an.
+Diese können vom Händler über IOSS abgewickelt werden.
+Der Kunde kann es allerdings auch selbst ab 2022 über IOSS abwickeln.
+
+Bei Bestellungen über 150€ Warenwert Netto muss verzollt werden.
+Sendungen mit DHL Express werden durch DHL Express abgewickelt.
+Man kann nicht selbst beim Zollamt erscheinen.
+
+DHL Auslagenpauschale 6€.
+DHL Express Kapitalbereitstellungsprovision 2% der Einfuhrabgaben, mindestens aber 14,88€.

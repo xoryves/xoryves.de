@@ -1,0 +1,11 @@
+---
+title: Lizenzierung
+created_at: 2021-12-19
+---
+
+* https://en.wikipedia.org/wiki/Public-domain-equivalent_license
+* https://choosealicense.com
+** https://choosealicense.com/licenses/unlicense/[The Unlicense / Unlicense]
+** https://choosealicense.com/licenses/cc0-1.0/[Creative Commons Zero v1.0 Universal / CC0-1.0]
+* https://unlicense.org/[The Unlicense] ist für Software geeignet
+* https://creativecommons.org/publicdomain/zero/1.0/[CC0 1.0 Universal (CC0 1.0) Public Domain Dedication]

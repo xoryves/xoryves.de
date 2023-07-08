@@ -1,0 +1,141 @@
+---
+title: Linux
+created_at: 2022-07-22
+updated_at: 2023-04-23
+tags:
+  - linux
+  - nftables
+  - Docker
+  - ssh
+  - systemd
+---
+
+:toc:
+
+== Kommandos
+
+.Tastatur Layout laden
+[source, shell, role=terminal]
+----
+# https://wiki.archlinux.org/title/Linux_console/Keyboard_configuration
+# find /usr/share/kbd/keymaps/ -type f -name "*search_term*"
+loadkeys de-latin1-nodeadkeys
+----
+
+.offene Ports mit Prozessen
+[source, sh, role=term]
+----
+ss -tulnp
+----
+
+.zufällige Zeichenkette generieren
+[source, sh, role=term]
+----
+tr -dc A-Za-z0-9 </dev/urandom | head -c 8
+----
+
+.Verzeichnis mit owner/group und permissions erstellen
+[source, sh, role=term]
+----
+install -d -o caddy -g caddy -m 0750 /var/log/caddy
+----
+
+.Textzeile in mehrere Dateien einfügen
+[source, sh, role=term]
+----
+echo '/var/lib' | tee /etc/sv/caddy/envdir/{XDG_CONFIG_HOME,XDG_DATA_HOME} > /dev/null
+----
+
+== nftables
+
+* https://wiki.nftables.org/wiki-nftables/index.php/Main_Page[nftables]
+* https://wiki.archlinux.org/title/nftables[archlinux wiki nftables]
+* https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/securing_networks/getting-started-with-nftables_securing-networks[RHEL Chapter 8. Getting started with nftables]
+
+.reload
+[source, sh, role=term]
+----
+nft -f /etc/nftables.conf
+----
+
+.sets
+[source, sh, role=term]
+----
+# nft list set [<family>] <table> <set>
+nft list set ip crowdsec crowdsec-blacklists
+nft add element crowdsec crowdsec-blacklists {1.2.3.4 timeout 30s}
+----
+
+.chains
+[source, sh, role=term]
+----
+nft -n -a list chain inet filter input
+nft add rule inet filter input position 8 tcp dport 65535 accept
+----
+
+.redirect
+[source, text, role=code]
+----
+table inet filter {
+  chain input {
+    type filter hook input priority 0;
+    tcp dport 2222 ct status dnat accept
+  }
+}
+
+table inet nat  {
+  chain prerouting  {
+    type nat hook prerouting priority dstnat; policy accept;
+    tcp dport 22 redirect to :2222
+  }
+  chain postrouting {
+    type nat hook postrouting priority 100; policy accept;
+    oif eth0 masquerade persistent
+  }
+}
+----
+
+.logging
+[source, text, role=code]
+----
+tcp dport { 22, 65535 } log prefix "[nftables] SSH Accepted: " accept
+tcp dport 2222 ct status dnat log prefix "[nftables] SSH dnat Accepted" accept
+----
+
+== neovim
+
+* https://neovim.io/
+* ~/.config/nvim/init.vim
+* `: echo &ft` / `:se ft`
+* `:retab`
+* https://github.com/junegunn/vim-plug
+* https://github.com/isobit/vim-caddyfile
+
+=== init.vim
+
+* https://github.com/jwadolowski/dotfiles/blob/master/config/nvim/init.vim[jwadolowski]
+
+== systemd
+
+=== DynamicUser
+
+* https://0pointer.net/blog/dynamic-users-with-systemd.html[Dynamic Users with systemd (0pointer.net)]
+
+[horizontal]
+UIDs:: 61184-65519
+RuntimeDirectory:: /run (temp)
+StateDirectory:: /var/lib (pers)
+LogsDirectory:: /var/log (pers)
+CacheDirectory:: /var/cache (pers)
+
+== Distributionen
+
+* https://www.alpinelinux.org/
+** wird von Docker für Container bevorzugt
+* https://voidlinux.org/
+** wurde für XBPS entworfen
+* https://archlinux.org/
+
+== Referenzen
+
+* https://strugglers.net/~andy/blog/2011/09/04/linux-ipv6-router-advertisements-and-forwarding/[Linux, IPv6, router advertisements and forwarding (strugglers.net)]

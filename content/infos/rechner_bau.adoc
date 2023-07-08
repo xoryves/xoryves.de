@@ -1,0 +1,30 @@
+---
+title: Rechner Bau
+created_at: 2022-02-05
+updated_at: 2023-04-27
+---
+
+[quote, Maus IPS, 'https://www.buttonmasher.de/gaming-maus/wiki/ips/[buttonmasher.de]']
+____
+Der IPS- oder „Inches per Second“ Wert gibt an, wie viel Zoll die Maus pro Sekunde abtasten kann.
+Eine Maus mit 150 kann somit also 150 Zoll pro Sekunde genau abtasten.
+Man könnte Sie somit 381 cm pro Sekunde bewegen und trotzdem noch „genau“ zielen.
+Wie ihr schon anhand der gigantischen Werte sehen könnt, ist IPS eher dem Marketingbereich zuzuordnen, als den tatsächlich relevanten Werten.
+____
+
+== Bau/Vergleich
+
+* https://de.pcpartpicker.com[PC Part Picker]
+** https://pcpartpicker.com/b/M7WD4D[Zero Suit Samus - Lian Li 1080 TI Wall Mounted Build]
+** https://de.pcpartpicker.com/b/687TwP[Woodlicious]
+* https://pc-builds.com/[PC Builds (Engpass Rechner / Vergleich)]
+
+== Hersteller
+
+=== Gehäuse
+
+* https://www.silverstonetek.com/
+** Silverstone Fortress FT03B
+* https://www.fractal-design.com/
+* https://lian-li.com/
+* http://www.cryorig.com/taku.php

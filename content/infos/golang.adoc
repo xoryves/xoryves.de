@@ -1,0 +1,22 @@
+---
+title: Go Lang
+created_at: 2022-07-18
+updated_at: 2022-08-26
+tags:
+- go
+- Programmiersprache
+---
+
+.voll statisch kompiliert mit musl
+[source, sh, role=term]
+----
+CC=/usr/local/musl/bin/musl-gcc go build --ldflags '-linkmode external -extldflags "-static"' hello.go
+----
+
+== Referenzen
+
+* https://go.dev/doc/
+* https://go.dev/ref/mod
+* https://gist.github.com/asukakenji/f15ba7e588ac42795f421b48b8aede63[Go (Golang) GOOS and GOARCH (asukakenji/0-go-os-arch.md)]
+* https://thewebivore.com/using-replace-in-go-mod-to-point-to-your-local-module/[Using “replace” in go.mod to point to your local module (thewebivore.com)]
+* https://honnef.co/posts/2015/06/statically_compiled_go_programs\__always__even_with_cgo__using_musl/[Statically compiled Go programs, always, even with cgo, using musl (honnef.co)]

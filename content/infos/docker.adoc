@@ -1,0 +1,234 @@
+---
+title: Docker
+created_at: 2022-07-30
+updated_at: 2023-04-23
+tags:
+  - linux
+  - container
+  - Docker
+---
+
+== Konfiguration
+
+Die Konfiguration erfolgt unter `/etc/docker/daemon.json`.
+
+.zfs
+[source, json, role=code]
+----
+{
+  "storage-driver": "zfs"
+}
+----
+
+== Sicherheit
+
+Es sollte die Umgebungsvariable `DOCKER_CONTENT_TRUST=1` gesetzt sein.
+Zudem sollte man die digest (`alpine@sha256:bc41182d7ef5ffc53a40b044e725193bc10142a1243f395ee852a8d9730fc2ad`) anstatt einem Tag (`alpine:3.16`) verwenden.
+
+* https://cheatsheetseries.owasp.org/cheatsheets/Docker_Security_Cheat_Sheet.html[OWASP Docker Security Cheat Sheet]
+* https://docs.docker.com/engine/reference/commandline/pull/#pull-an-image-by-digest-immutable-identifier[Pull an image by digest (immutable identifier)]
+* https://docs.docker.com/engine/security/trust/[Content trust in Docker]
+* https://github.com/chemidy/smallest-secured-golang-docker-image[Create the smallest secured golang docker image based on scratch or distroless]
+* https://github.com/GoogleContainerTools/distroless["Distroless" Container Images] / https://github.com/GoogleContainerTools/distroless/blob/main/base/README.md[Documentation for gcr.io/distroless/base and gcr.io/distroless/static]
+
+== Kommandos
+
+.Container beim beenden löschen
+[source, sh, role=term]
+----
+docker run --rm
+----
+
+.Container wiederverwenden
+[source, sh, role=term]
+----
+docker stop
+docker start
+----
+
+.compose container mit neuen Images starten
+[source, sh, role=term]
+----
+docker-compose up -d --no-deps <service>
+----
+
+.syslog in Container durchreichen
+[source, sh, role=term]
+----
+docker run -v '/dev/log:/dev/log'
+----
+
+.image bauen
+[source, sh, role=term]
+----
+docker build . --pull --no-cache --tag <name>:<version>
+----
+
+.aus Docker Image extrahieren
+[source, sh, role=term]
+----
+docker create --name vw vaultwarden/server:alpine
+docker cp vw:/vaultwarden .
+docker rm vw
+----
+
+.sicheres Image
+[source, dockerfile, role=code]
+----
+FROM alpine:3.16@sha256:bc41182d7ef5ffc53a40b044e725193bc10142a1243f395ee852a8d9730fc2ad as builder
+RUN apk add --no-cache ca-certificates tzdata && update-ca-certificates
+
+# ...
+
+ENV USER=app
+ENV UID=10100
+RUN addgroup -g $UID -S $USER
+RUN adduser -h /data -g '' -G $USER -u $UID -S -H $USER
+
+FROM scratch
+COPY --from=builder /etc/passwd /etc/passwd
+COPY --from=builder /etc/group /etc/group
+COPY --from=builder /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/
+COPY --from=builder /usr/share/zoneinfo /usr/share/zoneinfo
+
+# ...
+
+USER app:app
+
+#...
+----
+
+== Tipps
+
+=== intermediate images nach build entfernen
+
+https://stackoverflow.com/questions/50126741/how-to-remove-intermediate-images-from-a-build-after-the-build/55082473#55082473[How to remove intermediate images from a build after the build? (stackoverflow)]
+
+.Dockerfile
+[%collapsible, role=listing-block code]
+====
+[source, Dockerfile]
+----
+FROM node as builder
+LABEL stage=builder
+...
+
+FROM node:dubnium-alpine
+...
+----
+====
+
+[source, sh, role=term]
+----
+docker image prune --filter label=stage=builder
+----
+
+.Dockerfile for automation
+[%collapsible, role=listing-block code]
+====
+[source, Dockerfile]
+----
+FROM node as builder
+ARG BUILD_ID
+LABEL stage=builder
+LABEL build=$BUILD_ID
+...
+
+FROM node:dubnium-alpine
+...
+----
+====
+
+.build and prune for automation
+[%collapsible, role=listing-block term]
+====
+[source, sh]
+----
+docker build --build-arg BUILD_ID .
+docker image prune --filter label=stage=builder --filter label=build=${BUILD_ID}
+----
+====
+
+=== Zeit von Host in Container durchreichen
+
+https://stackoverflow.com/a/44440563/1371731[How to make sure docker's time syncs with that of the host? (stackoverflow.com)]
+
+.compose.yaml
+[source, yaml, role=code]
+----
+volumes:
+  - "/etc/timezone:/etc/timezone:ro"
+  - "/etc/localtime:/etc/localtime:ro"
+----
+
+.docker run
+[source, sh, role=term]
+----
+-v /etc/timezone:/etc/timezone:ro -v /etc/localtime:/etc/localtime:ro
+----
+
+=== go time
+
+https://stackoverflow.com/a/66711576/1371731[Go's time doesn't work under the docker image from scratch (stackoverflow.com)]
+
+.Dockerfile
+[source, Dockerfile, role=code]
+----
+FROM golang:alpine AS build
+RUN apk update && apk add ca-certificates && apk add tzdata
+WORKDIR /app
+ADD . .
+RUN CGO_ENABLED=0 GOOS=linux go build -o myapp
+
+FROM scratch AS final
+COPY --from=build /usr/share/zoneinfo /usr/share/zoneinfo
+COPY --from=build /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/
+COPY --from=build /app/myapp /
+
+ENV TZ Australia/Sydney
+ENTRYPOINT ["/myapp"]
+----
+
+== Void
+
+* https://github.com/void-linux/void-docker / https://github.com/void-linux/void-docker/pkgs/container/void-linux
+
+.minimal x86-64 musl
+[source, sh, role=term]
+----
+docker pull ghcr.io/void-linux/void-linux:latest-thin-bb-x86_64-musl
+docker run --rm -it ghcr.io/void-linux/void-linux:latest-thin-bb-x86_64-musl sh
+----
+
+.Dockerfile vmgb (void-musl-go-builder)
+[source, docker, role=code]
+----
+FROM ghcr.io/void-linux/void-linux:latest-thin-bb-x86_64-musl
+
+RUN xbps-install -Sy
+RUN xbps-install -uy xbps
+RUN xbps-install -y go make git
+
+WORKDIR /build
+----
+
+.vmgb Image bauen
+[source, sh, role=term]
+----
+docker build --rm -t vmgb .
+----
+
+== Images
+
+* https://github.com/GoogleContainerTools/distroless["Distroless" Container Images]
+* https://github.com/linuxserver/docker-swag[SWAG - Secure Web Application Gateway (nginx, php, certbot, fail2ban)]
+
+== Referenzen
+
+* https://docs.docker.com/engine/swarm/secrets/[Manage sensitive data with Docker secrets (swarm vorausgesetzt)]
+* https://docs.docker.com/develop/develop-images/build_enhancements/[Build images with BuildKit (docker docs)]
+* https://www.composerize.com/
+* https://web.archive.org/web/20220730112620/https://riedstra.dev/2019/03/docker-nftables[Docker + nftables (https://riedstra.dev/)]
+* https://blog.jaimyn.dev/how-to-build-multi-architecture-docker-images-on-an-m1-mac/[How to build x86 (and others!) Docker images on an M1 Mac (jaimyn.dev)]
+* https://straz.to/2021-09-08-docker-address-pools/[The definitive guide to docker's default-address-pools option (straz.to)]
+* https://stackoverflow.com/questions/50126741/how-to-remove-intermediate-images-from-a-build-after-the-build/55082473#55082473[How to remove intermediate images from a build after the build? (stackexchange)]

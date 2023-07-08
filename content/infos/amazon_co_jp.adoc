@@ -1,0 +1,76 @@
+---
+title: Amazon.co.jp
+created_at: 2021-11-13
+updated_at: 2022-01-06
+tags:
+- Amazon
+- Versandhandel
+- international
+- Japan
+---
+
+Inzwischen scheint es sehr leicht zu sein bei Amazon Japan zu bestellen.
+Die Sprache kann auf englisch eingestellt werden.
+Nachdem man "ship outside japan" ausgewählt hat, bzw seine Adresse eingegeben hat, wird bei den Produkten angezeigt ob sie nach Deutschland versendet werden.
+Amazon übernimmt dabei die Abwicklung der anfallenden Importgebühren/Mehrwertsteuer.
+
+Die Preise sind inklusive 10% MwSt (VAT, Consumption Tax / CT).
+Betrag durch 1,1 dividieren und mit 1,19 multiplizieren um den deutschen Preis zu berechnen.
+
+== Bestellungen
+
+Am 2021-11-12 habe ich ein Nendoroid für ￥6,942 und eine 1/7 Scale Figur für ￥18,353 bestellt.
+Umgerechnet sind das €197,86.
+Dazu kommen noch €29,02 Versandkosten.
+Die Bestellung wurde in zwei Lieferungen aufgeteilt.
+Der Nendoroid (in stock) sollte am 2021-11-26 ankommen und ist am 2021-11-17 angekommen.
+Die Figur (In stock soon) soll am 2021-12-09 ankommen und ist am 2021-12-30 angekommen.
+
+=== NieR Replicant -10+1 Years- Vinyl LP Box Set
+
+Am 2021-12-6 bestellt.
+Geliefert am 2021-12-09.
+Der Amazon Versandkarton war unbeschädigt, aber viel zu groß und nur mit etwas Amazon dünnem Papier gepolstert.
+Der Inhalt war unversehrt.
+
+¥10,710 + ¥2,633 -> ¥13,343 -> €106,69 (mit Kreditkarte ohne Fremdwährungszinsen €104,38-104,73)
+
+=== NieR: Automata 2B (Joruha No. B Type) Standard by Flare
+
+Am 2021-12-10 bestellt.
+Geliefert am 2021-12-14.
+Der Amazon Versandkarton war reichlich demoliert.
+Ich hatte einen leichten Schock bekommen.
+Der Inhalt war absolut unversehrt.
+
+￥15,759 + ￥4,230 -> ￥19,989 -> €159,16 (mit Kreditkarte ohne Fremdwährungszinsen €156,14-156,38)
+
+* https://store.eu.square-enix-games.com/de_DE/product/629282/nierautomata-2b-yorha-no-2-type-b-by-flare[SquareEnix Store] €143,99 + €12,99 (?)
+* https://anime-figuren.de/Charas/2B-YoRHa-No-2-Type-B-NieR-Automata-PVC-Statue-28cm-Flare.html[anime-figuren.de] €182,90
+
+=== Figur und Zeitschrift
+
+Am 2021-12-12 habe ich eine Figur und eine Zeitschrift Bestellt.
+G.E.M. Series Evangelion New Theatrical Version Ayanami Rei und ONE PIECE magazine Vol.13.
+Die Figur war von einem anderen Händler mit Versand über Amazon.
+Die Zeitschrift war direkt von Amazon.
+Leider wurde die Bestelltung in zwei Sendungen aufgeteilt.
+
+Die Zeitschrift kam am 2021-12-15 an.
+Unversehrt in einem sehr dünnen Wellpappeumschlag der genau gepasst hat.
+¥1,167 + ¥1,052 -> ¥2,219 -> €17,64
+
+Die Figur kam am 2021-12-20 an.
+Unversehrt in einem mit Papier etwas ausgepolsterten Versandkarton.
+Die Umverpackung der Figur war in Luftpolsterfolie umwickelt.
+¥15,794 + ¥3,917 -> ¥19,711 -> €156,71
+
+=== furoshiki und Artbook
+
+Am 2021-12-29 habe ich zwei furoshiki vom Marketplace und ein Artbook direkt von Amazon bestellt.
+Es wurde alles in einem kleinen Karton am 2021-01-06 geliefert.
+
+* Amazon 2021-12-29 €90,46 / ¥11,572
+* Visa 2021-12-29 €89,279037
+* Visa 2021-12-30 €89,235886
+* Hanseatic 2021-12-30 vorgemerkt €89,24 und 2021-01-06 gebucht

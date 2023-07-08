@@ -1,0 +1,11 @@
+---
+title: Zwischenmenschliches
+created_at: 2021-05-05
+---
+
+* https://blog.aurynn.com/2015/12/16-contempt-culture[Contempt Culture]
+* http://www.shakesville.com/2011/12/harmful-communication-part-one-intent.html[Harmful Communication, Part One: Intent Is Magic]
+* https://wpgs.de/fachtexte/gruppen-und-teams/[WPGS – Gruppen und Teams]
+** https://wpgs.de/fachtexte/gruppen-und-teams/team-gruppe-definition-merkmale-unterschied/[3. Team und Gruppe: Definition, Merkmale und Unterschied]
+** https://wpgs.de/fachtexte/gruppen-und-teams/10-entscheidungen-in-teams-teamentscheidung/[11. Entscheidungen in Teams: Teamentscheidung]
+** https://wpgs.de/fachtexte/gruppen-und-teams/8-geeignete-aufgaben-fuer-teams/[9. Teamarbeit sinnvoll? Geeignete Aufgaben für Teams]

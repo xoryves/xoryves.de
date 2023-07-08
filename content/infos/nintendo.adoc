@@ -1,0 +1,97 @@
+---
+title: Nintendo
+created_at: 2021-07-01
+updated_at: 2022-12-03
+tags:
+- Spielekonsolen
+- Nintendo
+---
+
+* https://www.retronintendokaufen.de/
+
+== Switch
+
+=== Homebrew
+
+* https://nh-server.github.io/switch-guide/
+* https://github.com/16BitWonder/NX-Update-Checker
+
+== Wii U
+
+=== Homebrew
+
+* https://wiiu.hacks.guide/#/
+* https://github.com/FailedShack/USBHelperInstaller
+
+== Wii
+
+=== Homebrew
+
+* https://wii.guide
+
+=== Newer Super Mario Bros. Wii
+
+* https://newerteam.com/wii/
+* https://wiidatabase.de/downloads/hacks/newer-super-mario-bros-wii/
+* https://linuverse.blogspot.com/2015/04/newer-super-mario-bros-wii-unter-linux.html
+
+== NGC
+
+* SD2SP2
+** SD > 2GB -> exfat 32Kb ?
+** swiss_r1086.dol umbenennen zu igr.dol
+* https://www.gc-forever.com/forums/index.php[gc-forever]
+
+=== Homebrew
+
+* https://github.com/emukidid/swiss-gc
+** IGR: R+Z+B+DOWN
+** https://www.gc-forever.com/wiki/index.php?title=Swiss/Compatibility_List
+* https://wiki.gbatemp.net/wiki/NKit
+** für v1.4 wird https://www.mono-project.com/[Mono] benötigt
+* https://github.com/suloku/gcmm
+** nur FAT32!
+* https://wit.wiimm.de/
+
+=== ODE
+
+* https://gc-loader.com/
+** https://github.com/danielkraak/GC-Loader
+
+== N64
+
+* http://micro-64.com/features/everdrive64.shtml[Everything and More about the Everdrive 64 (Micro-64)]
+
+=== RGB Mod
+
+* https://www.retrorgb.com/n64rgbcompatible.html
+* https://etim.net.au/shop/shop.php?crn=209&rn=548&action=show_detail
+** http://etim.net.au/n64rgb/instructions-new/#input2
+** https://web.archive.org/web/20221031023156/http://etim.net.au/n64rgb/instructions-new/
+** https://www.reddit.com/r/n64/comments/in6mja/tim_worthingtons_n64rgb_how_do_i_set_up_ingame/
+* borti4938 IGR FW auf Tim's board
+** Ctrl = A(utomatic), Reset = M(anual)
+
+== SNES
+
+* https://sd2snes.de/blog/
+* https://snes-projects.de/forum/wcf/
+
+== NES
+
+=== RGB Mod
+
+* https://etim.net.au/nesrgb/
+** https://etim.net.au/shop/shop.php?crn=203
+** https://etim.net.au/nesrgb/installation-nes/
+** https://www.reddit.com/r/n64/comments/in6mja/tim_worthingtons_n64rgb_how_do_i_set_up_ingame/
+* https://github.com/borti4938/NES_IGR_for_NESRGB/tree/master/NES-IO[NES-I/O borti4938]
+** https://circuit-board.de/forum/index.php/Thread/12763-Projekt-NESI-O-Helfer-Platine-f%C3%BCr-viletim-NESRGB-bei-Frontloader/?postID=459060#post459060[circuit-board.de]
+** https://trp-retromods.ca/index.php?route=product/product&product_id=76[NES-I/O Version 1.5 - NOCUT! (trp-retromods.ca)]
+   YOU NEED TO REMOVE THE 75ohms RESISTORS ON RGB LINES ON eTIM NESRGB, or the image will be too dark
+
+=== headered
+
+Emulatoren und Everdrive benötigen bei NES zusätzliche Informationen.
+Diese werden in einem header abgelegt.
+Das aktuelle (2021) Format ist https://wiki.nesdev.com/w/index.php/NES_2.0[iNES2.0].

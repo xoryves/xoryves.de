@@ -1,0 +1,19 @@
+---
+title: Die Siedler
+created_at: 2023-04-23
+tags:
+- Videospiel
+---
+
+== Patches
+
+* https://settlers-united.com/de/[Settlers United, Siedler 3 und 4]
+* https://settlers4-hd.com/[Settlers 4 HD]
+
+== Referenzen
+
+* https://www.siedlercommunity.de/[Die Siedler Community]
+* https://www.siedler-maps.de/[Die Siedler Mapsource]
+* https://siedelwood-3000.de/[Siedelwood]
+* https://siedler3.net/[Siedler 3 Community]
+* https://www.siedler4.com/[Siedler IV Station]

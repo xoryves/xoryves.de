@@ -1,0 +1,40 @@
+---
+title: Copic Color
+created_at: 2021-04-10
+updated_at: 2021-09-29
+---
+
+* https://copic.jp/en/color/
+* https://copicmarkertutorials.com/decoding-the-copic-color-system/
+* http://blog.paigeedraw.com/2012/07/copic-marker-color-rgb-hex-conversion.html
+* https://github.com/alexandrejunqueira/copic-colors
+
+== Kodierung
+
+.Legende
+[source, text, role=code]
+----
+E  = Earth Colors
+BG = Blue-Green
+B  = Blue
+BV = Blue-Violet
+V  = Violet
+RV = Red-Violet
+R  = Red
+YR = Yellow-Red (Orange)
+Y  = Yellow
+YG = Yellow-Green
+G  = Green
+F  = Florescent
+W  = Warm Gray
+C  = Cool Gray
+N  = Neutral Gray
+T  = Toner Gray
+----
+
+Die erste Zahl nach dem Buchstaben gibt die Sättigung oder Farbreinheit des Markers an.
+Die ersten Zahlen können von 00 bis 9 reichen, wobei 00 eine supersaubere Farbe und 9 eine schmutzigere Farbe mit mehr Grau ist.
+
+Die zweite Zahl gibt an, wie hell oder dunkel die Farbe im Marker ist.
+Diese Zahl kann zwischen 00 und 9 liegen.
+00 ist sehr sehr hell, kaum dunkler als das Papier, und 9 ist sehr dunkel, fast so dunkel wie Schwarz.

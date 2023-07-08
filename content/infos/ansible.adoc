@@ -1,0 +1,104 @@
+---
+title: Ansible
+created_at: 2023-01-07
+updated_at: 2023-04-20
+tags:
+- configuration_management
+- Ansible
+---
+
+== Kommandos
+
+[source, sh, role=term]
+----
+ansible-playbook playbook.yml --start-at-task="install packages"
+----
+
+[source, sh, role=term]
+----
+ansible-playbook playbook.yml --step
+----
+
+== ansible vault
+
+* https://www.digitalocean.com/community/tutorials/how-to-use-vault-to-protect-sensitive-ansible-data[How To Use Ansible Vault to Protect Sensitive Playbook Data (DigitalOcean)]
+* https://docs.ansible.com/ansible/latest/tips_tricks/ansible_tips_tricks.html#tip-for-variables-and-vaults[Keep vaulted variables safely visible (docs.ansible.com)]
+
+Das Passwort kann in einer Datei abgelegt werden.
+Mit der Umgebungsvariable `ANSIBLE_VAULT_PASSWORD_FILE` kann auf die Passwortdatei verwiesen werden.
+Alternativ in der `ansible.cfg` im `defaults` Abschnitt mit `vault_password_file`.
+
+.Passwortdatei durch symlink vor git commit schützen
+[source, sh, role=term]
+----
+echo ${MY_VAULT_PASS} > ~/.config/.vault_pass
+chmod 0600 ~/.config/.vault_pass
+echo '.vault_pass' >> .gitignore
+ln -s ~/.config/.vault_pass .vault_pass
+----
+
+.Passwort aus Umgebungsvariable lesen
+[source, sh, role=term]
+----
+echo "#!/bin/sh" > .vault_pass
+echo "echo ${MY_VAULT_PASS}" > .vault_pass
+chmod +x .vault_pass
+----
+
+.Verzeichnisstruktur
+[source, text, role=code]
+----
+.
+├── . . .
+├── group_vars/
+│   └── database/
+│       ├── vars
+│       └── vault
+├── host_vars/
+│   └── db01/
+│       ├── vars
+│       └── vault
+└── . . .
+----
+
+.Inhalt vars/vault
+[source, yaml, role=code]
+----
+# vars
+---
+password: "{{ vault_password }}"
+
+# vault
+---
+vault_password: P4ssw0rd
+----
+
+== Beispiele
+
+* https://stackoverflow.com/questions/32830428/where-should-i-be-organizing-host-specific-files-templates[Where should I be organizing host-specific files/templates? (stackoverflow)]
+
+.dynamic groups
+[%collapsible, role=listing-block code]
+====
+[source, yaml]
+----
+# https://spacelift.io/blog/ansible-best-practices
+- name: Gather facts from all hosts
+  hosts: all
+  tasks:
+    - name: Classify hosts depending on their OS distribution
+      group_by:
+        key: OS_{{ ansible_facts['distribution'] }}
+- hosts: OS_Ubuntu
+- hosts: OS_CentOS
+----
+====
+
+== Referenzen
+
+* https://docs.ansible.com/ansible/latest/collections/all_plugins.html#all-modules-and-plugins[Indexes of all modules and plugins]
+* https://docs.ansible.com/ansible/latest/collections/index_module.html[Index of all Modules]
+* https://docs.ansible.com/ansible/latest/tips_tricks/sample_setup.html[Sample Ansible setup]
+* https://oteemo.com/organizing-ansible/[Organizing Ansible (oteemo.com)]
+* https://spacelift.io/blog/ansible-best-practices[44 Ansible Best Practices to Follow (spacelift.io)]
+* https://spacelift.io/blog/ansible-inventory[Working with Ansible Inventory – Basics and Use Cases (spacelift.io)]

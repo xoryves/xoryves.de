@@ -1,0 +1,81 @@
+---
+title: CSS
+created_at: 2021-04-03
+updated_at: 2023-02-21
+---
+
+* https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties
+
+.details Marker entfernen
+[%collapsible, role=listing-block code]
+====
+[source, css]
+----
+details[open] > summary::marker, details>summary::marker {
+  display: none;
+  content: "";
+}
+----
+====
+
+== Web Fonts
+
+.Font erst lokal suchen, bevor die URL geladen wird
+[source, css, role="code"]
+----
+@font-face
+{
+font-family: 'Mplus1';
+font-weight: 100;
+src: local('Mplus1-Thin'),
+     url('Mplus1-Thin.woff2') format('woff2'),
+     url('Mplus1-Thin.woff') format('woff');
+}
+----
+
+* https://www.mediaevent.de/css/font-face.html
+
+== Preprocessor
+
+* https://sass-lang.com/
+* http://lesscss.org/
+* https://stylus-lang.com/
+* https://postcss.org/
+
+== Konzepte
+
+* https://adamwathan.me/css-utility-classes-and-separation-of-concerns/
+
+=== klassisch
+
+Strikte Trennung von HTML und CSS.
+Das Aussehen wird nur über CSS Dateien gesteuert.
+Die Selektion der HTML Elemente innerhalb CSS erfolgt durch exzessive Verschachtelung.
+
+=== BEM - Block Element Modifier
+
+* http://getbem.com/
+
+=== utility-first
+
+* https://tailwindcss.com/
+* https://windicss.org/
+
+== Anleitungen
+
+* https://every-layout.dev/
+* https://css-tricks.com/
+* https://www.sarasoueidan.com/blog/horizontal-rules/[Not Your Typical Horizontal Rules (Sara Soueidan)]
++
+.Beispiel
+[source, xml, role="code"]
+----
+<svg role="separator" width="794px" height="51px" viewBox="0 0 794 51" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <!-- svg content -->
+</svg>
+----
+* https://www.sarasoueidan.com/blog/hex-rgb-to-hsl/[On Switching from HEX & RGB to HSL (Sara Soueidan)]
+* https://mwichary.medium.com/dark-theme-in-a-day-3518dde2955a[Dark theme in a day (Marcin Wichary)]
+* https://codepen.io/chistel/pen/XQPOyz[Responsive Sidebar Only with CSS (CHistel)]
+* https://flexbox.ninja/
+* https://tympanus.net/codrops/2015/07/16/styling-svg-use-content-css/[Styling SVG <use> Content with CSS]

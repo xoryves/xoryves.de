@@ -1,0 +1,203 @@
+---
+title: OmniOS
+created_at: 2021-06-17
+updated_at: 2023-04-10
+tags:
+- unix
+- illumos Distribution
+- OmniOS
+- Betriebssystem
+---
+
+== Administration
+
+.zusätzliche IP
+[source, shell, role=terminal]
+----
+dladm show-phys
+pfexec ipadm create-addr -T static -a 192.168.1.201/24 rge1/vaultwarden
+ipadm show-addr
+----
+
+.Portweiterleitung
+[source, shell, role=terminal]
+----
+# svccfg -s ipfilter:default listprop | grep file
+echo "rdr rge1 192.168.1.201 port 443 -> 192.168.1.201 port 8443" | pfexec tee -a /etc/ipf/ipnat.conf
+echo "rdr rge1 192.168.1.201 port 80 -> 192.168.1.201 port 8080" | pfexec tee -a /etc/ipf/ipnat.conf
+pfexec svcadm enable network/ipfilter
+pfexec ipnat -CF -f /etc/ipf/ipnat.conf
+----
+
+.useradd
+[source, shell, role=terminal]
+----
+useradd -d deta/sicherung/vaultwarden -g vaultwarden -m -z -u 100 vaultwarden
+----
+
+.ntp
+[source, shell, role=terminal]
+----
+# /etc/inet/ntp.conf
+pfexec svcadm enable ntp
+----
+
+.services
+[source, shell, role=terminal]
+----
+svcs -a | less
+svcs ntp
+svcs -l ntp
+----
+
+=== S.M.A.R.T.
+
+* link:/infos/smart[allgemeine S.M.A.R.T. Infos]
+
+.installieren
+[source, shell, role=terminal]
+----
+pfexec pkg install smartmontools
+----
+
+.verwenden
+[source, shell, role=terminal]
+----
+pfexec /opt/ooce/sbin/smartctl -a /dev/rdsk/c5t0d0s0
+----
+
+.service
+[source, shell, role=terminal]
+----
+# /etc/opt/ooce/smartmontools/smartd.conf
+pfexec svcadm enable smartd
+----
+
+== Update
+
+* https://omnios.org/upgrade?[Upgrading to a New OmniOS Release]
+
+.Automatic boot environment naming
+[source, sh, role=term]
+----
+pfexec pkg set-property auto-be-name omnios-r%r
+----
+
+.from r151040 to r151044
+[%collapsible, role=listing-block term]
+====
+[source, sh]
+----
+pfexec beadm create omnios-r151040-r151044
+pfexec pkg set-publisher -r -O https://pkg.omnios.org/r151044/core omnios
+pfexec pkg set-publisher -r -O https://pkg.omnios.org/r151044/extra extra.omnios
+pfexec pkg update -f -r
+pfexec init 6
+----
+====
+
+== Entwicklungsumgebung
+
+.openssl
+[source, shell, role=terminal]
+----
+pfexec pkg install openssl
+#echo 'set -gx LDFLAGS "-L/usr/ssl/lib"' >> ~/.config/fish/config.fish
+#echo 'set -gx CPPFLAGS "-I/usr/ssl/include"' >> ~/.config/fish/config.fish
+----
+
+.rust
+[source, shell, role=terminal]
+----
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | bash
+echo 'set -gx PATH "$HOME/.cargo/bin" $PATH;' >> ~/.config/fish/config.fish
+echo 'set -gx OPENSSL_DIR "/usr/ssl"' >> ~/.config/fish/config.fish
+rustup default nightly
+----
+
+.go
+[source, shell, role=terminal]
+----
+pfexec pkg install go-116
+----
+
+.ooce-gcc mit gnu ld
+[source, shell, role=terminal]
+----
+wget https://github.com/omniosorg/gcc/archive/refs/heads/ooce-10_2_0.zip
+unzip ooce-10_2_0.zip
+mkdir gcc-ooce-10-gnu && cd gcc-ooce-10-gnu
+../gcc-ooce-10_2_0/configure --prefix=/opt/gcc-10-gnu --with-as=/usr/bin/gas --with-gnu-as --with-ld=/usr/bin/gld --with-gnu-ld --enable-languages="c,c++" --enable-shared --with-mpfr-include=/usr/include/mpfr --with-gmp-include=/usr/include/gmp
+gmake -j6
+pfexec gmake install
+----
+
+.aria2
+[source, shell, role=terminal]
+----
+PKG_CONFIG_PATH=/usr/lib/amd64/pkgconfig:/usr/lib/pkgconfig:/opt/ooce/lib/amd64/pkgconfig:/opt/ooce/lib/amd64/pkgconfig MAKE=gmake CC=/opt/gcc-10-gnu/bin/gcc CXX=/opt/gcc-10-gnu/bin/g++ LIBNETTLE_CFLAGS="-I/opt/ooce/include/nettle" LIBNETTLE_LIBS="-L/opt/ooce/lib/" LIBGNUTLS_CFLAGS="-I/opt/ooce/include/gnutls" LIBGNUTLS_LIBS="-L/opt/ooce/lib/" EXPAT_CFLAGS="-I/usr/include" EXPAT_LIBS="-L/usr/lib/amd64 -lexpat" LIBUV_CFLAGS="-I/opt/ooce/" ./configure --prefix=$HOME --with-ca-bundle=/etc/ssl/cacert.pem --with-gnutls
+
+PKG_CONFIG_PATH=/usr/lib/amd64/pkgconfig:/opt/ooce/lib/amd64/pkgconfig MAKE=gmake CC=/opt/gcc-10-gnu/bin/gcc CXX=/opt/gcc-10-gnu/bin/g++ ./configure --prefix=$HOME --with-ca-bundle=/etc/ssl/cacert.pem --with-gnutls
+----
+
+== smf - service management facility
+
+* https://illumos.org/man/5/smf
+
+== Building OmniOS Packages
+
+* https://github.com/omniosorg/omnios-extra
+* https://github.com/xoryves/omnios-extra
+
+.OmniOS CE bloody zone erstellen
+[source, shell, role=terminal]
+----
+xoryves@esia ~> pfexec zonecfg -z bloody
+zonecfg:bloody> create -t illumos
+zonecfg:bloody> set zonepath=/zones/bloody
+zonecfg:bloody> add net
+zonecfg:bloody:net> set physical=bloody0
+zonecfg:bloody:net> set global-nic=auto
+zonecfg:bloody:net> set allowed-address=192.168.1.202/24
+zonecfg:bloody:net> set defrouter=192.168.1.1
+zonecfg:bloody:net> end
+zonecfg:bloody> add attr
+zonecfg:bloody:attr> set name=resolvers
+zonecfg:bloody:attr> set type=string
+zonecfg:bloody:attr> set value=192.168.1.1
+zonecfg:bloody:attr> end
+zonecfg:bloody> add attr
+zonecfg:bloody:attr> set name=dns-domain
+zonecfg:bloody:attr> set type=string
+zonecfg:bloody:attr> set value=fritz.box
+zonecfg:bloody:attr> end
+zonecfg:bloody> exit
+xoryves@esia ~> wget https://downloads.omnios.org/media/bloody/omnios-bloody-20220218.zfs.xz
+xoryves@esia ~> pfexec zoneadm -z bloody install -s /export/home/xoryves/omnios-bloody-20220218.zfs.xz
+xoryves@esia ~> pfexec zlogin -S bloody
+@bloody:~$ passwd root
+xoryves@esia ~> pfexec zlogin bloody
+----
+
+.ooce extra-build-tools
+[source, shell, role=terminal]
+----
+root@bloody:~# pkg set-publisher -r -O https://pkg.omnios.org/bloody/extra extra.omnios
+root@bloody:~# pkg install ooce/extra-build-tools
+----
+
+== Referenzen
+
+* https://man.omnios.org/
+** https://man.omnios.org/man7/sparse.7
+* https://wiki.omniosce.org/GeneralAdministration.html
+* https://illumos.org/books/zfs-admin/bookinfo.html
+* IPS
+** https://omnios.org/info/ipsrepos
+** https://github.com/OpenIndiana/oi-docs/raw/master/docs/dev/pdf/ips-dev-guide.pdf
+* Zones
+** https://omnios.org/setup/zones
+** https://docs.oracle.com/cd/E37838_01/html/E61039/z.admin.ov-9.html[Creating and Using Oracle® Solaris Zones - Networking in Shared-IP Non-Global Zones]
+* Firewall
+** https://omnios.org/info/ipfilter
+** https://www.devtech101.com/2017/08/17/configuring-nat-using-pf-firewall-solaris-11-12-zones/[Solaris 11/12 PF Firewall NAT Configuration (devtech101.com)]

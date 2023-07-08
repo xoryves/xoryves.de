@@ -1,0 +1,35 @@
+---
+title: "Psychologie der Massen"
+created_at: 2022-01-23
+---
+Gustave Le Bon, ISBN 978-3-86820-026-3
+
+"Man darf nicht glauben, eine Idee könne durch den Beweis ihrer Richtigkeit selbst bei gebildeten Geistern Wirkungen erzielen."
+-- S.65
+
+"Verknüpfung ähnlicher Dinge, wenn sie auch nur oberflächliche Beziehungen zueinander haben, und vorschnelle Verallgemeinerungen von Einzelfällen, das sind die Merkmale der Massenlogik."
+-- S. 67
+
+"Der Schein hat in der Geschichte stets eine größere Rolle gespielt als das Sein. Das Unwirkliche hat stets den Vorrang vor dem Wirklichen."
+-- S. 69
+
+"Die Massen können nur in Bildern denken und lassen sich nur durch Bilder beeinflussen."
+-- S. 69
+
+"... in derselben Gesellschaft haben die gleichen Worte für die verschiedenen sozialen Schichten oft ganz verschiedene Bedeutung. Sie gebrauchen anscheinend dieselben Worte, sprechen aber nicht dieselbe Sprache."
+-- S. 103
+
+"Die große Triebkraft  der Völkerentwicklung war niemals die Wahrheit, sondern der Irrtum."
+-- S. 106
+
+"Wer sie zu täuschen versteht, wird leicht ihr Herr, wer sie aufzuklären sucht, stets ihr Opfer."
+-- S. 106
+
+"Ich wiederhole: in der Masse gleichen sich die Menschen stets einander an, und die Abstimmung von vierzig Akademikern über allgemeine Fragen gilt nicht mehr als die von vierzig Wasserträgern."
+-- S. 169-170
+
+"Es bringt den psychologisch falschen, aber allgemein anerkannten Gedanken zum Ausdruck, dass eine Vereinigung von vielen Menschen im gegebenen Falle fähiger ist, eine kluge und unabhängige Entscheidung zu treffen, als eine kleine Anzahl."
+-- S. 171-172
+
+"... daher kann auch eine Versammlung vorzügliche, sachgemäße Gesetze ausarbeiten. Allerdings sind diese Gesetze von einem Fachmann im stillen Arbeitszimmer entworfen, und das angenommene Gesetz ist in Wahrheit das Werk eines einzelnen."
+-- S. 184

@@ -1,0 +1,80 @@
+---
+title: GPG
+created_at: 2023-01-15
+tags:
+- ssh
+---
+
+== ssh
+
+== Security Keys
+
+=== NitroKey Pro 2
+
+Kann keine elliptischen Kurven.
+
+.gpg --card-status
+[%collapsible, role=listing-block term]
+====
+[source, text]
+----
+Reader ...........: Nitrokey Nitrokey Pro
+Application ID ...: D2760001240103030005000081ED0000
+Application type .: OpenPGP
+Version ..........: 3.3
+Manufacturer .....: ZeitControl
+Serial number ....: 000081ED
+Name of cardholder: [nicht gesetzt]
+Language prefs ...: de
+Salutation .......:
+URL of public key : [nicht gesetzt]
+Login data .......: [nicht gesetzt]
+Signature PIN ....: zwingend
+Key attributes ...: rsa2048 rsa2048 rsa2048
+Max. PIN lengths .: 64 64 64
+PIN retry counter : 0 0 3
+Signature counter : 0
+KDF setting ......: off
+Signature key ....: [none]
+Encryption key....: [none]
+Authentication key: [none]
+General key info..: [none]
+----
+====
+
+=== Yubico YubiKey 5 NFC - USB
+
+Ab https://developers.yubico.com/PGP/YubiKey_5.2.3_Enhancements_to_OpenPGP_3.4.html[firmware 5.2.3 und OpenPGP 3.4] werden elliptische Kurven unterstützt.
+Unter https://github.com/drduh/YubiKey-Guide[YubiKey-Guide (github/drduh)] befindet sich eine ausführliche Anleitung für GPG mit YubiKey.
+
+.gpg --card-status
+[%collapsible, role=listing-block term]
+====
+[source, text]
+----
+xoryves@ves ~> gpg --card-status
+xoryves@ves ~/P/github> gpg --card-status
+Reader ...........: Yubico YubiKey OTP FIDO CCID
+Application ID ...: D2760001240100000006155896530000
+Application type .: OpenPGP
+Version ..........: 3.4
+Manufacturer .....: Yubico
+Serial number ....: 15589653
+Name of cardholder: [nicht gesetzt]
+Language prefs ...: [nicht gesetzt]
+Salutation .......:
+URL of public key : [nicht gesetzt]
+Login data .......: [nicht gesetzt]
+Signature PIN ....: nicht zwingend
+Key attributes ...: rsa2048 rsa2048 rsa2048
+Max. PIN lengths .: 127 127 127
+PIN retry counter : 3 0 3
+Signature counter : 0
+KDF setting ......: off
+UIF setting ......: Sign=off Decrypt=off Auth=off
+Signature key ....: [none]
+Encryption key....: [none]
+Authentication key: [none]
+General key info..: [none]
+----
+====

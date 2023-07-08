@@ -1,0 +1,99 @@
+---
+title: UNIX
+created_at: 2021-08-15
+updated_at: 2023-03-12
+tags:
+- cli
+- ssh
+---
+
+== Kommandos
+
+.rsync Dateien rekursiv kopieren mit Statusanzeige
+[source, shell, role=terminal]
+----
+# Geschwindigkeit wie cp
+rsync -ahvW --progress --inplace /von /nach
+# übliche rsync Funktionalität über eine langsame Verbindung
+rsync -ahv --progress /von /nach
+----
+
+.7z
+[source, shell, role=terminal]
+----
+# Archiv erstellen
+7z a -t7z -m0=lzma -mx=9 -mfb=64 -md=32m -ms=on archive.7z dir1
+# jede Datei in eigenes Archiv packen
+for f in *.iso; 7z a -t7z -m0=lzma -mx=9 -mfb=64 -md=32m -ms=on $f.7z $f; end
+----
+
+.pdf Metadaten bereinigen
+[source, shell, role=terminal]
+----
+exiftool -all:all= datei.pdf -overwrite_original
+exiftool -Title="Titel" -Author="Author" -Creator="Creator" -Subject="" datei.pdf -overwrite_original
+qpdf --linearize datei.pdf datei_neu.pdf
+----
+
+== SSH
+
+* https://web.archive.org/web/20220725201402/https://riedstra.dev/2021/07/explict-ssh-key[Simple and explicit SSH key management (Riedstra)]
+* https://github.com/skeeto/endlessh[endlessh skeeto (orig)] / https://github.com/xoryves/endlessh[xoryves fork]
+* https://www.yubico.com/blog/github-now-supports-ssh-security-keys/[GitHub now supports SSH security keys (yubico.com)]
+
+./etc/ssh/sshd_config
+[%collapsible, role=listing-block code]
+====
+[source, text]
+----
+Port 65535
+# pubkey auth only
+PermitRootLogin prohibit-password
+PubkeyAuthentication yes
+PasswordAuthentication no
+PermitEmptyPasswords no
+UsePam no
+----
+====
+
+.ssh key erstellen
+[source, shell, role=terminal]
+----
+# -a kann auch durchaus größer gewählt werden
+ssh-keygen -t ed25519 -a 100
+----
+
+== Historie
+
+[quote, Rob Pike, 'https://www.reddit.com/r/linux/comments/at05xh/comment/egyj6lr/[reddit]', role=long]
+____
+A lesson in shortcuts.
+
+Long ago, as the design of the Unix file system was being worked out, the entries `.` and `..` appeared, to make navigation easier.
+I'm not sure but I believe `..` went in during the Version 2 rewrite, when the file system became hierarchical (it had a very different structure early on).
+When one typed ls, however, these files appeared, so either Ken or Dennis added a simple test to the program.
+It was in assembler then, but the code in question was equivalent to something like this: `if (name[0] == '.') continue;`
+This statement was a little shorter than what it should have been, which is `if (strcmp(name, ".") == 0 || strcmp(name, "..") == 0) continue;` but hey, it was easy.
+
+Two things resulted.
+
+First, a bad precedent was set.
+A lot of other lazy programmers introduced bugs by making the same simplification.
+Actual files beginning with periods are often skipped when they should be counted.
+
+Second, and much worse, the idea of a "hidden" or "dot" file was created.
+As a consequence, more lazy programmers started dropping files into everyone's home directory.
+I don't have all that much stuff installed on the machine I'm using to type this, but my home directory has about a hundred dot files and I don't even know what most of them are or whether they're still needed.
+Every file name evaluation that goes through my home directory is slowed down by this accumulated sludge.
+
+I'm pretty sure the concept of a hidden file was an unintended consequence.
+It was certainly a mistake.
+
+How many bugs and wasted CPU cycles and instances of human frustration (not to mention bad design) have resulted from that one small shortcut about 40 years ago?
+
+Keep that in mind next time you want to cut a corner in your code.
+
+(For those who object that dot files serve a purpose, I don't dispute that but counter that it's the files that serve the purpose, not the convention for their names.
+They could just as easily be in `$HOME/cfg` or `$HOME/lib`, which is what we did in Plan 9, which had no dot files.
+Lessons can be learned.)
+____

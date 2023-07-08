@@ -1,0 +1,37 @@
+---
+title: VS Code
+created_at: 2021-05-09
+updated_at: 2023-03-07
+tags:
+- editor
+- vscode
+---
+
+https://github.com/xoryves/dotfiles/tree/main/vscode[meine Konfiguration auf GitHub]
+
+== Extensions
+
+Die Extensions liegen bei Unix unter `~/.vscode/extensions`.
+Unter Windows sind sie unter `%USERPROFILE%\.vscode\extensions` zu finden.
+
+.Unix export/import
+[source, sh, role=term]
+----
+code --list-extensions | xargs -L 1 echo code --install-extension
+----
+
+.Windows export/import
+[source, PowerShell, role=term]
+----
+code --list-extensions | % { "code --install-extension $_" }
+----
+
+* https://stackoverflow.com/a/49398449/1371731[How can you export the Visual Studio Code extension list? (stackoverflow)]
+* https://code.visualstudio.com/docs/editor/extension-marketplace#_workspace-recommended-extensions[Workspace recommended extensions]
+
+== Referenzen
+
+* https://code.visualstudio.com/shortcuts/keyboard-shortcuts-macos.pdf[Keyboard shortcuts for macOS]
+* https://code.visualstudio.com/shortcuts/keyboard-shortcuts-linux.pdf[Keyboard shortcuts for Linux]
+* https://code.visualstudio.com/shortcuts/keyboard-shortcuts-windows.pdf[Keyboard shortcuts for Windows]
+* https://code.visualstudio.com/docs/editor/profiles[Profiles in Visual Studio Code]

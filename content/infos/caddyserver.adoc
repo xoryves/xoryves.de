@@ -1,0 +1,101 @@
+---
+title: Caddy Server
+created_at: 2021-06-17
+updated_at: 2023-03-06
+tags:
+  - go
+  - Docker
+  - caddy
+  - webserver
+  - crowdsec
+---
+
+.caddy mit duckdns bauen
+[source, shell, role=terminal]
+----
+go get -u github.com/caddyserver/xcaddy/cmd/xcaddy
+~/go/bin/xcaddy build --with github.com/caddy-dns/duckdns
+----
+
+.caddy mit docker bauen
+[source, sh, role=term]
+----
+docker pull caddy:2.5.2-builder-alpine
+docker run --rm -it -v "$PWD":/build caddy:2.5.2-builder-alpine sh -c "xcaddy build && cp caddy /build"
+----
+
+== automatische TLS Zertifikate
+
+Man sollte zuerst mit dem https://letsencrypt.org/docs/staging-environment/[Let's Encrypt Staging Environment] testen.
+
+.staging environment
+[source, sh, role=code]
+----
+# global
+{
+  email xoryves@googlemail.com
+  acme_ca https://acme-staging-v02.api.letsencrypt.org/directory
+}
+# tls directive
+tls {
+  ca https://acme-staging-v02.api.letsencrypt.org/directory
+}
+----
+
+== crowdsec
+
+Es kann die `crowdsecurity/caddy` collection verwendet werden.
+
+Für Logs mit `time_format iso8601` kann folgendes verwendet werden.
+Die `crowdsecurity/base-http-scenarios` collection und der Parser von https://github.com/xoryves/x5s-infra/tree/main/ansible/roles/crowdsec/files/parsers/s01-parse/caddy-logs.yaml[x5s-infra/.../caddy-logs.yaml].
+Der Parser muss unter `/etc/crowdsec/parsers/s01-parse/` abgelegt werden.
+Es ist ein angepasster Parser aus der `crowdsecurity/caddy` collection.
+Das direkte Verändern des Parsers aus der collection würde zu einem `tainted` status führen.
+
+./etc/crowdsec/acquis.yaml
+[%collapsible, role=listing-block code]
+====
+[source, yaml]
+----
+filenames:
+  - /var/log/caddy/*.log
+labels:
+  type: caddy
+----
+====
+
+./etc/crowdsec/profiles.yaml
+[%collapsible, role=listing-block code]
+====
+[source, yaml]
+----
+name: http_captcha_remediation
+filters:
+  - Alert.Remediation == true && Alert.GetScenario() contains '/http'
+decisions:
+  - type: captcha
+    duration: 4h
+on_success: break
+----
+====
+
+./etc/crowdsec/parsers/s01-parse/caddy-logs.yaml
+[%collapsible, role=listing-block code]
+====
+[source, yaml]
+----
+nodes:
+  - nodes:
+    - grok:
+        pattern: '%{TIMESTAMP_ISO8601:timestamp}'
+        expression: JsonExtract(evt.Line.Raw, 'ts')
+        statics:
+          - target: evt.StrTime
+            expression: evt.Parsed.timestamp
+----
+====
+
+== Referenzen
+
+* https://caddyserver.com/docs/
+* Placeholders (Variablen): https://caddyserver.com/docs/conventions#placeholders[global], https://caddyserver.com/docs/json/apps/http/#docs[http], https://caddyserver.com/docs/caddyfile/concepts#placeholders[shorthand]

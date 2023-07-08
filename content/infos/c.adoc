@@ -1,0 +1,13 @@
+---
+title: C / C++
+created_at: 2023-01-25
+tags:
+- c
+- cpp
+- Programmiersprache
+---
+
+== Referenzen
+
+* https://en.cppreference.com/w/[cppreference.com]
+* https://coliru.stacked-crooked.com/[Coliru - compile link run]

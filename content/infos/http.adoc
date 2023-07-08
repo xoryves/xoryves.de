@@ -1,0 +1,28 @@
+---
+title: HTTP
+created_at: 2023-03-06
+---
+
+== Header
+
+* https://cheatsheetseries.owasp.org/cheatsheets/HTTP_Headers_Cheat_Sheet.html[OWASP HTTP Headers Cheat Sheet]
+
+=== Forwarded
+
+Ein "neuer" (2014) Header, der die de-facto Standard Header `X-Forwarded-*` ersetzen soll.
+
+.Beispiel
+[source, text, role=code]
+----
+Forwarded: for=192.0.2.43,for=198.51.100.17;by=203.0.113.60;proto=http;host=example.com
+X-Forwarded-For: 192.0.2.43,198.51.100.17,203.0.113.60
+X-Forwarded-Proto: http
+X-Forwarded-Host: example.com
+----
+
+* https://www.rfc-editor.org/rfc/rfc7239[rfc7239]
+* https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Forwarded[Forwarded (MDN)]
+* https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Forwarded-For[X-Forwarded-For (MDN)]
+* https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Forwarded-Host[X-Forwarded-Host (MDN)]
+* https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Forwarded-Proto[X-Forwarded-Proto (MDN)]
+* https://www.nginx.com/resources/wiki/start/topics/examples/forwarded/[Nginx Forwarded Header]

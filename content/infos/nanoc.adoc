@@ -1,0 +1,32 @@
+---
+title: Nanoc - Static Site Generator
+created_at: 2021-04-01
+updated_at: 2021-05-05
+tags:
+- ruby
+- ssg
+---
+
+* https://nanoc.ws/
+* https://github.com/nanoc/nanoc
+* https://gitter.im/nanoc/nanoc
+
+[source, shell, role=terminal]
+----
+bundle exec nanoc live -o 0.0.0.0
+----
+
+== Referenzen
+
+* https://gist.github.com/ddfreyne/660ef190abc356a9224341dbe01e1b34
+
+=== Seiten, die mit Nanoc erstellt sind
+
+* https://nanoc.ws/, https://github.com/nanoc/nanoc.ws
+* https://denisdefreyne.com/, https://github.com/ddfreyne/denisdefreyne.com
+
+=== Tag Seiten generieren
+
+* https://stackoverflow.com/a/13873236/1371731
+* https://nanoc.app/doc/reference/helpers/#tagging
+* https://nanoc.app/doc/rules/

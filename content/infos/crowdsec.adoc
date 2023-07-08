@@ -1,0 +1,131 @@
+---
+title: CrowdSec
+created_at: 2022-08-20
+updated_at: 2023-02-17
+---
+
+* https://docs.crowdsec.net/
+* https://app.crowdsec.net/
+* https://www.crowdsec.net/remove-ip-crowdsec-blocklist[Remove my IP from CrowdSec's blocklist]
+
+.initiale Konfiguration
+[%collapsible, role=listing-block term]
+====
+[source, sh]
+----
+cscli hub update
+cscli machines add -a
+cscli capi register
+cscli collections install crowdsecurity/linux
+----
+====
+
+.Kommandos
+[%collapsible, role=listing-block term]
+====
+[source, sh]
+----
+cscli hub list
+cscli hub update
+cscli hub upgrade
+cscli metrics
+cscli decisions list
+cscli alerts list
+cscli alerts inspect -d 123
+----
+====
+
+.Replay Mode
+[source, sh, role=term]
+----
+# https://docs.crowdsec.net/docs/user_guides/replay_mode
+crowdsec -dsn file:///var/log/socklog/secure/current -type sshd
+----
+
+== Konfiguration
+
+CrowdSec verwendet an einigen https://docs.crowdsec.net/docs/expr/helpers[Stellen] der Konfiguration https://github.com/antonmedv/expr[expr].
+
+== Simulation
+
+.Kommandos
+[source, sh, role=term]
+----
+cscli simulation status
+----
+
+./etc/crowdsec/simulation.yaml
+[source, yaml, role=code]
+----
+simulation: on
+exclusions:
+  - crowdsecurity/ssh-bf
+  - crowdsecurity/endlessh-bf
+  - xoryves/endlessh-slow-bf
+----
+
+== Bouncer
+
+=== firewall
+
+Man sollte `supported_decisions_types` nur mit `ban` betreiben.
+Damit folgt man der Crowdsec Empfehlung aus deren FAQ »We highly recommend users to always take the “softest” remedy«.
+Ich persönlich würde es nur auf `captcha` und `throttle` erweitern, wenn z.B. der verwendete Webserver keinen entsprechenden Bouncer hat und man z.B. `nftabels` mit `redirect nat` verwendet.
+
+== endlessh
+
+[source, sh, role=term]
+----
+cscli collections install crowdsecurity/endlessh
+----
+
+./etc/crowdsec/scenarios/endlessh-slow-bf.yaml
+[%collapsible, role=listing-block code]
+====
+[source, yaml]
+----
+# endlessh bruteforce
+type: leaky
+name: xoryves/endlessh-slow-bf
+description: "Detect slow SSH bruteforce caught by Endlessh"
+filter: "evt.Meta.log_type == 'endlessh_accept'"
+leakspeed: "60m"
+references:
+  - http://wikipedia.com/ssh-bf-is-bad
+capacity: 3
+groupby: evt.Meta.source_ip
+blackhole: 120m
+reprocess: true
+labels:
+ service: endlessh
+ type: bruteforce
+ remediation: true
+----
+====
+
+== Entwicklung
+
+* https://doc.crowdsec.net/docs/contributing/contributing_test_env/[Creating a test environment (doc.crowdsec.net)]
+* https://docs.crowdsec.net/docs/scenarios/create/[Creating scenarios (doc.crowdsec.net)]
+
+.test env
+[source, sh, role=term]
+----
+tar xvzf crowdsec-release.tgz
+cd crowdsec-v1.4.1
+./test_env.sh
+cd tests
+./crowdsec -c dev.yaml
+./cscli -c dev.yaml hub list
+----
+
+== Referenzen
+
+* https://www.crowdsec.net/blog/crowdwall-tough-firewall-for-50e
+* https://www.crowdsec.net/blog/crowdwall-part-2
+* https://www.crowdsec.net/blog/crowdwall-part-3
+* https://www.crowdsec.net/blog/how-to-secure-your-raspberry-pi-with-crowdsec
+* https://www.crowdsec.net/blog/protect-php-websites
+* https://www.linuxserver.io/blog/blocking-malicious-connections-with-crowdsec-and-swag
+* https://www.crowdsec.net/blog/secure-docker-compose-stacks-with-crowdsec
+* https://www.crowdsec.net/blog/without-and-with-a-crowdsec-bouncer-a-tale-of-two-servers

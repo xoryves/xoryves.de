@@ -1,0 +1,132 @@
+---
+title: vaultwarden
+created_at: 2021-06-17
+updated_at: 2023-04-21
+tags:
+- rust
+- bitwarden
+- vaultwarden
+- Docker
+---
+
+`vaultwarden` ist eine Minimalimplementierung von Bitwarden.
+Für die Kompilierung wird `openssl` und `rust nightly` vorausgesetzt.
+
+.bauen
+[source, shell, role=terminal]
+----
+git clone https://github.com/dani-garcia/vaultwarden.git
+cd vaultwarden
+git checkout (git describe --tags)
+cargo build --features sqlite --release
+wget https://github.com/dani-garcia/bw_web_builds/releases/download/v2.20.4/bw_web_v2.20.4.tar.gz
+tar xf bw_web_v2.20.4.tar.gz
+----
+
+.aus Docker Image extrahieren
+[source, sh, role=term]
+----
+docker pull vaultwarden/server:alpine
+docker create --name vw vaultwarden/server:alpine
+docker cp vw:/vaultwarden .
+docker cp vw:/web-vault .
+docker rm vw
+----
+
+.ausführen
+[source, shell, role=terminal]
+----
+./caddy start -pidfile ./caddy.pid
+./vaultwarden 2>&1 >> ./vaultwarden.log &; disown
+----
+
+.backup sqlite3
+[source, sh, role=term]
+----
+sqlite3 /var/lib/vaultwarden/data/db.sqlite3 ".backup backup-$(date -uIs | tr : _).sq3"
+----
+
+== Docker
+
+.Benutzer/Verzeichnis anlegen
+[source, sh, role=term]
+----
+zfs create zroot/var/lib/vaultwarden
+groupadd -g 10101 -r vaultwarden
+useradd -d /var/lib/vaultwarden -g vaultwarden -N -u 10101 -r vaultwarden
+chown vaultwarden:vaultwarden /var/lib/vaultwarden
+install -d -o vaultwarden -g vaultwarden -m 0750 /var/lib/vaultwarden/data
+----
+
+./var/lib/vaultwarden/.env
+[source, sh, role=code]
+----
+UID=10101
+GID=10101
+VERSION=1.26.0
+DOMAIN=https://vaultwarden.xoryves.de
+ROCKET_ADDRESS=0.0.0.0
+ROCKET_PORT=3011
+WEBSOCKET_ENABLED=true
+SIGNUPS_ALLOWED=false
+IP_HEADER=X-Forwarded-For
+----
+
+./var/lib/vaultwarden/compose.yaml
+[source, yaml, role=code]
+----
+services:
+  server:
+    container_name: vaultwarden
+    user: "${UID}:${GID}"
+    env_file: '/var/lib/vaultwarden/.env'
+    volumes:
+      - '/etc/passwd:/etc/passwd:ro'
+      - '/etc/group:/etc/group:ro'
+      - '/etc/localtime:/etc/localtime:ro'
+      - '/var/lib/vaultwarden/.env:/.env:ro'
+      - '/var/lib/vaultwarden/data/:/data/'
+    ports:
+      - '127.0.0.1:3011:3011'
+      - '127.0.0.1:3012:3012'
+    image: "vaultwarden/server:${VERSION}-alpine"
+----
+
+.image
+[source, shell, role=term]
+----
+docker pull vaultwarden/server:1.26.0-alpine
+----
+
+.run
+[source, shell, role=term]
+----
+export UID=(id -u vaultwarden)
+export GID=(id -g vaultwarden)
+export VERSION='1.26.0'
+docker run \
+  --rm \
+  --name vaultwarden \
+  --user $UID:$GID \
+  --env-file /var/lib/vaultwarden/.env \
+  -v /etc/passwd:/etc/passwd:ro \
+  -v /etc/group:/etc/group:ro \
+  -v /var/lib/vaultwarden/data/:/data/ \
+  -p 127.0.0.1:3011:3011 \
+  -p 127.0.0.1:3012:3012 \
+  vaultwarden/server:${VERSION}-alpine
+----
+
+.compose up
+[source, shell, role=term]
+----
+export UID=(id -u vaultwarden)
+export GID=(id -g vaultwarden)
+docker compose up --no-log-prefix
+----
+
+== Referenzen
+
+* https://github.com/dani-garcia/vaultwarden[github repo]
+* https://github.com/dani-garcia/vaultwarden/wiki/Using-Docker-Compose[Using Docker Compose]
+* https://www.linode.com/docs/guides/how-to-self-host-the-vaultwarden-password-manager/[Self-Hosting the vaultwarden Password Manager (linode.com)]

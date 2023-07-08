@@ -1,0 +1,15 @@
+---
+title: SVG - Scalable Vector Graphics
+created_at: 2021-04-10
+---
+
+* https://svgontheweb.com/
+
+== Web Icons
+
+* https://themesberg.com/blog/open-source/10-open-source-free-svg-icon-libraries
+* https://feathericons.com/[Feather – Simply beautiful open source icons]
+* https://heroicons.com/[Heroicons - Beautiful hand-crafted SVG icons, by the makers of Tailwind CSS.]
+* https://css.gg/[css.gg - Open-source CSS, SVG and Figma UI Icons]
+* https://primer.style/octicons/[Octicons - Your project. GitHub's icons.]
+* https://github.com/vorillaz/devicons

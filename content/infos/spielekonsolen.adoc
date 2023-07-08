@@ -1,0 +1,108 @@
+---
+title: Spielekonsolen
+created_at: 2021-06-07
+updated_at: 2022-12-03
+tags:
+- Spielekonsolen
+- Retro
+- PVM
+---
+
+* link:/infos/sega[Sega]
+* link:/infos/playstation[Sony PlayStation]
+* link:/infos/nintendo[Nintendo]
+
+* https://emumovies.com/files/category/1101-console-media/
+
+== TV / Monitor
+
+* KDL-48W585, Eizo FS2434-BK, KD-43XH8096
+* https://www.zambullo.de/
+* http://www.leobodnar.com/shop/index.php?main_page=product_info&cPath=89&products_id=212[Video Signal Input Lag Tester]
+* HDMI Audio Extractor
+** Monoprice Blackbird 4K Series 2-channel HDMI Audio Extractor
+
+== Controller
+
+Rumble:: Vibration im Controller
+Force Feedback:: Wiederstand vom Controller
+
+=== Hitbox
+
+* https://b0xx.com/
+* https://www.profightstick.com/what-is-a-hitbox-controller/
+
+=== Arcade / Fight Stick
+
+=== Racing Wheel
+
+* https://www.gtplanet.net/forum/threads/drive-hub-racing-wheel-converter.358306/
+* https://youtu.be/x4sXzuNxSek[Force Feedback Pedals - Rumble Pedal Mod for Gaming Pedals Tutorial (youtube)]
+* https://www.reddit.com/r/simracing/comments/fwq53v/logitech_g29g920_rumble_pedals_modmod/
+* https://fanatec.com/
+* Thrustmaster T300RS GT (PS3/PS4)
+** leise
+** Steuerung schwammig/realistischer
+** wenig Vibration
+** Bremse leichtgängig
+* Logitech G923 (PS4)
+** laut
+** Steuerung direkter
+** viel Vibration
+** Bremse extrem schwergängig
+* Logitech G29 (PS3/PS4)
+* Heel and Toe Downshift
+
+== ROMs
+
+* https://no-intro.org/[No-Intro - preservation of cartidges]
+* http://redump.org/[REDUMP - Disc Preservation Project]
+** Taikenban -> Demo or Sample
+** Genteiban -> Limited Edition
+** Renka Ban -> Value or Budget
+** Fukyuuban -> Universal Edition?
+
+== Retro
+
+* https://www.retrorgb.com/
+* https://krikzz.com/store/
+* https://near.sh/
+* http://www.racketboy.com/
+
+* https://www.indiegogo.com/projects/the-sinden-lightgun#/
+
+=== Sony PVM-2130QM / PVM-1443MD
+
+Der PVM-2130QM hat einen normalen SCART Eingang.
+Der PVM-1443MD benötigt ein Female SCART to 4 x BNC adapter cable.
+
+* PSX / PS2
+* NES / SNES / N64 / GC
+* MD / SS / DC
+
+=== Converter
+
+* https://www.marseilleinc.com/mclassic/[Marseille mClassic]
+
+=== line doubler
+
+* http://retrogaming.hazard-city.de/ossc.html[OSSC review]
+* https://videogameperfection.com/products/open-source-scan-converter/[VGP OSSC]
+* https://videogameperfection.com/products/retrotink-2x-scart/[VGP RetroTINK 2X SCART]
+* https://videogameperfection.com/products/retrotink-transcoder-comp2rgb/[VGP RetroTINK Transcoder Comp2RGB & RGB2Comp]
+
+=== online shops
+
+* https://www.dragonbox.de/
+* https://videogameperfection.com/
+* https://www.retrogamingcables.co.uk/
+* https://shop.modinfrance.fr/en/
+* https://trp-retromods.ca/
+* https://laserbear.net/
+* https://8bitmods.com/
+* https://www.oldskoolconsoles.com/
+* https://castlemaniagames.com/
+* https://retrogamerstuff.com/
+* https://voultar.com/
+* https://jdtronik.de/
+* https://www.retroplace.com/de

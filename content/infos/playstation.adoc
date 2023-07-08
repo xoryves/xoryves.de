@@ -1,0 +1,106 @@
+---
+title: Sony PlayStation
+created_at: 2021-07-02
+updated_at: 2022-12-03
+tags:
+- Spielekonsolen
+- PlayStation
+- Sony
+---
+
+* https://psxtools.de
+* https://www.psx-place.com
+* https://www.ps2-home.com
+* http://www.ps3hax.net
+
+== PS4
+
+* https://www.brookaccessory.com/detail/17778036/[Brook PS3 to PS4 Super Converter]
+
+== PS3
+
+* https://pandorah.org/psn/
+* https://www.psx-place.com/threads/tutorial-ps3hen-the-great-ps3-hen-all-in-one-guide.24369/[The Great Ps3 HEN All in One Guide (psx-palace.com)]
+* https://www.reddit.com/r/ps3homebrew/wiki/ps3netsrv/
+* https://www.psx-place.com/resources/categories/playstation-3-ps3.3/
+
+== PS2
+
+* SCPH 30004 R, SCPH 70004 CB
+* https://circuit-board.de/forum/index.php/Thread/23859-PS2-Fat-mit-2-TB-SATA-Festplatte-betreiben-und-FHDB-installieren/[PS2 Fat mit 2 TB SATA-Festplatte betreiben und FHDB installieren (circuit-board.de)]
+* https://www.reddit.com/r/ps2/comments/7recxj/ultimate_playstation_2_sd_card_mod/[Ultimate PlayStation 2 SD Card mod (reddit)]
+* https://www.reddit.com/r/ps2/comments/ouq8s1/i_finally_found_a_boxed_one_for_a_reasonable_price/[Sony Bravia PX300|22]
+* Bandbreite, _sehr_ optimistisch
+** HDD ATA-66 66MB/s
+** Ethernet 100Mbit 12,5MB/s
+** USB 1.1 12Mbit 1,5 MB/s
+** Optisches Laufwerk 24x CD-ROM 3,6 MB/s; 4x DVD-ROM 5,28 MB/s
+** MemoryCard 24Mbit 3MB/s
+
+=== Exploits
+
+* Free McBoot
+* https://www.psx-place.com/threads/opentuna-an-open-source-version-of-fortuna-based-on-reverse-engineering.33010/[OpenTuna] primär für Slim
+
+=== HomeBrew
+
+* https://www.ps2-home.com/forum/app.php/page/list-of-commonly-used-acronyms-in-the-ps2-scene[List of Commonly Used Acronyms in the PS2 Scene (ps2-home.com)]
+* https://github.com/ps2homebrew/hdl-dump
++
+[source, sh, role=terminal]
+----
+sudo ./hdl_dump inject_dvd /dev/disk4 "Name" Name.iso
+----
+* https://github.com/ps2homebrew/Open-PS2-Loader
+** Partion `+OPL` wird automatisch verwendet. Es ist ratsam im Voraus eine mit z.B. 2TB Platz anzulegen.
+** https://www.ps2-home.com/forum/app.php/page/opl_recommended_settings[OPL Recommended Settings (ps2-home.com)]
+** https://www.ps2-home.com/forum/viewtopic.php?t=6734[OPLM ART Database (Monthly) Dumps (ps2-home.com)]
+** https://www.ps2-home.com/forum/viewtopic.php?t=120[How to list and launch APPS from OPL (ps2-home.com)]
+* https://www.psx-place.com/threads/wlaunchelf-release-thread.13727/[wLaunchELF]
+** https://github.com/ps2homebrew/wLaunchELF
+* https://github.com/brainstream/OPL-PC-Tools
+* HDLoader
+* https://www.trisaster.de/page/index.php?topic=574[MX4SIO]
+
+=== PS2 Fat Noctua Fan Mod
+
+* Noctua NF-A6x25 5V
+* https://www.thingiverse.com/thing:4899513[PS2 fan mod by kaputnik (thingiverse.com)]
+* https://quade.co/2017/ps2-fan-upgrade/
+* https://gbatemp.net/threads/ps2-fat-quiet-fan-mod-w-noctua-fan.558129/
+
+=== PS2 Slim SCPH 7000x SD Card Mod
+
+* https://circuit-board.de/forum/index.php/Thread/16212-PS2-Slim-SCPH-7000x-Serie-mit-SD-Karte-betreiben/
+* https://www.reddit.com/r/ps2/comments/gyjqjs/ps2_slim_to_sd_card_mod_it_works/
+
+=== Matrix Infinity Mod Chip v1.93
+
+* https://www.ps2-home.com/forum/viewtopic.php?t=403[Matrix Infinity firmware 1.93 (ps2-home.com)]
+* https://www.trisaster.de/page/index.php?topic=32[The Matrix Team (trisaster.de)]
+* https://psxtools.de/forum/index.php?thread/43-bootanleitung-matrix-infinity-modbo-und-andere-clones-auf-m-i-basis/[BOOTANLEITUNG - MATRIX INFINITY - MODBO UND ANDERE CLONES AUF M.I. BASIS (psxtools.de)]
+
+[horizontal]
+∆:: Infinity Manager `mc0:/MATRIXTEAM/MANAGER.ELF`
+O:: PSX DVD Video mode
+X:: Sony Browser
+Start:: Chip deaktivieren
+Select:: Fast boot PS2 Spiele
+R1:: `mc0:/BOOT/BOOT.ELF` DEV.1
+R2:: `mc0:/BOOT/BOOT2.ELF`
+L2:: `mc0:/BOOT/BOOT3.ELF`
+L1:: `hdd0:/__boot/boot.elf` DEV.2
+∆+O:: Configuration Menu
+
+DEV.2 muss zuerst mit https://www.trisaster.de/page/content/sony/ps2/infinity/Dev2Installv11.zip[Dev2Installv11.zip] eingerichtet werden.
+Davor sollte über wL eine Partion `__boot` mit der gewünschten Größe erstellt werden.
+
+== PSX
+
+* https://8bitmods.com/memcard-pro-for-playstation-1-classic-grey/[MemCard PRO]
+* https://castlemaniagames.com/products/xstation[XStation ODE]
+* https://ps-io.com/
+
+== PSVita
+
+== PSP

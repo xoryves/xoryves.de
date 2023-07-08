@@ -1,0 +1,44 @@
+---
+title: Tastatur
+created_at: 2022-06-29
+updated_at: 2023-04-20
+---
+
+* http://www.keyboard-layout-editor.com/[keyboard-layout-editor]
+** https://github.com/ijprest/keyboard-layout-editor[github]
+** https://github.com/ijprest/keyboard-layout-editor/wiki/Serialized-Data-Format[Serialized Data Format]
+* https://qmk.fm/[QMK Firmware]
+** https://docs.qmk.fm/[QMK Docs]
+* https://olkb.com/[OLKB]
+* https://zsa.io[ZSA]
+** https://www.zsa.io/moonlander[Moonlander]
+** https://www.zsa.io/planck[Planck EZ]
+** https://configure.zsa.io/[Oryx]
+
+== Keycaps
+
+* Artisan Keycap
+* https://switchandclick.com/sa-vs-dsa-vs-oem-vs-cherry-vs-xda-keycap-profiles/[SA vs DSA vs OEM vs Cherry vs XDA Profiles (switchandclick.com)]
+* https://www.youtube.com/watch?v=bnU0FQforaw[I built a weird keyboard... (custom keycap symbols) - YouTube]
+* https://www.youtube.com/watch?v=jNZkzK4l0F8[Make Your Own Custom Keycap Legends at Home]
+* https://www.thingiverse.com/thing:2172302[DSA Keycap Set, 8mm (thingiverse.com)]
+
+== Läden
+
+* https://www.etsy.com/de/shop/THOCKGB
+
+== Layout
+
+* https://www.neo-layout.org/[Neo – ergonomisch optimiert]
+* http://www.adnw.de/[AdNW – Aus der Neo-Welt]
+
+=== eigenes Layout
+
+Auf Basis von AdNW und QMK versuche ich ein eigenes Layout zu erstellen.
+
+https://github.com/xoryves/kbl[github repo]
+
+link:/assets/kbl/kbl_1_adnw.html[v1^] /
+link:/assets/kbl/kbl_2_adnw.html[v2^] /
+link:/assets/kbl/kbl_3_xoryves_mod-tap.html[v3^] /
+link:/assets/kbl/kbl_4_xoryves.html[v4^]

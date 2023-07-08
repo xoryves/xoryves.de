@@ -1,0 +1,25 @@
+---
+title: TV RU
+created_at: 2023-01-01
+---
+
+== Plattformen
+
+* https://www.ivi.ru/[Иви]
+** Filme, Serien, TV
+** über Kreditkarte in deutschland bezahlbar
+** TV nur über VPN
+** CyberGhost VPN funktioniert besser als ProtonVPN (keine Иви Filme/Serien)
+* https://more.tv/[more.tv]
+** Filme, Serien, TV
+* https://ntvplus.tv/[НТВ-ПЛЮС]
+** TV (kostenlos), PayTV Kanäle
+** Bezahlung mit deutscher Kreditkarte nicht möglich
+* https://start.ru/[START]
+** Filme, Serien
+* https://premier.one/[Premier]
+** Filme, Serien
+* https://www.kartina.tv/[kartina.tv]
+** deutscher Anbieter
+* https://smotret.tv/[Смотреть ТВ]
+** TV, legal?

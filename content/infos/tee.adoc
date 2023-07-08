@@ -1,0 +1,24 @@
+---
+title: Tee
+created_at: 2021-11-12
+updated_at: 2022-10-27
+tags:
+- Tee
+- Japan
+---
+
+== Japan
+
+[horizontal]
+mugicha 麦茶:: Gerstentee, barlea tea
+
+== Tees die ich mag
+
+* https://www.edeltee.de/china-black-golden-pearls-schwarztee.html[China Guangxi 'Black Golden Pearls']
+* https://www.edeltee.de/bio-thailand-oolong-ruby.html[Thailand Oolong 'Ruby']
+* https://www.edeltee.de/ceylon-sunrise-uva-op-hg.html[Ceylon Uva 'Sunrise' OP HG]
+* https://www.edeltee.de/bio-darjeeling-soom.html[Bio Darjeeling 'Soom' FTGFOP1]
+* https://www.edeltee.de/yunnan-silver-moonlight.html[Bio China Yunnan 'Silver Moonlight']
+* https://www.edeltee.de/bio-china-oolong-white-downy.html[Bio China Oolong 'White Downy']
+* https://www.edeltee.de/monipur-second-flush-tgfop1.html[Assam 'Monipur' Second Flush TGFOP1]
+* https://www.edeltee.de/ceylon-highgrown-op.html[Ceylon 'Highgrown' OP]

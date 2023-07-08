@@ -1,0 +1,38 @@
+---
+title: Daten Transferrate
+created_at: 2023-03-12
+---
+
+Ein Byte sind acht Bit und 1G sind 1000M.
+Ein paar Beispiele wären `1MB == 8Mbit`, `1Gbit == 125MB` und `1GB == 1000MB`.
+Bei einem Vodafone Kabel 1Gbit/50Mbit Vertrag wären das also 125MB/s down und 6,25MB/s up.
+
+[horizontal]
+Megabit/s:: Mbit/s, Mb/s, Mbps
+Megabyte/s:: Mbyte/s, MB/s
+Gigabit/s:: Gbit/s, Gb/s, Gbps
+Gigabyte/s:: Gbyte/s, GB/s
+USB 3.1 Gen 1:: USB 3.0
+USB 3.2 Gen 1x1:: USB 3.1 Gen 1
+USB 3.2 Gen 2x1:: USB 3.1 Gen 2
+
+[grid=rows]
+|===
+|Standard |MB/s |Gbit/s
+|SATA 3 |600 |4,8
+|USB 2.0 |60 |0,48
+|USB 3.0 / USB 3.1 Gen 1 |625 |5
+|USB 3.1 Gen 2 |1.250 |10
+|USB 3.2 Gen 2x2 |2.500 |20
+|PCI-Express Gen4x2 |4.000 |32
+|PCI-Express Gen4x4 |8.000 |64
+|DOCSIS 3.1 |1.250/125 |10/1
+|DOCSIS 4.0 |1.250/750 |10/6
+|===
+
+
+Die PS4 Pro hat intern eine SATA 3 Schnittstelle.
+Auf der Vorderseite sind zwei und auf der Rückseite ein USB-A 5Gbps Port vorhanden.
+
+Die PS5 hat intern einen PCI-Express Gen4x4 (8GB/s) M.2 NVMe SSD Anschluss zur Verfügung.
+Auf der Vorderseite ist ein USB-C 10Gbps / USB-A 480Mbps und an der Rückseite zwei USB-A 10Gbps Ports vorhanden.

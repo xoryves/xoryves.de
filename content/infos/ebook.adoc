@@ -1,0 +1,51 @@
+---
+title: eBook
+created_at: 2022-01-08
+updated_at: 2023-01-04
+---
+
+== Bezugsquellen
+
+[grid=rows]
+|===
+|Shop |Genre |Sprache |DRM
+
+|https://www.kobo.com/[kobo] |alles |en, de |DRM, Adobe, frei
+|https://www.ebooks.com/en-de/ |Fiction/Non-Fiction |en| Adobe, frei
+|https://www.beam-shop.de/ |alles |de |Wasserzeichen, frei
+|https://www.buecher.de/[buecher.de] .4+|alles .4+|de .4+|Adobe, Wasserzeichen, Tolino Family Sharing
+|https://www.ebook.de/[ebook.de]
+|https://www.hugendubel.de/[hugendubel]
+|https://www.osiander.de/[osiander]
+|https://www.izneo.com/[izneo] |Comics / Mangas | de, en |DRM
+|https://www.amazon.de/ebooks-kindle-buecher[Kindle] |alles |de, en |DRM, Family Sharing
+|https://www.comixology.eu/[ComiXology] |Comics / Mangas |en |DRM, frei
+|https://global.bookwalker.jp/[BOOK☆WALKER] |Mangas |en |DRM
+|https://litres.de/[litres.de] |alles |de |frei
+|https://www.litres.ru/[litres.ru] |alles |ru |frei
+|===
+
+* Library Genesis
+
+== DRM
+
+=== entfernen
+
+* Amazon Kindle eBooks über die Kindle App bis Version 1.26 (KindleForMac-55093.dmg)
+* Adobe Digital Editions (ADE)
+* Kobo
+
+* https://github.com/noDRM/DeDRM_tools
+* mobileread.com
+** https://www.mobileread.com/forums/showthread.php?t=253119[New version of DRM removal tools ("DeDRM")]
+** https://www.mobileread.com/forums/showthread.php?t=291290[Conversion Plugin KFX Input]
+** https://www.mobileread.com/forums/showthread.php?t=283371[Dealing with Kindle for PC/Mac 1.19 (and later) and KFX in calibre]
+** https://www.mobileread.com/forums/showthread.php?t=341975[FileType Plugin ACSM input plugin]
+
+* https://github.com/Cortys/comic-backup
+
+== Reader
+
+* BOOX Nova3
+* BOOX Nova Air Color, nicht so scharf wie BOOX Nova3, zu dunkel, zu verwaschen
+* https://progresstech.jp/zenkan/index_en.html[eOneBook]

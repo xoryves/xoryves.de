@@ -1,0 +1,23 @@
+---
+title: HTML
+created_at: 2021-04-03
+updated_at: 2023-02-21
+---
+
+* https://html.spec.whatwg.org/dev/[HTML: The Living Standard Developer's Edition]
+* https://developer.mozilla.org/en-US/docs/Web/HTML/Element/em#%3Ci%3E_vs._%3Cem%3E[MDN Web Docs <i> vs. <em>]
+* https://dev.to/kenbellows/stop-using-so-many-divs-an-intro-to-semantic-html-3i9i[Stop using so many divs! An intro to semantic HTML (Ken Bellows)]
+
+== templating engine
+
+* https://en.wikipedia.org/wiki/ERuby
+* http://slim-lang.com/
+* https://haml.info/
+
+== Werkzeug
+
+* https://www.html-tidy.org/[Tidy tidies HTML and XML.]
+
+== Blogposts
+
+* https://dev.to/kenbellows/stop-using-so-many-divs-an-intro-to-semantic-html-3i9i[Stop using so many divs! An intro to semantic HTML (Ken Bellows)]

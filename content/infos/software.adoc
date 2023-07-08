@@ -1,0 +1,68 @@
+---
+title: Software
+created_at: 2021-03-31
+updated_at: 2023-04-23
+---
+
+== CLI
+
+* https://github.com/BurntSushi/ripgrep[rg - ripgrep recursively searches directories for a regex pattern while respecting your gitignore]
+* https://github.com/ogham/exa[exa - A modern replacement for ‘ls’.]
+* https://github.com/sharkdp/fd[fd - A simple, fast and user-friendly alternative to 'find']
+* https://github.com/Canop/lfs[lfs - A linux utility to get information on filesystems, like df but better]
+
+== IDE
+
+* https://github.com/CodeEditApp/CodeEdit[CodeEdit macOS App]
+
+== Notizen/Prosa erstellen
+
+* https://bear.app/[Bear] (iPhone, iPad, and Mac) (markdown)
+* https://tiddlywiki.com[TiddlyWiki] is a rich, interactive tool for manipulating complex data with structure that doesn't easily fit into conventional tools like spreadsheets or wordprocessors. (JavaScript in Browser)
+
+== Webdesign
+
+* https://www.jetbrains.com/de-de/webstorm/
+* https://code.visualstudio.com/
+* https://atom.io/
+* https://macromates.com/
+
+=== WYSIWYG
+
+Kann man eigentlich nur von abraten. Es ist empfehlenswert HTML/CSS/JS zu erlernen.
+
+* https://pinegrow.com/
+* https://www.adobe.com/de/products/dreamweaver.html
+
+== Emulation
+
+== ISO
+
+* https://github.com/ventoy/Ventoy[Ventoy is an open source tool to create bootable USB drive for ISO/WIM/IMG/VHD(x)/EFI files.]
+
+== MacOS
+
+* https://www.mowglii.com/itsycal/[Itsycal is a tiny menu bar calendar.]
+* https://iterm2.com/[iTerm2 Terminal Emulator]
+** https://iterm2colorschemes.com/[iTerm2 color schemes]
+* https://mac.getutm.app/[UTM Securely run operating systems on your Mac]
+* https://rectangleapp.com/[Rectangle - Move and resize windows in macOS using keyboard shortcuts or snap areas]
+
+== Verschlüsselung
+
+* https://www.passwordstore.org/[pass, the standard unix password manager]
+* https://www.gopass.pw/[gopass is a simple but powerful password manager for your terminal.]
+* https://github.com/rfjakob/gocryptfs[Encrypted overlay filesystem written in Go]
+* https://github.com/vgough/encfs[EncFS: an Encrypted Filesystem for FUSE.]
+* https://github.com/mozilla/sops[SOPS: Secrets OPerationS]
+* https://github.com/FiloSottile/age[age is a simple, modern and secure file encryption tool, format, and Go library.]
+
+== Archivierung
+
+* https://github.com/gildas-lormeau/SingleFile[SingleFile]
+* https://github.com/gildas-lormeau/SingleFileZ[SingleFileZ]
+
+== CMS
+
+* https://tina.io/[Tina is an open-source, headless CMS for Markdown, MDX, and JSON.]
+* https://getgrav.org/[Grav is a modern open source flat-file CMS]

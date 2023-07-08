@@ -1,0 +1,533 @@
+---
+title: Void Linux
+created_at: 2022-07-20
+updated_at: 2023-04-29
+tags:
+  - unix
+  - linux
+  - Void
+  - crowdsec
+  - nftables
+  - Docker
+  - caddy
+---
+
+:toc:
+
+== Verwaltung
+
+.Service Benutzer und Gruppe anlegen
+[%collapsible, role=listing-block term]
+====
+[source, sh]
+----
+groupadd -g 10101 -r vaultwarden
+useradd -d /var/lib/vaultwarden -g vaultwarden -N -u 10101 -r vaultwarden
+----
+====
+
+== Installation
+
+* link:/infos/voidlinux_root_on_zfs[root on ZFS mit EFI von Live CD]
+* https://docs.voidlinux.org/installation/guides/chroot.html[Installation via chroot (docs.voidlinux.org)]
+* https://riedstra.dev/2018/12/void-on-digital-ocean[Installing Void Linux on Digital Ocean - A Void Linux VPS Part I (riedstra.dev)]
+* https://riedstra.dev/2018/12/void-logging-firewall-backups-void-linux-part2[Logging, Firewall and Backups - A Void Linux VPS Part II (riedstra.dev)]
+* https://github.com/eoli3n/void-config/blob/master/scripts/install/02-install.sh
+
+=== Kernel
+
+.6.1
+[%collapsible, role=listing-block term]
+====
+[source, sh]
+----
+#xbps-install --force linux6.1 linux6.1-headers
+#xbps-reconfigure -f linux6.1
+xbps-install linux6.1 linux6.1-headers
+xbps-reconfigure -f zfsbootmenu
+----
+====
+
+== Konfiguration
+
+* link:/infos/unix#_ssh[SSH]
+
+.ntp
+[%collapsible, role=listing-block term]
+====
+[source, sh]
+----
+xbps-install chrony
+ln -s /etc/sv/chronyd /var/service/
+----
+====
+
+.lastlog
+[%collapsible, role=listing-block term]
+====
+[source, sh, role]
+----
+touch /var/log/lastlog
+chgrp utmp /var/log/lastlog
+chmod 664 /var/log/lastlog
+----
+====
+
+=== socklog als syslog Alternative
+
+* http://smarden.org/socklog/
+* `svlogd` wird im Endeffekt benutzt, daher dessen manpage lesen
+
+.Installation
+[%collapsible, role=listing-block term]
+====
+[source, sh]
+----
+xbps-install socklog{,-void}
+ln -s /etc/sv/socklog-unix /var/service/
+ln -s /etc/sv/nanoklogd /var/service/
+----
+====
+
+=== metalog als syslog Alternative
+
+* https://github.com/hvisage/metalog[metalog (github)]
+* https://github.com/hvisage/metalog/blob/master/metalog.conf[metalog.conf (github)]
+
+.Installation
+[%collapsible, role=listing-block term]
+====
+[source, sh]
+----
+xbps-install metalog
+ln -s /etc/sv/metalog /var/service/
+----
+====
+
+=== ZFS Kernel Snapshots
+
+./etc/kernel.d/pre-install/10-kernel-clean
+[%collapsible, role=listing-block code]
+====
+[source, sh]
+----
+#!/bin/sh
+
+# Find the name of the current boot environment
+BOOTENV="$(awk '$2 == "/" && $3 == "zfs" {print $1}' /proc/mounts)"
+[ -n "${BOOTENV}" ] || exit
+
+# Create a snapshot of the current state, differntiated by time
+zfs snapshot "${BOOTENV}@kernel_upgrade_$(date +%Y-%m-%d_%H:%M:%S)" || exit
+
+# Prune all except 2 last kernel_upgrade snapshots
+zfs list -t snapshot -s creation -o name -H "${BOOTENV}" | \
+  grep @kernel_upgrade_ | head -n -2 | \
+  while read -r snapname; do
+    zfs destroy "${snapname}"
+  done
+
+# Prune the old kernels
+vkpurge rm all
+----
+====
+
+[source, sh, role=terminal]
+----
+chmod a+x /etc/kernel.d/pre-install/10-kernel-clean
+----
+
+=== Firewall
+
+* https://wiki.nftables.org/wiki-nftables/index.php/Quick_reference-nftables_in_10_minutes[Quick reference-nftables in 10 minutes]
+
+.nftables
+[%collapsible, role=listing-block term]
+====
+[source, sh]
+----
+xbps-install nftables
+ln -sv /etc/sv/nftables /var/service/
+----
+====
+
+./etc/nftables.conf
+[%collapsible, role=listing-block code]
+====
+[source, nftables]
+----
+#!/usr/sbin/nft -f
+
+# This is somewhat important, otherwise it will just append to your existing
+# rules. This can be somewhat confusing unless you run `nft list table inet
+# filter` or similar
+flush ruleset
+
+table inet filter {
+  chain input {
+    type filter hook input priority 0;
+
+    # Allow all input on loopback
+    iif lo accept
+
+    # Accept stateful traffic
+    ct state established,related accept
+
+    # Accept SSH
+    tcp dport { 22, 65535 } accept
+
+    # Accept HTTP and HTTPs
+    tcp dport { 80, 443 } accept
+
+    # Allow some icmp traffic for ipv6
+    ip6 nexthdr icmpv6 icmpv6 type {
+      nd-neighbor-solicit, echo-request,
+      nd-router-advert, nd-neighbor-advert
+    } accept
+
+    counter drop
+  }
+  chain forward {
+    type filter hook forward priority 0;
+  }
+  chain output {
+    type filter hook output priority 0;
+  }
+}
+----
+====
+
+== runit
+
+* `sv start` == `sv -v up`
+* `sv down` ruft zuerst `control/t` und dann `control/d` auf
+* `vlogger` kann als log service verwendet werden, manpage lesen
+
+=== service
+
+.Service testen
+[%collapsible, role=listing-block term]
+====
+[source, sh]
+----
+touch /etc/sv/<service>/down
+ln -s /etc/sv/<service> /var/service/
+sv once <service>
+----
+====
+
+.Service Anlegen
+[%collapsible, role=listing-block term]
+====
+[source, sh, role]
+----
+set SERVICE dienst
+set SV_DIR /etc/sv/$SERVICE
+mkdir -p $SV_DIR/log
+ln -s /usr/bin/vlogger $SV_DIR/log/run
+vim $SV_DIR/run
+chmod 0755 $SV_DIR/run
+
+# nur nötig wenn man Umgebungsvariablen setzen möchte
+mkdir -p $SV_DIR/envdir
+echo '/var/lib/caddy' > $SVDIR/envdir/HOME
+echo '/var/lib' | tee $SVDIR/envdir/{XDG_CONFIG_HOME,XDG_DATA_HOME} > /dev/null
+----
+====
+
+./etc/sv/dienst/run
+[%collapsible, role=listing-block code]
+====
+[source, sh]
+----
+#!/bin/sh
+exec 2>&1
+USER='dienst'
+GROUP='dienst'
+BIN='/usr/local/bin/dienst'
+# nur nötig wenn man Umgebungsvariablen setzen möchte
+ENVDIR='/etc/sv/dienst/envdir'
+# z.B. Konfiguration testen
+env -i chpst -u ${USER}:${GROUP} -c /etc/dienst/config.yaml -t || exit $?
+# abhängigen Dienst starten
+sv start dienst_1 || exit 1
+exec env -i chpst -u ${USER}:${GROUP} ${BIN} -c /etc/dienst/config.yaml
+# oder um Umgebungsvariablen zu setzen
+exec env -i chpst -u ${USER}:${GROUP} -e ${ENVDIR} ${BIN} -c /etc/dienst/config.yaml
+----
+====
+
+== CrowdSec
+
+Allgemeine Informationen sind auf link:/infos/crowdsec[CrowdSec] hinterlegt.
+
+=== für musl in Docker Container bauen
+
+NOTE: crowdsec ab v1.4.4 als _static binary_ verfügbar
+
+NOTE: firewall-bouncer ab v0.0.25 als _static binary_ verfügbar
+
+Das link:/infos/docker/#_void[vmgb] Image ist selbst gebaut.
+Einfach nur ein minimales musl Void mit den notwendigen Paketen.
+Dadurch wird mein eigentliches System nicht unnötig mit Paketen geflutet.
+
+.crowdsec <= 1.4.3
+[%collapsible, role=listing-block term]
+====
+[source, sh]
+----
+git clone https://github.com/crowdsecurity/crowdsec.git
+docker run --rm -it -v "$PWD/crowdsec":/build vmgb:latest sh
+# whiptail>newt, envsubst>gettext
+xbps-install -y gcc newt gettext
+export BUILD_VERSION="v1.4.1"
+make release
+----
+====
+
+.firewall bouncer <= 0.0.24
+[%collapsible, role=listing-block term]
+====
+[source, sh]
+----
+git clone https://github.com/crowdsecurity/cs-firewall-bouncer.git
+docker run --rm -it -v "$PWD/cs-firewall-bouncer":/build vmgb:latest make release
+----
+====
+
+=== Installation
+
+Bei Verwendung von `wizard.sh` sollte der Schalter `--docker-mode` verwendet werden.
+Dieser überspringt unter anderem Systemd Einstellungen.
+Für die Generierung von Konfigurationsdateien verwendet das Skript `envsubst`.
+Dieses ist im XBPS Paket `gettext` enthalten.
+
+In der `config.yaml` oder `config.yaml.local` müssen zwei Parameter angepasst werden.
+`daemonize: false` und `pid_dir: ''` damit runit verwendet werden kann.
+
+.cs-firewall-bouncer
+[%collapsible, role=listing-block term]
+====
+[source, sh]
+----
+# envsubst
+xbps-install gettext
+tar xf crowdsec-firewall-bouncer.tgz
+cd crowdsec-firewall-bouncer-v*/
+./install.fish
+# daemonize: false, set-only: true
+# supported_decisions_types: ban, captcha, throttle
+vim /etc/crowdsec/bouncers/crowdsec-firewall-bouncer.yaml
+----
+====
+
+.install.fish
+[%collapsible, role=listing-block code]
+====
+[source, sh]
+----
+#!/usr/bin/env fish
+
+set BIN_PATH_INSTALLED "/usr/local/bin/crowdsec-firewall-bouncer"
+set BIN_PATH "./crowdsec-firewall-bouncer"
+set CONFIG_DIR "/etc/crowdsec/bouncers"
+set FW_BACKEND "nftables"
+
+install -v -m 755 -D "$BIN_PATH" "$BIN_PATH_INSTALLED"
+mkdir -p "$CONFIG_DIR"
+install -v -m 0600 "./config/crowdsec-firewall-bouncer.yaml" "$CONFIG_DIR/crowdsec-firewall-bouncer.yaml"
+
+set SUFFIX (tr -dc A-Za-z0-9 </dev/urandom | head -c 8)
+set API_KEY (cscli bouncers add cs-firewall-bouncer-$SUFFIX -o raw)
+
+API_KEY=$API_KEY BACKEND=$FW_BACKEND envsubst < ./config/crowdsec-firewall-bouncer.yaml | install -m 0600 /dev/stdin "$CONFIG_DIR/crowdsec-firewall-bouncer.yaml"
+----
+====
+
+=== runit service
+
+.crowdsec-firewall-bouncer
+[%collapsible, role=listing-block term]
+====
+[source, sh]
+----
+set SV_DIR /etc/sv/crowdsec-firewall-bouncer
+mkdir -p $SV_DIR/log
+ln -s /usr/bin/vlogger $SV_DIR/log/run
+vim $SV_DIR/run
+chmod 0755 $SV_DIR/run
+----
+====
+
+./etc/sv/crowdsec-firewall-bouncer/run
+[%collapsible, role=listing-block code]
+====
+[source, sh]
+----
+#!/bin/sh
+exec 2>&1
+BIN=/usr/local/bin/crowdsec-firewall-bouncer
+$BIN -c /etc/crowdsec/bouncers/crowdsec-firewall-bouncer.yaml -t || exit $?
+sv start crowdsec || exit 1
+sv start nftables || exit 1
+exec $BIN -c /etc/crowdsec/bouncers/crowdsec-firewall-bouncer.yaml
+----
+====
+
+== caddy
+
+Allgemeine Informationen sind auf link:/infos/caddyserver[Caddy Server] hinterlegt.
+
+.runit service
+[%collapsible, role=listing-block term]
+====
+[source, sh]
+----
+set SV_DIR /etc/sv/caddy
+mkdir -p $SV_DIR/{log,envdir}
+ln -s /usr/bin/vlogger $SV_DIR/log/run
+echo '/var/lib/caddy' > $SVDIR/envdir/HOME
+echo '/var/lib' | tee $SVDIR/envdir/{XDG_CONFIG_HOME,XDG_DATA_HOME} > /dev/null
+vim $SV_DIR/run
+chmod 0755 $SV_DIR/run
+ln -s /etc/sv/caddy /var/service
+----
+====
+
+./etc/sv/caddy/run
+[%collapsible, role=listing-block code]
+====
+[source, sh]
+----
+#!/bin/sh
+exec 2>&1
+BIN=/usr/local/bin/caddy
+CONF=/etc/caddy
+ENVDIR=/etc/sv/caddy/envdir
+cd $CONF
+env -i chpst -u caddy:caddy -e $ENVDIR $BIN validate || exit $?
+exec env -i chpst -u caddy:caddy -e $ENVDIR $BIN run
+----
+====
+
+./etc/sv/caddy/control/h
+[%collapsible, role=listing-block code]
+====
+[source, sh]
+----
+#!/bin/sh
+/usr/local/bin/caddy reload --config /etc/caddy/Caddyfile
+----
+====
+
+== Docker
+
+.Installation
+[source, sh, role=term]
+----
+xbps-install docker docker-compose
+ln -s /etc/sv/docker /var/service/
+----
+
+./etc/sv/docker/conf
+[source, sh, role=code]
+----
+OPTS="--iptables=false"
+----
+
+./etc/nftables.conf
+[source, text, role=code]
+----
+table ip nat	{
+  chain prerouting	{
+    type nat hook prerouting priority 0
+  }
+  chain postrouting	{
+    type nat hook postrouting priority 100
+    # You may need to change 'eth0' to your primary interface
+    oif eth0 masquerade persistent
+  }
+}
+----
+
+./etc/docker/daemon.json für runit logging
+[source, json, role=code]
+----
+{
+  "log-driver": "local"
+}
+----
+
+=== runit service für Docker Compose
+
+.service
+[%collapsible, role=listing-block term]
+====
+[source, sh]
+----
+set SV_DIR /etc/sv/container
+mkdir -p $SV_DIR/{log,control}
+ln -s /usr/bin/vlogger $SV_DIR/log/run
+nvim $SV_DIR/run
+nvim $SV_DIR/control/d
+chmod 0755 $SV_DIR/run $SV_DIR/control/d
+ln -s $SV_DIR /var/service
+----
+====
+
+./etc/sv/container/run
+[%collapsible, role=listing-block code]
+====
+[source, sh]
+----
+#!/bin/sh
+exec 2>&1
+cd /var/lib/container
+export UID=$(id -u container)
+export GID=$(id -g container)
+sv -v up docker || exit 1
+exec /bin/docker compose up --no-log-prefix
+----
+====
+
+./etc/sv/container/control/d
+[%collapsible, role=listing-block code]
+====
+[source, sh]
+----
+#!/bin/sh
+cd /var/lib/container
+/bin/docker compose down
+----
+====
+
+== podman
+
+.Installation
+[source, sh, role=term]
+----
+xbps-install podman podman-compose
+nvim /etc/containers/storage.conf
+zfs create zroot/var/lib/containers
+zfs create zroot/var/lib/containers/storage
+chmod -R 0600 /var/lib/containers
+----
+
+./etc/containers/storage.conf
+[source, toml, role=code]
+----
+[storage]
+driver = "zfs"
+----
+
+== Referenzen
+
+* https://github.com/zbm-dev/zfsbootmenu/wiki/Kernel-management-on-Void-Linux[Kernel management on Void Linux (zbm-dev github)]
+* https://help.gsr.dev/about.html[Installing Void - Gabriel Sanches]
+* https://www.strcat.de/eigenes/xbps.html#xquery[Das X Binary Package System (XBPS) Paketverwaltungssystem (strcat.de)]
+* http://smarden.org/runit/runscripts.html[runit (smarden.org)]
+* http://smarden.org/runit/runsv.8.html[runsv (smarden.org)]
+* https://wiki.gentoo.org/wiki/Runit[Runit (wiki.gentoo.org)]
+* https://infradocs.voidlinux.org/[InfraDocs]
+* https://github.com/void-linux/void-infrastructure[github/void-infrastructure]
+* https://github.com/void-ansible-roles[void-ansible-roles]

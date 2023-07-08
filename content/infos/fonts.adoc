@@ -1,0 +1,13 @@
+---
+title: Fonts / Schriftarten
+created_at: 2022-01-06
+---
+
+== Unterschied zwischen verschiedenen Formaten
+
+[horizontal]
+TTF:: True Type, ältestes Format
+OTF:: Open Type, Nachfolger von TTF
+EOT:: Embedded Open Type, nur InternetExplorer
+WOFF:: Web Open Font Format, quasi OTF mit Kompression und Metadaten für's Internet
+WOFF2:: 30% verbesserte Kompression, wenig Unterstützung von Webbrowsern

@@ -1,0 +1,10 @@
+---
+title: Amazon
+created_at: 2021-11-12
+tags:
+- Amazon
+- Versandhandel
+---
+
+* link:/infos/amazon_de[Amazon DE]
+* link:/infos/amazon_co_jp[Amazon JP]

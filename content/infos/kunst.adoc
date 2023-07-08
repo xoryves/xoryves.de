@@ -1,0 +1,13 @@
+---
+title: Kunst
+created_at: 2022-08-23
+---
+
+== Graffiti
+
+* Graffiti Tag
+
+== Tattoo
+
+* Tribal
+* Irezumi

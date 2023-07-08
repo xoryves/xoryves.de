@@ -1,0 +1,18 @@
+---
+title: Static Sites
+created_at: 2021-04-01
+updated_at: 2023-06-16
+tags:
+- ssg
+---
+
+== Werkzeug
+
+* https://jamstack.org/generators[A List of Static Site Generators for Jamstack Sites]
+* https://gist.github.com/briandominick/e5754cc8438dd9503d936ef65fffbb2d[Static Site Generators with AsciiDoc Support]
+* https://www.getlektor.com/[The lektor static file content management system]
+
+== Blogposts
+
+* https://zellwk.com/blog/deploy-static-site/[Deploying a Static Site with Cron and Git (zellwk.com)]
+* https://www.digitalocean.com/community/tutorials/how-to-set-up-automatic-deployment-with-git-with-a-vps[How To Set Up Automatic Deployment with Git with a VPS (DigitalOcean)]

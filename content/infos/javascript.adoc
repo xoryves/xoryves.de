@@ -1,0 +1,12 @@
+---
+title: JavaScript
+created_at: 2021-04-01
+tags:
+- JavaScript
+- Programmiersprache
+---
+
+== Werkzeug
+
+* https://mozilla.github.io/nunjucks[Nunjucks - A rich and powerful templating language for JavaScript.]
+* https://parceljs.org/[Parcel - Blazing fast, zero configuration web application bundler]

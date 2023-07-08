@@ -1,0 +1,106 @@
+---
+title: Über mich
+created_at: 2021-04-03
+updated_at: 2023-06-01
+---
+:ob: &#91;
+:cb: &#93;
+
+Xoryves [text-primary]#—# Psy [text-primary]#—# Viktor Dillmann
+
+Ich versuche offen, ehrlich und mit einfachen Worten zu kommunizieren.
+Komplizierte Fachbegriffe, englische Wörter oder lateinische Sprüche gefallen mir nicht.
+Viele kennen die Bedeutungen nicht oder verwenden sie sogar falsch.
+
+Meine Introvertiertheit ist ein fester Bestandteil von mir.
+Diesen will ich nicht verändern.
+Genauso wenig versuche ich extravertierte Menschen zu ändern.
+
+[lv2]#Eigenschaften#::
+link:/infos/introversion_extraversion[Introvertiert], Autodidakt, aus Büchern / Fehlern lernen, gesunde Paranoia, nachdenklich, oft Tagträume
+[lv2]#Interessen#::
+Animes, Mangas, Videospiele, Spielekonsolen, Rechner, Informatik, Psychologie, Typographie, Design/Kunst, Holzverarbeitung, Japan/Asien, Architektur, Sensenmähen
+[lv1]#Schwächen#::
+viel Reden, Menschenmengen, Namen merken, sinnlose* Aufgaben erledigen, Rhetorik, laute Umgebung
+[lv4]#Stärken#::
+neue Sachen lernen, mühselige Aufgaben erledigen, zuhören, Fehleranalyse, E-Mail/IM Kommunikation
+[lv2]#xoryves {ob}ksorivɛs{cb}#::
+image:xoryves.svg[role="h-20 lg:h-32"]
+[lv2]#Psy {ob}psˈiː{cb}#::
+image:Psy.svg[role="h-20 lg:h-32"]
+[lv2]#Avatar#::
+image:http://2.gravatar.com/avatar/a269243b41197bff635a3d9f83de6ef4?s=100[Gravatar, link="http://de.gravatar.com/xoryves"]
+
+== im Internet Zuhause
+
+[lv4]#dev#::
+https://stackexchange.com/users/1456220/xoryves[Stack Exchange], https://github.com/xoryves[GitHub], https://keybase.io/xoryves[Keybase]
+
+[lv3]#otaku#::
+http://de.finalfantasyxiv.com/lodestone/character/2268408/[FF XIV], http://myanimelist.net/profile/xoryves[MyAnimeList], http://steamcommunity.com/id/xoryves[Steam], http://psnprofiles.com/Psy-Xoryves[PSN]
+
+[lv2]#inaktiv#::
+https://www.deviantart.com/psy-xoryves[DeviantArt], https://bitbucket.org/xoryves/[BitBucket], https://gitlab.com/xoryves[GitLab]
+
+[lv1]#sonstiges#::
+https://www.pinterest.de/xoryves[Pinterest], https://www.instagram.com/xoryves[Instagram]
+
+Facebook und Twitter nutze ich nicht.
+Mein Twitter Account https://twitter.com/xoryves[xoryves] wurde mir entwendet.
+Auf den Account https://twitter.com/xoryves_[xoryves_] habe ich noch Zugriff.
+Twitter war nicht hilfsbereit bei der Klärung was mit meinem eigentlichen Account passiert war. 
+
+== Fertigkeiten
+
+=== Natürliche Sprache
+
+[lv4]#fließend#:: Deutsch (aufgewachsen)
+[lv3]#konversationsfähig#:: Russisch (Muttersprache), Englisch
+[lv1]#am Lernen#:: Japanisch
+[lv0]#interessiert#:: Koreanisch, Chinesisch
+
+=== Computer Sprache
+
+[lv4]#sehr viel#:: Ruby, sh/bash/zsh, SQL, CSS3, HTML5, SASS/SCSS, YAML, TOML, mustache, AsciiDoc
+[lv3]#viel#:: Java, PHP, C, CoffeeScript, JavaScript, Perl
+[lv2]#wenig#:: Python, C++, AppleScript, ActionScript
+[lv1]#am lernen#:: Kotlin, Elixir, Rust
+[lv0]#interessiert#:: Groovy, Erlang, Haskell
+
+=== Software
+
+[lv4]#sehr viel#::
+nvim, ssh, hg, LaTeX/ConTeXt, Nagios, MIT krb5, OpenLDAP, rpmbuild/OBS, Asciidoctor
+[lv3]#viel#::
+PostgreSQL, MySQL/MariaDB, Apache2, JetBrains IDEs, VSCode, git, nanoc, Atom, Inkscape
+[lv2]#wenig#::
+Apache Trafficserver, Caddy Server, Docker, Affinity Designer, Squid, MongoDB, redis, Apache Solr, Inventor, Photoshop, Illustrator, Blender, Cinema4D, Revit
+[lv0]#interessiert#::
+Nginx, RabbitMQ, CAD, GameEngine, KI
+
+=== Betriebssysteme
+
+[lv4]#sehr viel#::
+Void Linux, MacOS, SLES, openSUSE
+[lv3]#viel#::
+Android, iOS, OmniOS, ArchLinux, CentOS, FreeBSD, OpenIndiana
+[lv2]#wenig#::
+NixOS, OpenSolaris, Windows
+
+== Bildung
+
+[lv2]#2010 -- 2012#::
+  Master of Science, Praktische Informatik, Hochschule für Technik und Wirtschaft des Saarlandes
+  * Thesis 1,3 / Gesamt 1,5
+  * link:/assets/files/Master_Urkunde_2012-08-31.JPG[Master Urkunde^]
+  * link:/assets/files/Master_Zeugnis_2012-08-31.JPG[Master Zeugnis^]
+  * link:/assets/files/Master_Zeugnis_Inhalt_2012-08-31.JPG[Master Zeugnis Inhalt^]
+  * link:/assets/files/Master_Thesis_Bindung_2012-08-31.JPG[Master Thesis Bindung^]
+  * link:/assets/files/Master_Thesis_Bindung_innen_2012-08-31.JPG[Master Thesis Bindung innen^]
+  * link:/assets/files/Master_Thesis-Viktor_Dillmann-2012_08_30.pdf[Master Thesis PDF^]
+[lv2]#2007 -- 2010#::
+  Bachelor of Science, Praktische Informatik, Hochschule für Technik und Wirtschaft des Saarlandes
+  * Thesis 1,0 / Gesamt 2,1
+  * link:/assets/files/Bachelor_Urkunde_2010-08-31.JPG[Bachelor Urkunde^]
+  * link:/assets/files/Bachelor_Zeugnis_2010-08-31.JPG[Bachelor Zeugnis^]
+  * link:/assets/files/Bachelor_Zeugnis_Inhalt_2010-08-31.JPG[Bachelor Zeugnis Inhalt^]

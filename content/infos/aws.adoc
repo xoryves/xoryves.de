@@ -1,0 +1,10 @@
+---
+title: AWS
+created_at: 2022-10-24
+---
+
+== Amazon Polly
+
+Mit https://aws.amazon.com/de/polly/[Polly] kann man Text, auch IPA, in Sprache umwandeln.
+
+Katie Russ hat für ihre Seite http://ipa-reader.xyz/ Polly verwendet und in einem https://web.archive.org/web/20220129100334/https://cuttlesoft.com/blog/pronouncing-things-with-amazons-polly/[Blogpost (web.archive.org)] beschrieben.

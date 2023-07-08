@@ -1,0 +1,21 @@
+---
+title: git
+created_at: 2023-07-08
+tags:
+- Versionsverwaltung
+- vcs
+- git
+---
+
+.github init vorhandenes Verzeichnis
+[%collapsible, role=listing-block term]
+====
+[source, sh]
+----
+git init
+git add .
+git commit -m 'Init'
+git remote add origin git@github.com:xoryves/projekt.git
+git push -u origin master
+----
+====

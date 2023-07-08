@@ -1,0 +1,13 @@
+---
+title: Xoryves
+created_at: 2021-03-31
+updated_at: 2022-12-07
+---
+
+Tagchen.
+Willkommen auf meiner Seite von und für mich `'_'`.
+
+Ich empfehle zuerst link:/about_site[Über diese Seite] und danach link:/about_me[Über mich] zu lesen.
+
+Falls die Seite mal nicht erreichbar ist, führe ich wohl gerade Updates oder Experimente durch.
+Das ganze wird auf einem günstigen vserver betrieben.

@@ -1,0 +1,36 @@
+---
+title: NixOS
+created_at: 2021-04-05
+updated_at: 2021-05-12
+tags:
+- unix
+- Linux Distribution
+- nix
+- Betriebssystem
+---
+
+* https://github.com/NixOS/nixpkgs/blob/master/doc/languages-frameworks/ruby.section.md
+
+== nix-shell
+
+* https://github.com/haslersn/any-nix-shell
+* https://ghedam.at/15978/an-introduction-to-nix-shell
+
+=== Ruby
+
+.shell.nix
+[source, javascript, role="code"]
+----
+with import <nixpkgs> {};
+ruby.withPackages (ps: with ps; [ eventmachine ffi ])
+----
+
+== unstable channel
+
+.einzelnes Paket
+[source, shell, role="terminal"]
+----
+nix-channel --add https://nixos.org/channels/nixos-unstable nixos-unstable
+nix-channel --update
+nix-env -f channel:nixos-unstable -iA vscode
+----

@@ -1,0 +1,52 @@
+---
+title: fish shell
+created_at: 2023-03-10
+tags:
+- unix
+- shell
+- fish
+---
+
+Als Plugin Manager kann https://github.com/danhper/fundle[fundle] oder https://github.com/jorgebucaran/fisher[fisher] verwendet werden.
+
+== Beispiele
+
+.anhand uname unterscheiden
+[%collapsible, role=listing-block code]
+====
+[source, sh]
+----
+# https://github.com/fish-shell/fish-shell/issues/8203#issuecomment-891956454
+set -l os (uname)
+if test "$os" = Darwin
+  # do things for macOS
+else if test "$os" = Linux
+  # do things for Linux
+else
+  # do things for other operating systems
+end
+
+switch (uname)
+  case Darwin
+    # do things for macOS
+  case Linux
+    # do things for Linux
+  case '*'
+    # do things for other OSs
+end
+
+# sollte man nicht machen
+test (uname) = Darwin; and # do something for macOS
+----
+====
+
+.config in Abhängigkeit von hostname laden
+[%collapsible, role=listing-block code]
+====
+[source, sh]
+----
+# https://stackoverflow.com/a/48750830/1371731
+set -l host_config ~/.config/fish/config.(hostname).fish
+test -r ${host_config}; and source ${host_config}
+----
+====

@@ -1,0 +1,43 @@
+---
+title: Ruby
+created_at: 2021-05-02
+updated_at: 2023-04-20
+tags:
+- ruby
+- Programmiersprache
+---
+
+== Hilfestellung
+
+=== bundler
+
+.aktualisieren
+[source, shell, role=terminal]
+----
+bundle update --bundler
+bundle update
+----
+
+=== map ohne nil
+
+.Ruby < 2.7
+[source, ruby, role=code]
+----
+[{t: [1,2,3]}, {}, {t: [2,3]}].map {|i| i[:t]}.compact
+=> [[1, 2, 3], [2, 3]]
+----
+
+.Ruby >= 2.7
+[source, ruby, role=code]
+----
+[{t: [1,2,3]}, {}, {t: [2,3]}].filter_map {|i| i[:t]}
+=> [[1, 2, 3], [2, 3]]
+----
+
+== Gems
+
+* https://github.com/tj/terminal-table[Terminal Table is a fast and simple, yet feature rich table generator written in Ruby. It supports ASCII and Unicode formatted tables.]
+
+== Blogposts
+
+* https://blog.saeloun.com/2019/05/25/ruby-2-7-enumerable-filter-map.html[Ruby 2.7 adds Enumerable#filter_map (Vipul A M)]

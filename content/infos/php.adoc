@@ -1,0 +1,15 @@
+---
+title: PHP
+created_at: 2023-03-04
+tags:
+  - php
+  - Programmiersprache
+---
+
+== Bibliotheken / Werkzeug
+
+* https://deployer.org/[Deployer - PHP deployment tool]
+
+== Blogposts
+
+* https://endelwar.it/2020/09/manage-php-symlink-deploy-with-caddy-2.2/[MANAGE PHP SYMLINK DEPLOY WITH CADDY 2.2 (endelwar.it)]

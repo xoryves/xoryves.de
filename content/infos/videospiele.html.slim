@@ -1,0 +1,7 @@
+---
+title: Videospiele
+---
+
+ul
+  - @items.find_all('/infos/videospiele/*').sort_by { |i| i[:title].downcase.gsub(/[^a-z]/, '') }.each do |item|
+    li == (link_to item[:title], item)

@@ -1,0 +1,34 @@
+---
+title: Rust
+created_at: 2022-01-01
+updated_at: 2023-04-21
+tags:
+- rust
+- Programmiersprache
+---
+
+.static build musl
+[source, sh, role=term]
+----
+RUSTFLAGS='-C target-feature=+crt-static' cargo build
+----
+
+.static build glibc
+[source, sh, role=term]
+----
+RUSTFLAGS='-C target-feature=+crt-static' cargo build --release --target x86_64-unknown-linux-gnu
+----
+
+== Bibliotheken
+
+* https://rhai.rs/[Rhai - Embedded Scripting for Rust]
+
+== Referenzen
+
+* https://nnethercote.github.io/perf-book/title-page.html[The Rust Performance Book]
+* http://bfnightly.bracketproductions.com/rustbook/[Roguelike Tutorial - In Rust]
+* https://hands-on-rust.com/[Hands-on Rust] / https://pragprog.com/titles/hwrust/hands-on-rust/[PragProg]
+* https://msfjarvis.dev/posts/building-static-rust-binaries-for-linux/[Building static Rust binaries for Linux (msfjarvis.dev)]
+* https://dystroy.org/blog/how-not-to-learn-rust/[How not to learn Rust (dystroy.org)]
+* https://rust-unofficial.github.io/too-many-lists/[Learn Rust With Entirely Too Many Linked Lists (rust-unofficial.github.io)]
+* https://www.53hor.net/2021-11-28-write-your-own-ssh-tarpit-in-rust-with-async-std[Write Your Own SSH Tarpit in Rust with async-std (53hor.net)]

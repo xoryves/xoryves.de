@@ -1,0 +1,83 @@
+---
+title: ZFS
+created_at: 2021-07-16
+updated_at: 2021-11-04
+---
+
+== Befehle
+
+.pool umbenennen
+[source, shell, role=terminal]
+----
+zpool export pool
+zpool import pool anderer_name
+----
+
+== backup
+
+* https://github.com/Freaky/zfsnapr
+* https://github.com/restic/restic/issues/3557#issuecomment-1133796413
+
+.push
+[source, shell, role=term]
+----
+root@source> zfs send sourcepool/dataset | ssh target zfs receive targetpool/dataset
+----
+
+.pull
+[source, shell, role=term]
+----
+root@target> ssh source zfs send sourcepool/dataset | zfs receive targetpool/dataset
+----
+
+[source, shell, role=terminal]
+----
+#!/bin/sh
+#pfexec zfs send -R deta/home@new | pv | pfexec zfs recv -Fdu ex1
+#pfexec zfs send -R deta/tmp@new | pv | pfexec zfs recv -Fdu ex1
+#pfexec zfs send -R deta/sicherung@new | pv | pfexec zfs recv -Fdu ex1
+#pfexec zfs send -R deta/daten@new | pv | pfexec zfs recv -Fdu ex1
+#pfexec zfs send -R deta/media@new | pv | pfexec zfs recv -Fdu ex1
+
+for pool in deta/home deta/tmp deta/sicherung deta/daten deta/media
+do
+  echo "zfs rename -r ${pool}@new ${pool}@old"
+  zfs rename -r ${pool}@new ${pool}@old
+  echo "zfs snapshot -r ${pool}@new"
+  zfs snapshot -r ${pool}@new
+  echo "zfs send -Ri ${pool}@old ${pool}@new | pv | zfs receive -Fdu ex1"
+  zfs send -Ri ${pool}@old ${pool}@new | pv | zfs receive -Fdu ex1
+  echo "zfs destroy -r ${pool}@old"
+  zfs destroy -r ${pool}@old
+done
+----
+
+[source, shell, role=terminal]
+----
+#!/bin/sh
+# initial
+# sudo zfs snapshot -r zroot/sicherung@now
+# sudo zfs send -R zroot/sicherung@now | pv | sudo zfs receive -Fdu ex1
+
+echo "zpool import -N ex1"
+zpool import -N ex1
+
+for pool in zroot/home zroot/sicherung go/daten go/media
+do
+  #INIT
+  #zfs snapshot -r ${pool}@new
+  #zfs send -R ${pool}@new | pv | zfs receive -Fdu ex1
+
+  echo "zfs rename -r ${pool}@new ${pool}@old"
+  zfs rename -r ${pool}@new ${pool}@old
+  echo "zfs snapshot -r ${pool}@new"
+  zfs snapshot -r ${pool}@new
+  echo "zfs send -Ri ${pool}@old ${pool}@new | pv | zfs receive -Fdu ex1"
+  zfs send -Ri ${pool}@old ${pool}@new | pv | zfs receive -Fdu ex1
+  echo "zfs destroy -r ${pool}@old"
+  zfs destroy -r ${pool}@old
+done
+
+echo "zpool export ex1"
+zpool export ex1
+----

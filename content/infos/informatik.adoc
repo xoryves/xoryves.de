@@ -1,0 +1,96 @@
+---
+title: Informatik
+created_at: 2021-05-04
+updated_at: 2023-04-20
+tags:
+  - linux
+---
+
+* https://code.berlin/en/blog/computer-science-software-engineering/[Don’t confuse Computer Science with Software Engineering]
+* http://www.sarahmei.com/blog/2014/07/15/programming-is-not-math/comment-page-1/[Programming Is Not Math]
+* https://devblogs.microsoft.com/oldnewthing/?p=31113[How do I write a regular expression that matches an IPv4 dotted address? (Raymond / devblogs.microsoft.com)]
++
+Don’t make regular expressions do what they’re not good at.
+If you want to match a simple pattern, then match a simple pattern.
+If you want to do math, then do math.
+* https://www.quora.com/What-are-the-differences-between-data-integrity-and-data-quality[What are the differences between data integrity and data quality? (John Kimmett / quora)]
++
+If you want to make a difference, pick a standard and get started.
+If you want to be a highly paid consultant, take simple things and obfuscate them with jargon and nonsense.
+
+* Datumsformat YYYY-MM-DD, Jahr-Monat-Tag
+** https://www.iso.org/iso-8601-date-and-time-format.html[ISO 8601 date and time format]
+** https://de.wikipedia.org/wiki/Datumsformat#DIN_5008[DIN 5008]
+
+== Internet
+
+=== private Adressbereiche
+
+https://www.iana.org/assignments/iana-ipv4-special-registry/iana-ipv4-special-registry.xhtml[IANA IPv4 Special-Purpose Address Registry]
+[horizontal]
+Class A /8:: `10.0.0.0` - `10.255.255.255`
+Class B /12:: `172.16.0.0` - `172.31.255.255`
+Class C /16:: `192.168.0.0` - `192.168.255.255`
+
+== ssh tarpit
+
+* https://github.com/skeeto/endlessh
+* https://nullprogram.com/blog/2019/03/22/
+* https://www.53hor.net/2021-11-28-write-your-own-ssh-tarpit-in-rust-with-async-std[Write Your Own SSH Tarpit in Rust with async-std (53hor.net)]
+* https://github.com/Aeron/decoyssh[DecoySSH (Aeron)]
+* https://github.com/Freaky/tarssh[tarssh (Freaky)]
+
+== systemd
+
+* https://www.youtube.com/channel/UCciKHCG06rnq31toLTfAiyw[The Tragedy of systemd (linux.conf.au 2019 — Christchurch, New Zealand)]
+
+== email
+
+* https://en.wikipedia.org/wiki/Email_forwarding
+* Bulk Email Sender Guidelines
+** https://www.emailarchitect.net/easendmail/sdk/html/object_bulk.htm
+
+== Virtualisierung
+
+=== QEMU
+
+Über den https://wiki.qemu.org/Features/GuestAgent[GuestAgent] kann der Host beliebige Kommandos im Guest absetzen.
+Darüber wird von Virtualisierungsdienstleistern unter anderem die »root Passwort zurücksetzen« Funktionalität über Webinterface ermöglicht.
+Den Einsatz des GuestAgent sollte man sich gut überlegen, wenn man den Host nicht selbst betreibt.
+
+== Linklist
+
+* https://roadmap.sh/[Developer Roadmaps]
+* https://min.io/[min.io - Multi-Cloud Object Storage]
+
+=== Mail
+
+* https://proton.me/
+* https://tutanota.com/
+* https://tormail.io/
+* https://simplelogin.io/
+
+=== Web Browser
+
+* https://www.mozilla.org/de/firefox/new/
+* https://brave.com/de/ (chromium)
+* https://www.torproject.org/de/download/ (firefox)
+* https://www.google.com/intl/de/chrome/
+
+=== Sicherheit
+
+* link:/infos/crowdsec#_referenzen[CrowdSec]
+* https://github.com/sullo/nikto[Nikto web server scanner]
+* https://owasp.org/www-project-web-security-testing-guide/[OWASP Web Security Testing Guide]
+** https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/07-Input_Validation_Testing/17-Testing_for_Host_Header_Injection[Testing for Host Header Injection (WSTG - Latest)]
+* https://crypto.stackexchange.com/questions/39186/what-does-it-mean-for-a-random-number-generator-to-be-cryptographically-secure/39188#39188[What does it mean for a random number generator to be cryptographically secure? (crypto.stackexchange.com)]
+
+=== Build Automation
+
+* https://bazel.build/[Bazel]
+
+== Blogposts
+
+* http://shouldiblockicmp.com/[Should I block ICMP?]
+* https://blog.diogomonica.com//2017/03/27/why-you-shouldnt-use-env-variables-for-secret-data/[Why you shouldn't use ENV variables for secret data (Diogo Mónica)]
+* https://nullprogram.com/blog/2017/08/20/[A Tutorial on Portable Makefiles (Chris Wellons)]

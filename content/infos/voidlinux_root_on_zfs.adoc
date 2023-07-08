@@ -1,0 +1,311 @@
+---
+title: Void Linux root on ZFS
+created_at: 2022-07-27
+updated_at: 2023-04-23
+tags:
+  - linux
+  - Void
+  - ZFS
+---
+
+Anleitung wie man Void mit root auf verschlüsseltem ZFS unter EFI installieren kann.
+
+* https://docs.zfsbootmenu.org/en/latest/guides/void-linux/uefi.html[ZFSBootMenu Void Linux UEFI]
+* https://docs.zfsbootmenu.org/en/latest/guides/general/remote-access.html#dracut[Remote Access to ZFSBootMenu]
+* https://openzfs.github.io/openzfs-docs/Getting%20Started/Debian/Debian%20Buster%20Root%20on%20ZFS.html#step-3-system-installation[OpenZFS Debian Root on ZFS]
+* https://github.com/leahneukirchen/hrmpf[hrmpf] rescue system, built on Void Linux, mit ZFS
+
+.hrmpf
+[source, shell, role=terminal]
+----
+ssh anon
+# pubkey auth
+vim /etc/ssh/sshd_config
+sv restart sshd
+
+mkdir .ssh
+chmod 0700 .ssh
+wget -O .ssh/authorized_keys https://github.com/xoryves.keys
+chmod 0600 .ssh/authorized_keys
+
+xbps-install -S
+xbps-install -u xbps
+xbps-install -S
+----
+
+.ZFS Module bauen und laden
+[source, shell, role=terminal]
+----
+xbps-reconfigure -a
+modprobe zfs
+----
+
+./etc/hostid generieren
+[source, shell, role=terminal]
+----
+zgenhostid
+----
+
+.pool passphrase in eine key Datei schreiben
+[source, shell, role=terminal]
+----
+echo 'SomeKeyphrase' > /etc/zfs/zroot.key
+chmod 000 /etc/zfs/zroot.key
+----
+
+.EFI Partition auf /dev/sda
+[source, shell, role=terminal]
+----
+gdisk /dev/sda
+o,n,1,,+512M,EF00,n,2,,,,w
+----
+
+.zpool erstellen
+[source, shell, role=terminal]
+----
+zpool create -f -o ashift=12 \
+ -O compression=lz4 \
+ -O acltype=posixacl \
+ -O xattr=sa \
+ -O relatime=on \
+ -O encryption=aes-256-gcm \
+ -O keylocation=file:///etc/zfs/zroot.key \
+ -O keyformat=passphrase \
+ -o autotrim=on \
+ -m none zroot /dev/sda2
+----
+
+.Verzeichnisstruktur erstellen
+[source, shell, role=terminal]
+----
+zfs create -o mountpoint=none zroot/ROOT
+zfs create -o mountpoint=/ -o canmount=noauto zroot/ROOT/void
+zfs create -o mountpoint=/home zroot/home
+zfs create -o mountpoint=/root zroot/home/root
+zfs create -o mountpoint=/opt zroot/opt
+zfs create -o mountpoint=/srv zroot/srv
+zfs create -o mountpoint=/usr -o canmount=off zroot/usr
+zfs create zroot/usr/local
+zfs create -o mountpoint=/var -o canmount=off zroot/var
+zfs create zroot/var/cache
+zfs create -o mountpoint=/var/lib -o canmount=off zroot/var/lib
+zfs create zroot/var/lib/docker
+zfs create zroot/var/lib/libvirt
+zfs create zroot/var/lib/nfs
+zfs create zroot/var/log
+zfs create zroot/var/mail
+zfs create zroot/var/tmp
+zfs create zroot/var/www
+----
+
+.export und import in ein tmp Verzeichnis
+[source, shell, role=terminal]
+----
+zpool export zroot
+zpool import -N -R /mnt zroot
+zfs load-key -L prompt zroot
+zfs mount zroot/ROOT/void
+zfs mount -a
+chmod 700 /mnt/root
+chmod 1777 /mnt/var/tmp
+----
+
+.Void installieren
+[source, shell, role=terminal]
+----
+mkdir -p /mnt/var/db/xbps/keys
+cp /var/db/xbps/keys/* /mnt/var/db/xbps/keys/
+
+REPO=https://repo-fi.voidlinux.org/current/musl
+ARCH=x86_64-musl
+XBPS_ARCH="$ARCH" xbps-install -S -R "$REPO" -r /mnt base-system zfs neovim efibootmgr gptfdisk linux5.18 linux5.18-headers
+
+cp /etc/hostid /mnt/etc/
+cp /etc/resolv.conf /mnt/etc/
+cp /etc/zfs/zroot.key /mnt/etc/zfs
+cp -a /root/.ssh /mnt/root
+cp /etc/ssh/sshd_config /mnt/etc/ssh/sshd_config
+----
+
+.chroot
+[source, shell, role=terminal]
+----
+mount -t proc proc /mnt/proc
+mount -t sysfs sys /mnt/sys
+mount -B /dev /mnt/dev
+mount -t devpts pts /mnt/dev/pts
+PS1='(chroot) # ' chroot /mnt/ /bin/bash
+----
+
+.Basiskonfiguration
+[source, shell, role=terminal]
+----
+passwd
+
+ln -sf /usr/share/zoneinfo/Europe/Berlin /etc/localtime
+
+cat << EOF >> /etc/rc.conf
+# /etc/rc.conf - system configuration for void
+HARDWARECLOCK="UTC"
+KEYMAP="de-latin1-nodeadkeys"
+EOF
+----
+
+.Netzwerk
+[source, sh, role=term]
+----
+echo ryv > /etc/hostname
+
+vim /etc/hosts /etc/resolv.conf
+
+cat << EOF >> /etc/rc.local
+ip link set dev eth0 up
+ip addr add 1.2.3.4/24 brd + dev eth0
+ip route add default via 1.2.3.4
+
+ip -6 addr add 2a03:4000:2:11c5::1/64 dev eth0
+ip -6 route add default via fe80::1 dev eth0
+EOF
+
+cat << EOF >> /etc/sysctl.conf
+net.ipv6.conf.all.accept_ra = 0
+net.ipv6.conf.default.accept_ra = 0
+net.ipv6.conf.eth0.accept_ra = 0
+EOF
+
+ln -s /etc/sv/sshd /etc/runit/runsvdir/default/
+----
+
+.pools schneller beim booten finden und importieren
+[source, shell, role=terminal]
+----
+zpool set cachefile=/etc/zfs/zpool.cache zroot
+----
+
+.boot environment setzen
+[source, shell, role=terminal]
+----
+zpool set bootfs=zroot/ROOT/void zroot
+----
+
+.Dracut
+[source, shell, role=terminal]
+----
+cat << EOF > /etc/dracut.conf.d/zol.conf
+nofsck="yes"
+add_dracutmodules+=" zfs "
+omit_dracutmodules+=" btrfs crypt-ssh"
+install_items+=" /etc/zfs/zroot.key "
+EOF
+----
+
+.initramfs
+[source, shell, role=terminal]
+----
+xbps-reconfigure -f linux5.18
+----
+
+.zbm commandline
+[source, shell, role=terminal]
+----
+zfs set org.zfsbootmenu:commandline="ro quiet nowatchdog rd.vconsole.keymap=de" zroot/ROOT
+----
+
+.vfat filesystem auf /dev/sda1
+[source, shell, role=terminal]
+----
+mkfs.vfat -F32 /dev/sda1
+----
+
+.fstab Eintrag und mounten
+[source, shell, role=terminal]
+----
+cat << EOF >> /etc/fstab
+$( blkid | grep /dev/sda1 | cut -d ' ' -f 2 ) /boot/efi vfat defaults 0 0
+EOF
+mkdir /boot/efi
+mount /boot/efi
+----
+
+.ZFSBootMenu Paket installieren
+[source, shell, role=terminal]
+----
+xbps-install zfsbootmenu dracut-crypt-ssh
+----
+
+./etc/zfsbootmenu/config.yaml
+[source, yaml, role=code]
+----
+Global:
+  ManageImages: true
+EFI:
+  Versions: 2
+Kernel:
+  CommandLine: ro quiet loglevel=0 rd.vconsole.keymap=de
+----
+
+.GPU Treiber ausschalten
+[source, shell, role=terminal]
+----
+echo 'omit_drivers+=" amdgpu radeon nvidia nouveau i915 "' >> /etc/zfsbootmenu/dracut.conf.d/drivers.conf
+----
+
+.dropbear ssh host keys
+[source, sh, role=term]
+----
+mkdir -p /etc/dropbear
+ssh-keygen -t rsa -m PEM -f /etc/dropbear/ssh_host_rsa_key
+ssh-keygen -t ecdsa -m PEM -f /etc/dropbear/ssh_host_ecdsa_key
+----
+
+.dracut network
+[source, sh, role=term]
+----
+mkdir -p /etc/cmdline.d
+echo "ip=<server-ip>::<gateway>:<netmask>:<hostname>::off ip=[<server-ip>]::[<gateway>]:64:<hostname>::off rd.neednet=1" > /etc/cmdline.d/dracut-network.conf
+----
+
+./etc/zfsbootmenu/dracut.conf.d/dropbear.conf
+[source, conf, role=code]
+----
+# Enable dropbear ssh server and pull in network configuration args
+add_dracutmodules+=" crypt-ssh "
+install_optional_items+=" /etc/cmdline.d/dracut-network.conf "
+# Copy system keys for consistent access
+dropbear_rsa_key=/etc/dropbear/ssh_host_rsa_key
+dropbear_ecdsa_key=/etc/dropbear/ssh_host_ecdsa_key
+dropbear_port=65534
+----
+
+.initial bootmenu initramfs
+[source, shell, role=terminal]
+----
+xbps-reconfigure -f zfsbootmenu
+----
+
+.EFI bootloader rEFInd
+[source, shell, role=terminal]
+----
+xbps-install refind
+refind-install
+rm /boot/efi/EFI/BOOT/refind.conf
+cat << EOF > /boot/efi/EFI/void/refind_linux.conf
+"Boot default"  "zbm.prefer=zroot ro quiet loglevel=0 zbm.skip rd.vconsole.keymap=de"
+"Boot to menu"  "zbm.prefer=zroot ro quiet loglevel=0 zbm.show rd.vconsole.keymap=de"
+EOF
+----
+
+.chroot verlassen
+[source, shell, role=terminal]
+----
+exit
+umount -n /mnt/{dev/pts,dev,sys,proc}
+umount /mnt/boot/efi
+----
+
+.zroot exportieren und Neustart
+[source, shell, role=terminal]
+----
+zpool export zroot
+reboot
+----

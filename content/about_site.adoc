@@ -1,0 +1,92 @@
+---
+title: Über diese Seite
+created_at: 2021-04-03
+updated_at: 2022-12-07
+---
+
+Diese Seite habe ich für mich gestaltet.
+Meine Informationen waren bisher recht verteilt.
+Zum Teil in Dateien auf verschiedenen Rechnern.
+Oder auf analogen Zetteln.
+Ich hoffe hiermit meine Informationen besser organisiert zu bekommen.
+
+Diese Seite ist kein Blog.
+Evt wird irgendwann ein Blog mit Atom Feed integriert.
+Zur Zeit liegt der Fokus wo anders.
+Die Änderung wird auf der link:/[Index] Seite vermerkt.
+
+Eine Art Changelog/Änderungsprotokoll gibt es nicht.
+Eventuell kommt irgendwann was.
+Dies werde ich dann auf der link:/[Index] Seite vermerken.
+Es kann das https://github.com/xoryves/xoryves.de/commits/master[github] Repo verfolgt werden.
+Andererseits, ist es doch auch schön, mal nicht von Informationen aktiv verfolgt zu werden.
+
+Neben meinen Informationen sind auch meine Gedanken hier zu finden.
+Wissen muss frei zugänglich sein.
+Mir hat es schon oft geholfen, dass andere ihr Wissen und ihre Gedanken im Internet teilen.
+Somit möchte auch ich mein Wissen und Gedanken zugänglich machen.
+
+Irgendwo ist diese Seite natürlich auch ein Spiegelbild meiner Seele.
+
+== Gestaltungselemente
+
+https://de.wikipedia.org/wiki/Hyperlink[Hyperlinks] werden dunkler dargestellt.
+Interne Links werden mit einem [text-primary]#␥# am Ende gekennzeichnet.
+Externe Links werden mit einem [text-bg]#␥# am Ende gekennzeichnet.
+
+Als Datumsformat (YYYY-MM-DD) wird https://www.iso.org/iso-8601-date-and-time-format.html[ISO 8601] / https://de.wikipedia.org/wiki/Datumsformat#DIN_5008[DIN 5008] verwendet.
+Zuerst kommt das Jahr (YYYY) dann der Monat (MM) und zum Schluss der Tag (DD).
+
+Am Ende von einzelnen Seiten befindet sich eine horizontale Linie.
+Darunter werden gegebenenfalls Metainformationen dargestellt.
+Dazu gehören u.A. das Erstellungsdatum, Veränderungsdatum, Tags und ein eventueller Link zu den commits auf github.
+
+https://de.wikipedia.org/wiki/Internationales_Phonetisches_Alphabet[IPA, title="Internationales Phonetisches Alphabet"] wird zur Kennzeichnung der Aussprache verwendet.
+Die Aussprache wird dabei in eckigen Klammern geschrieben.
+
+=== Farben
+
+Im Grunde habe ich mich auf zwei Hintergrundfarben und drei Textfarben beschränkt.
+Außname bildet die link:/about_me[Über mich] Seite.
+Dort habe ich noch drei weitere Textfarben von meiner alten Seite übernommen.
+Externe Hyperlink Kennzeichnung bildet ebenfalls eine Ausnahme.
+Nicht jedem gefällt ein dunkles Farbthema.
+Jedoch habe ich mich trotzdem auf ein dunkles Farbthema beschränkt.
+Wie bereits beschrieben ist diese Seite primär für mich bestimmt und soll mich wiederspiegeln.
+In der analogen Welt trage ich auch grundsätzlich Schwarz.
+Es ist allerdings erschreckend, was alles als Schwarz bezeichnet wird.
+
+== Werkzeug
+
+Eine manuell gepflegte und unvollständige Liste von verwendeten Werkzeugen.
+Ohne diese frei Zugänglichen Werkzeuge wäre diese Seite nicht entstanden.
+
+* https://www.ruby-lang.org/en/[Ruby]
+* https://nanoc.app/[Nanoc]
+* https://tailwindcss.com/[TailwindCSS]
+* https://nodejs.org/en/[NodeJS]
+* https://postcss.org/[PostCSS]
+* https://feathericons.com/[Feather - Simply beautiful open source icons]
+* https://mplusfonts.github.io/[M+ FONTS]
+* https://asciidoctor.org/[Asciidoctor - A fast text processor & publishing toolchain for converting AsciiDoc to HTML5, DocBook & more.]
+* https://www.html-tidy.org/[tidy-html5 - Tidy tidies HTML and XML.]
+
+== Abgeschaut
+
+Einiges habe ich von meiner link:/assets/files/xoryves_de_2021-05-04.png[ursprünglichen Seite^](https://web.archive.org/web/20210817105115/http://xoryves.de/[web.archive.org]) übernommen.
+Vieles habe ich mir aber auch von anderen Seiten abgeschaut.
+Zum Teil das Design oder die Implementierung.
+Nachfolgend eine vermutlich unvollständige Liste wo ich mir etwas 2021-04-03 abgeschaut habe.
+
+* https://github.com/avdgaag/nanoc-template
+* https://github.com/arkency/nanoc-parcel-tailwind-starter
+* https://blog.arkey.fr/
+* https://denisdefreyne.com/
+* https://github.com/blinry/morr.cc
+* https://codepen.io/chistel/pen/XQPOyz
+
+== Lizenzen / Copyright
+
+* link:/assets/licenses/tailwindcss[TailwindCSS]
+* link:/assets/licenses/feathericons[Feather - Simply beautiful open source icons^]
+* link:/assets/licenses/mplus_fonts[M+ FONTS]

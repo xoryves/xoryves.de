@@ -1,0 +1,55 @@
+---
+title: Sega
+created_at: 2021-06-27
+updated_at: 2022-12-03
+tags:
+- Spielekonsolen
+- Sega
+---
+
+* https://segaretro.org/
+* https://circuit-board.de/forum/index.php/Board/95-Sega/
+* https://segasaturngroup.proboards.com/
+
+== Dreamcast
+
+[horizontal]
+GDI:: GD-ROM image, 1GB
+CDI:: ripped GD-ROMs damit sie auf CD-ROM passen
+
+[]
+* https://kaicolabs.com/product/sega-dreamcast-dreamshell-serial-adaptor-and-disc/[Kaico Serial SD Card Adaptor]
+
+=== HomeBrew
+
+* https://github.com/DC-SWAT/DreamShell
+** https://dragoncity17.wordpress.com/2018/03/04/sega-dreamcast-dreamshell/
+* https://github.com/sega-dreamcast/beats-of-rage
+
+=== ODE
+
+* https://terraonion.com/en/producto/terraonion-mode/[Multi Optical Disc Emulator] ~182€
+* http://3do-mnemo.com/USB-GDROM_Controller.htm[USB-GDROM] ~195$
+** https://www.reddit.com/r/dreamcast/comments/bwly3d/proud_owner_of_a_usb_gdrom_mutlidisc/[Proud owner of a USB GDROM - MutliDisc? (Reddit)]
+* https://dragoncity17.wordpress.com/2018/03/16/sega-dreamcast-g1-ata/
+* http://dc-io.com/
+
+== Saturn
+
+* https://www.satakore.com/
+* https://www.sega-saturn.net/index.htm
+* http://www.shinforce.com/saturn/Info.htm
+* https://en.wikipedia.org/wiki/List_of_Sega_Saturn_games[List of Sega Saturn games (Wikipedia)]
+* https://www.reddit.com/r/SegaSaturn/comments/9axf9d/english_friendly_japanese_imports/[English Friendly Japanese Imports? (Reddit)]
+* https://www.racketboy.com/retro/sega-saturn-shmups-2d-shooters[THE SEGA SATURN’S EXPLOSIVE SHMUPS LIBRARY (racketboy)]
+* https://www.racketboy.com/retro/sega-saturn-2d-fighters-library[SEGA SATURN 2D FIGHTERS LIBRARY (racketboy)]
+
+=== ODE
+
+* https://www.fenrir-ode.fr/[Fenrir] ~100€
+* https://terraonion.com/en/producto/terraonion-mode/[Multi Optical Disc Emulator] ~182€
+* https://www.satiator.net/[Satiator] ~260$
+
+== MegaDrive 2
+
+== GameGear

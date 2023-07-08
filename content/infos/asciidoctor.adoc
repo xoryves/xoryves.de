@@ -1,0 +1,25 @@
+---
+title: Asciidoctor
+created_at: 2021-04-01
+updated_at: 2021-09-29
+---
+:y: ✓
+
+Für schwierig zu tippende Unicode Zeichen oder HTML-Codes kann ein Attribut definiert werden.
+Unterhalb des Headers mit `:y: ✓` definieren.
+Im Dokument mit `\{y\}` verwendet wird ein `{y}` ausgegeben.
+
+== Links
+
+* https://docs.asciidoctor.org/home/[Doku]
+
+== eigenes Backend / Template
+
+* https://github.com/asciidoctor/asciidoctor/issues/2273
+
+== Werkzeug
+
+* https://antora.org[Antora - The multi-repository documentation site generator for tech writers who ♡ writing in AsciiDoc.]
+* https://github.com/jirutka/asciidoctor-html5s[Semantic HTML5 Backend For Asciidoctor]
+* https://github.com/darshandsoni/asciidoctor-skins[asciidoctor-skins: CSS stylesheets for asciidoctor]
+* https://github.com/asciidoctor/jekyll-asciidoc[Jekyll AsciiDoc Plugin (powered by Asciidoctor)]

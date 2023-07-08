@@ -1,0 +1,21 @@
+---
+title: Backups / Sicherungen
+created_at: 2022-07-30
+---
+
+RAID ist _kein_ Backup.
+ZFS mirror/raidz ist _kein_ Backup.
+Solche Lösungen dienen der Redundanz und nicht der Sicherung.
+
+Stand 2022 ist ein sogenanntes 3-2-1 Backup empfohlen.
+Die kritischen Dateien sollten drei Mal vorliegen.
+Die erste Datei ist die mit der man arbeitet.
+Die zweite ist auf einem lokalen Backup, z.B. extrene Festplatte oder NAS.
+Die dritte ist an einem anderen Standort, z.B. Cloud oder externe Festplatte im Garten verbuddelt.
+
+Dabei kann es noch von Nutzen sein, wenn man Snapshots anlegt.
+Ob dies möglich ist hängt von der Backuplösung ab.
+
+* https://restic.net/
+* https://www.borgbackup.org/
+* link:/infos/zfs/#_backup[ZFS send/recv]
