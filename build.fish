@@ -9,12 +9,13 @@ if test "$REV" = "$REV_LOG"
 end
 
 git stash save
-if not npm run build
-  echo 'npm run build failed!'
-  exit 1
-end
+rm -rf output
 if not bundle exec nanoc
   echo 'bundle exec nanoc failed!'
+  exit 1
+end
+if not npm run build
+  echo 'npm run build failed!'
   exit 1
 end
 if not git checkout $BRANCH
